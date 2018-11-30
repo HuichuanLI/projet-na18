@@ -34,9 +34,8 @@ postgresql (v 10.5)
     page annonce
     page pour chaque categorie
     
- 
- ## back
  /back/login 
+ ## back
     page de login 
     page de creatation de compte
     page de profil 
