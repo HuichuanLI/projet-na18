@@ -12,3 +12,20 @@ tu peux installer sur lien :
 https://www.gitkraken.com/
 
 
+# front end
+bootstrap (v3|4)
+anjular js | jquery 
+
+
+
+# back end 
+php (5.6)
+
+
+# sql 
+postgresql (v 10.5)
+
+
+
+
+
