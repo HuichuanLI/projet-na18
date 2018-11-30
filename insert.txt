@@ -1,0 +1,105 @@
+
+
+
+insert into commande (num_commande, date_commande, statut_commande)
+  values
+  (23453, '2016-02-13','payée'),
+  (27362, '2017-03-02','livrée'),
+  (29282, '2017-12-08','expédiée');
+
+
+insert into promotion (nom_promo, debut, fin, rabais)
+  values
+  ('BlackFriday', '2017-11-21', '2017-11-28', 0.85),
+  ('Noël', '2017-12-23', '2017-12-25', 0.65),
+  ('Flash', '2018-02-12', '2018-02-14', 0.45);
+
+insert into produit (ref_produit, nom_produit, description, etat_produit, marque, prix, categorie_produit, nom_promo, url_photo)
+  values
+  ('X2837', 'Lustec', 'Meuble ancien', 'bon', 'Ikea', 35,'mobilier', NULL,'https://www.label-emmaus.co/fr/Lustec/'),
+  ('R2716', 'Scrabble', 'Jouez au Scrabble pour passer de bon moment en famille !','moyen','Jouet Club', 12,'loisir', NULL,'https://www.label-emmaus.co/fr/Scrabble/'),
+  ('T3827', 'Robot ménager', 'Ce robot ménager est fais pour vous, il vous accompagnera dans toutes vos idées de recettes!', 'bon', 'Moulinex', 40, 'high-tech', NULL, 'https://www.label-emmaus.co/fr/robotmen/'),
+  ('G7281', 'Samsung G7', 'Smartphone récent', 'bon', 'Samsung', 200,'high-tech','Flash','https://www.label-emmaus.co/fr/S7/'),
+  ('A1123', 'Marinière JPG', 'Une marinière authentique du créateur Jean-Paul-Gauthier', 'moyen', 'JPG', 82,'mode','Noël','https://www.label-emmaus.co/fr/MJPG/');
+
+  insert into produit_commande (ref_produit, num_commande)
+    values
+    ('X2837',29282),
+    ('G7281',27362),
+    ('T3827',23453);
+
+
+
+insert into magasin (siret, nom_magasin)
+  values
+  (27736127381948, 'La boutique du bonheur'),
+  (11127637383734, 'Roca Roca'),
+  (29874018374297, 'Jean&Joliette'),
+  (82728163849372, 'Samsgung Boutique Retail'),
+  (09927365173837, 'Beurp&Sons');
+
+
+  insert into panier (num_panier, nb_article, code_promo, solde,est_paye)
+    values
+    (22, 2, NULL,47,false),
+    (373, 0, NULL, 0, true),
+    (987,0,NULL,0,true),
+    (733,0,NULL,0,true),
+    (182,1,NULL,45,false),
+    (333,0,NULL,0,true),
+    (3736,0,NULL,0,true);
+
+
+
+
+insert into utilisateur (login, mdp, nom, prénom, mail, date_creation_compte,
+est_admin, num_panier)
+  values
+  ('rocaroca', 'rocaroca_23s', 'Robert', 'Cuzac', 'rocaroca@gmail.fr', '2013-12-11', false, 182),
+  ('tty01', 'x27283ndy!!@#', 'Jean', 'Duplaise', 'dupj@hotmail.com', '2015-02-05', false, 22),
+  ('Xaro', '29y2hyuXheuh@#', 'Martin', 'Duroc', 'martinduroc@emmaus.fr', '2009-01-07', true, 733),
+  ('Rxc', 'Lijejdjioa@#', 'Jeanne', 'Dugain', 'jd@laposte.fr', '2015-04-22', false, 987),
+  ('btq_bn', '389y238974@#', 'Bertrand', 'Chacal', 'btqn@laposte.fr', '2012-03-22', false, 333),
+  ('jj2', '29827298@#', 'Li', 'XieXie', 'li@laposte.fr', '2011-02-12', true, 3736);
+
+ insert into vendeur (login, description, siret)
+    values
+    ('btq_bn', 'La boutique du bonheur vous accueil avec le sourire!',27736127381948),
+    ('rocaroca', 'Roca Roca de père en fils depuis 1978',11127637383734),
+    ('jj2', 'Jean&Joliette, pour des habits encore plus stylés !',29874018374297);
+
+    insert into annonce (ref_annonce, date_mise_en_ligne, ref_produit, login_vendeur)
+      values
+      ('#838872', '2017-12-24', 'A1123','jj2'),
+      ('#372818', '2017-12-11', 'X2837','rocaroca'),
+      ('#237833', '2018-02-13', 'G7281','rocaroca'),
+      ('#992827', '2017-02-11', 'T3827','btq_bn'),
+      ('#172829', '2017-02-11', 'R2716','jj2');
+
+
+insert into adresse (ville,cp, type_voie, num_voie, nom_voie, login)
+  values
+  ('Compiègne', '60200', 'rue', 62, 'Port à Bateaux','tty01'),
+  ('Paris', '75000', 'place', 62, 'Saint-placide','Xaro'),
+  ('Marseille', '13000', 'square', 82, 'bis Général De Gaulle','rocaroca'),
+  ('Compiègne', '60200', 'boulevard', 12, 'Domelier','Rxc'),
+  ('Compiègne', '60200', 'rue', 11, 'Domelier','btq_bn');
+
+
+
+insert into produit_est_dans_panier (ref_produit, num_panier)
+  values
+  ('T3827',182),
+  ('R2716',22),
+  ('X2837',22);
+
+insert  into utilisateur_consulte_annonce (login,ref_annonce)
+  values ('tty01','#838872'),
+         ('tty01','#372818'),
+         ('Rxc','#838872');
+
+insert into utilisateur_achete_produit (ref_produit, login)
+  values
+  ('R2716','rocaroca'),
+  ('X2837','tty01'),
+  ('T3827','tty01');

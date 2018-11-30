@@ -1,0 +1,25 @@
+Promotion(#nom_promo: varchar, debut: date , fin : date , rabais : float)
+
+Produit(#Ref_produit: varchar, nom_produit : varchar, description : varchar, etat_produit : {bon , moyen, mauvais}, marque : varchar, prix : float,  categorie_produit : {Deco, mobilier, loisir, creation, librairie, mode, high-tech}, url_photo : varchar, promotion.nom_promo => promotion(promotion.nom_promo)) avec PROJECTION(Produit,ref_produit) = PROJECTION (Produit_commande, ref_produit)
+
+Commande(#num_comm : varchar, date_comm : datetime, statut_commande : {paye, expedie, livre,recu})
+
+Annonce(#ref_annonce : varchar, date_en_ligne : date, Produit.ref_produit => Produit, Vendeur.login => Vendeur) avec ref_produit NOT NULL avec PROJECTION(Annonce,ref_produit) = PROJECTION (Produit,ref_produit) et vendeur.login NOT NULL et PROJECTION(Vendeur,login) = PROJECTION(Annonce,vendeur.login)
+
+Produit_commande(#num_comm => Commande, #Produit => Produit)
+
+Utilisateur(#login : varchar, mdp : varchar, nom : varchar, prénom : varchar, mail : varchar, date_creation_compte : date, est admin : boolean, Panier.num_panier => Panier) avec Panier.num_panier unique NOT NULL et PROJECTION(Panier,num_panier) = PROJECTION(Utilisateur,panier.num);
+
+Vendeur(#utilisateur.login => Utilisateur, vendeur.siret => Magasin, description : varchar) avec vendeur.siret UNIQUE NOT NULL avec PROJECTION(Vendeur,vendeur.siret) = PROJECTION(Magasin,siret)
+
+Magasin(#siret : char(14), nom_magasin : varchar)
+
+Address(#ville : varchar, #cp : char(5), #type_voie : {square, place, impasse, boulevard, avenue, rue}, #nom_voie : varchar, #num_voie : integer, Utilisteur.login => Utilisateur) avec PROJECTION(Utilisateur, login) = PROJECTION (Adresse, login)
+
+Utilisateur_achete_produit(#login => Utilisateur, #ref_produit => Produit)
+
+Utilisateur_consulte_annonce (#login => Utilisateur, #ref_annonce => Annonce)
+
+Panier(#num_panier : integer ,nb_article : integer, code_promo : varchar, solde : float, est_paye : boolean)
+
+Produit_est_dans_panier(#ref_produit=>Produit, #num_panier=> Panier)
