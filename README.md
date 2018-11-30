@@ -1,10 +1,11 @@
 # projet de course de UTC NA18 
-Ver 0.0.1
+Ver 0.0.2 (30/11/2018)
 
 This is a repo for NA18 project on PHP and SQL.
 
 ver 0.0.1 The fist init for create the projet
 
+ver 0.0.2 creation the login page 
 
 # pour la question de  git 
 on va utiliser la gitkraken :
@@ -34,9 +35,9 @@ postgresql (v 10.5)
     page annonce
     page pour chaque categorie
     
- /back/login 
+  
  ## back
-    page de login 
+    page de login (/back/login) (réalisé)
     page de creatation de compte
     page de profil 
     page de historique commande
