@@ -14,7 +14,7 @@ https://www.gitkraken.com/
 
 # front end
 bootstrap (v3|4)
-anjular js | jquery 
+jquery 
 
 
 
