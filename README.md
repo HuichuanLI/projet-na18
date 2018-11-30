@@ -26,6 +26,26 @@ php (5.6)
 postgresql (v 10.5)
 
 
+# structure de projet
+/front/homepage
+ ## front
+    homepage
+    page de panier 
+    page annonce
+    page pour chaque categorie
+    
+ /back/login 
+ ## back
+    page de login 
+    page de creatation de compte
+    page de profil 
+    page de historique commande
+    page de createion d'annonce
+    page de modifier d'annonce 
+
+ 
+  
+
 
 
 
