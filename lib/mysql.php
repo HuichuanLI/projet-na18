@@ -27,9 +27,14 @@ function mQuery($sql){
   $resultset->execute();
   $index = 0;
 
-   while ($row = $resultset->fetch(PDO::FETCH_ASSOC)) {
+  while ($row = $resultset->fetch(PDO::FETCH_ASSOC)) {
     $result[$index] = $row;
     $index++;
   }
-  return $result;
+  if(isset($result)){
+    return $result;  
+  }else{
+    return null;
+  }
+  
 }

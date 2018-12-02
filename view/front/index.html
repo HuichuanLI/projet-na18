@@ -17,35 +17,7 @@
         </ul>
     </nav>
     <div id="main">
-        <div id="lside">
-            <?php foreach($arts as $a ){?>
-            <article>
-                <h2><a href="art.php?art_id=<?php echo $a['art_id']?>"><?php echo $a['title'];?></a></h2>
-                <div class="entry_header">
-                    <time><?php echo date('Y/m/d', $a['pubtime']);?></time>
-                    by
-                    <a href="#">huichuan</a>
-                    <a class="catlink" href="#"><?php echo $a['catname']; ?></a>
-                    <a class="comment" href="#"><?php echo $a['comm'];?></a>
-                </div>
-                <?php if($a['thumb']) {?>
-                <img src="<?php echo '.' . $a['thumb'];?>" alt="">
-                <?php }?>
-                <div class="entry_content">
-                    <?php echo $a['content'];?>
-                </div>
-            </article>
-            <?php }?>
-            <div id="pagebar">
-                Pages:&nbsp;
-                <?php foreach($page as $k=>$v) {?>
-                <?php if($k == $curr) {?>
-                <?php echo $k;}else {?>
-                <a href="index.php?<?php echo $v;?>"><?php echo $k;?></a>
-                <?php }?>
-                <?php }?>
-            </div>
-        </div>
+       
         <div id="rside">
             <aside>
                 <form action="">
@@ -55,9 +27,7 @@
             <aside>
                 <h4>Categorie</h4>
                 <ul>
-                    <?php foreach($cats as $c){?>
-                    <li><a href="index.php?cat_id=<?php echo $c['cat_id'] ?>"><?php echo $c['catname']?></a>&nbsp;</li>
-                    <?php }?>
+                   
                 </ul>
             </aside>
         </div>

@@ -17,17 +17,26 @@
 </head>
 <body>
     <header>
-        <h1>Backend</h1>
-        <h4>Modifify your password</h4>
+        <a href="http://localhost:8887/projet/"><h1>Backend</h1></a>
+        <h4>create your compte</h4>
     </header>
     <div id="main">
         <div id="respond" class="comment-respond">
             <form action="#" method="post">
                 <p>
-                Your login : <input placeholder="name" name="login" type="text" value="<?php echo $_SESSION['login'];?>" size="30"readonly="readonly">
+                Votre login : <input placeholder="login" name="login" type="text" value="" size="30">
                 </p>
                 <p>
-                New password : <input placeholder="password" name="password1" type="password" value="" size="30">
+                Votre nom : <input placeholder="nom" name="nom" type="text" value="" size="30" >
+                </p>
+                <p>
+                Votre prenom : <input placeholder="prenom" name="prenom" type="text" value="" size="30" >
+                </p>
+                <p>
+                Votre mail : <input placeholder="mail" name="mail" type="text" value="" size="30">
+                </p>                
+                <p>
+                Password : <input placeholder="password" name="password1" type="password" value="" size="30">
                 </p>
                 Confirm new password : <input placeholder="password" name="password2" type="password" value="" size="30">
                 </p>
