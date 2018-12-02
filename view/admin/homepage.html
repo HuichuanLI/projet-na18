@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Backend</title>
+<link rel="stylesheet" href="./css/reset.css">
+<link rel="stylesheet" href="./css/adm.css">
+</head>
+<body>
+    <header>
+        <h1>Backend</h1>
+    </header>
+    <div id="main">
+        <div id="lside">
+          <aside>
+              <h4>Personal Center</h4>
+              <ul>
+                  <li><a href="modify.php">Modify the password</a></li>
+                  <li><a href="logout.php">Log out</a></li>
+              </ul>
+          </aside>
+        </div>
+        <div id="rside">
+            <table>
+                <tr>
+                    <td>ref_produitt</td>
+                    <td>nom_produit</td>
+                    <td>description</td>
+                    <td>etat_produit</td>
+                    <td>categorie_produit</td>
+                    <td>marque</td>
+                </tr>
+                 <?php foreach($row as $value) {?>
+                <tr>
+                   <td><?php echo $value['ref_produit'];?></td>
+                   <td><?php echo $value['nom_produit'];?></td>
+                   <td><?php echo $value['description'];?></td>
+                   <td><?php echo $value['etat_produit'];?></td>
+                   <td><?php echo $value['categorie_produit'];?></td>
+                   <td><?php echo $value['marque'];?></td>
+                </tr>
+                <?php }?>
+            </table>
+            <div id="pagebar">
+                Pages:&nbsp;
+                <a href="#">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                4
+                <a href="#">5</a>
+                <a href="#">6</a>
+            </div>
+        </div>
+    </div>
+    <footer>
+        Copyright &copy; 2017 · GeneratePress · WordPress
+    </footer>
+</body>
+</html>
