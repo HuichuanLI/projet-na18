@@ -45,6 +45,17 @@ postgresql (v 10.5)
     page de historique commande
     page de createion d'annonce
     page de modifier d'annonce 
+    
+# login to ssh 
+
+Compte : na18a027@tuxa.sme.utc
+mot de passe : FCCSel7x
+
+scp filenames na18a027@tuxa.sme.utc:/volsme/user1x/users/na18a027/public_html
+
+
+pgamdin4 :  psql --host=tuxa.sme.utc --user=na18a027 --dbname=dbna18a027
+
 
  
   
