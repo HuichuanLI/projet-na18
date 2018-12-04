@@ -23,3 +23,11 @@ Utilisateur_consulte_annonce (#login => Utilisateur, #ref_annonce => Annonce)
 Panier(#num_panier : integer ,nb_article : integer, code_promo : varchar, solde : float, est_paye : boolean)
 
 Produit_est_dans_panier(#ref_produit=>Produit, #num_panier=> Panier)
+
+
+
+//fusionner panier et utilisateur
+// fusionner magasin et vendeur 
+//retirer solde et nb_article == methode
+//rajouter des elements ds panier ssi utilisateur existe ds la BD et est connecté
+//preciser qu'on a ajouter une page de connection (on peut se connecter ssi utilisateur existe ds la BD <=> creer un compte)

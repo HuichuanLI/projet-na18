@@ -64,7 +64,6 @@ CREATE TYPE statut AS  ENUM ('payée', 'expédiée', 'livrée');
         login VARCHAR PRIMARY KEY,
         description VARCHAR,
         siret CHAR(14) UNIQUE NOT NULL,
-	      check (length(siret) = 14),
         FOREIGN KEY (login) REFERENCES utilisateur (login),
         FOREIGN KEY (siret) REFERENCES magasin (siret)
       );
@@ -92,7 +91,6 @@ CREATE TYPE statut AS  ENUM ('payée', 'expédiée', 'livrée');
           num_voie INTEGER,
           nom_voie VARCHAR,
           login VARCHAR,
-	        CHECK (LENGTH(cp) = 5),
           PRIMARY KEY (ville, cp, type_voie, num_voie, nom_voie),
           FOREIGN KEY (login) REFERENCES utilisateur (login)
         );
