@@ -1,0 +1,151 @@
+
+CREATE TYPE statut AS  ENUM ('payée', 'expédiée', 'livrée');
+
+
+  CREATE TABLE utilisateur (
+    login VARCHAR PRIMARY KEY,
+    mdp VARCHAR,
+    nom VARCHAR(25),
+    prénom VARCHAR (25),
+    mail VARCHAR,
+    date_creatiON_compte date,
+    est_admin boolean,
+    num_panier INTEGER UNIQUE,
+    code_promo VARCHAR,
+    est_paye boolean
+  );
+
+
+  CREATE TABLE commande(
+    num_commande VARCHAR PRIMARY KEY,
+    date_commande date,
+    statut_commande statut
+  );
+
+  CREATE TABLE promotion (
+    nom_promo VARCHAR PRIMARY KEY,
+    debut date,
+    fin date,
+    check(debut < fin),
+    rabais float
+  );
+
+
+    CREATE TYPE etat AS  ENUM ('bon', 'moyen', 'mauvais');
+    CREATE TYPE categorie AS  ENUM ('décoration', 'mobilier', 'loisir', 'création', 'librairie', 'mode', 'high-tech');
+
+      CREATE TABLE produit (
+        ref_produit VARCHAR PRIMARY KEY,
+        nom_produit VARCHAR,
+        descriptiON VARCHAR,
+        etat_produit etat,
+        marque VARCHAR,
+        prix float,
+        categorie_produit categorie,
+        nom_promo VARCHAR,
+        url_photo VARCHAR,
+        FOREIGN KEY (nom_promo) REFERENCES promotion (nom_promo)
+      );
+
+
+      CREATE TABLE vendeur (
+        login VARCHAR PRIMARY KEY,
+        description VARCHAR,
+        siret CHAR(14) UNIQUE NOT NULL,
+	nom_magasin VARCHAR,
+        FOREIGN KEY (login) REFERENCES utilisateur (login)
+      );
+
+
+      CREATE TABLE annonce (
+        ref_annonce VARCHAR PRIMARY KEY,
+        date_mise_en_ligne date,
+        ref_produit VARCHAR NOT NULL,
+        login_vendeur VARCHAR NOT NULL,
+        FOREIGN KEY (ref_produit) REFERENCES produit (ref_produit),
+        FOREIGN KEY (login_vendeur) REFERENCES vendeur (login)
+      );
+
+
+
+
+
+      CREATE TYPE voie AS  ENUM ('rue', 'square', 'boulevard', 'impAS se', 'place', 'avenue');
+
+        CREATE TABLE adresse(
+          ville VARCHAR,
+          cp CHAR(5),
+          type_voie voie,
+          num_voie INTEGER,
+          nom_voie VARCHAR,
+          login VARCHAR,
+
+          PRIMARY KEY (ville, cp, type_voie, num_voie, nom_voie),
+          FOREIGN KEY (login) REFERENCES utilisateur (login)
+        );
+
+
+
+        CREATE TABLE produit_commande (
+          ref_produit VARCHAR,
+          num_commande VARCHAR,
+          PRIMARY KEY (ref_produit, num_commande),
+          FOREIGN KEY (ref_produit) REFERENCES produit (ref_produit),
+          FOREIGN KEY (num_commande) REFERENCES commande (num_commande)
+        );
+
+        CREATE TABLE utilisateur_consulte_annonce (
+          login VARCHAR,
+          ref_annonce VARCHAR,
+          PRIMARY KEY (login, ref_annonce),
+          FOREIGN KEY (login) REFERENCES utilisateur (login),
+          FOREIGN KEY (ref_annonce) REFERENCES annonce (ref_annonce)
+        );
+
+        CREATE TABLE utilisateur_achete_produit (
+          ref_produit VARCHAR,
+          login VARCHAR,
+          PRIMARY KEY (ref_produit, login),
+          FOREIGN KEY (ref_produit) REFERENCES produit (ref_produit),
+          FOREIGN KEY (login) REFERENCES utilisateur (login)
+        );
+
+        CREATE TABLE produit_est_dans_panier (
+          num_panier INTEGER,
+          ref_produit VARCHAR,
+          PRIMARY KEY (ref_produit, num_panier),
+          FOREIGN KEY (num_panier) REFERENCES panier (num_panier),
+          FOREIGN KEY (ref_produit) REFERENCES produit (ref_produit)
+        );
+
+
+
+
+
+CREATE VIEW Admin (login, mdp, nom, prenom, mail, date_creatiON_compte, num_panier) AS
+  SELECT utilisateur.login, utilisateur.mdp, utilisateur.nom, utilisateur.prénom, utilisateur.mail, utilisateur.date_creatiON_compte, utilisateur.num_panier
+  FROM utilisateur
+  WHERE (utilisateur.est_admin = true);
+/*
+CREATE VIEW solde_intermediate(ref_annonce, date_mise_en_ligne,
+			ref_produit,nom_produit,prix_original,prix_maintenant) AS
+			SELECT annonce.ref_annonce, annonce.date_mise_en_ligne,PRODUIT.ref_produit,PRODUIT.nom_produit,PRODUIT.prix,
+			CASE
+			WHEN annonce.date_mise_en_ligne >=promotion.debut AND  annonce.date_mise_en_ligne <= promotion.fin THEN PRODUIT.prix* promotion.rabais
+			ELSE produit.prix
+			END
+			FROM PRODUIT
+			JOIN annonce  ON annonce.ref_produit = PRODUIT.ref_produit
+			LEFT JOIN promotion
+			ON produit.nom_promo = promotion.nom_promo
+      WHERE produit.nom_promo IS NOT NULL;
+
+
+
+CREATE VIEW nb_article_vendu AS
+SELECT ANNONCE.login_vendeur,count(PRODUIT_COMMANDE.num_commande) AS nb_vendu
+FROM VENDEUR LEFT JOIN ANNONCE
+ON VENDEUR.login = ANNONCE.login_vendeur
+LEFT JOIN PRODUIT_COMMANDE
+ON PRODUIT_COMMANDE.ref_produit = ANNONCE.ref_produit
+GROUP BY ANNONCE.login_vendeur; */
