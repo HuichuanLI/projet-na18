@@ -14,14 +14,14 @@ if(empty($_POST)) {
 } else {
 	$user['login'] = trim($_POST['login']);
 	if(empty($user['login'])) {
-		header('Location: login.php');
+		header('Location: log.php');
 	}
 
 	$user['password'] = trim($_POST['password']);
 	if(empty($user['password'])) {
-		header('Location: login.php');
+		header('Location: log.php');
 	}
-	$vSql = "SELECT login, mdp FROM public.utilisateur WHERE mail = '".$user['login']."' and mdp = '".$user['password']."';" ;
+	$vSql = "SELECT login, mdp FROM public.utilisateur WHERE login = '".$user['login']."' and mdp = '".$user['password']."'" ;
 	$row = mQuery($vSql);
 
 	if(!$row) {
@@ -32,5 +32,7 @@ if(empty($_POST)) {
 	    header('Location: homepage.php');
 	}
 }
+
+?>
 
 ?>
