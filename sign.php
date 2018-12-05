@@ -22,12 +22,11 @@ if(empty($_POST)) {
 	
 	$vSql = "SELECT login, nom FROM public.utilisateur WHERE nom = '".$nom."' OR login = '".$login."';" ;
 	$row = mQuery($vSql);
-	if(empty($row)){
+	if(!empty($row)){
 		var_dump("exists");
 	}else{
 		#creation utilisatuer
 	$num_pannier = rand(3376,10000);
-	$sql = "INSERT INTO public.PANIER VALUES (".$num_pannier.",0,null,0,true);";
 	var_dump($sql);	
 	$row = mQuery($sql);
 
