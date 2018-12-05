@@ -13,7 +13,7 @@ error_reporting(E_ALL ^ E_DEPRECATED);
 function mConn() {
   static $connexion = null;
   if($connexion === null) {
-    $connexion = new PDO('pgsql:host=db;port=5432;dbname=yyh', 'yyh', 'haha1sbccy');
+    $connexion = new PDO('pgsql:host=localhost;port=5432;dbname=marketplace', 'vtchek', 'admin');
   }
 
   return $connexion;
@@ -32,9 +32,9 @@ function mQuery($sql){
     $index++;
   }
   if(isset($result)){
-    return $result;  
+    return $result;
   }else{
     return null;
   }
-  
+
 }

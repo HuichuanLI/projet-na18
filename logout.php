@@ -9,5 +9,5 @@
 */
 session_start();
 unset($_SESSION['login']);
-header('Location: log.php');
+header('Location: index.php');
 ?>

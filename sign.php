@@ -36,9 +36,7 @@ if(empty($_POST)) {
 
 
 	if ($row) {
-
-		echo 'Nouvel utilisateur créé!';
-
+	  header('Location: log.php');
 	}
 
 	else {
