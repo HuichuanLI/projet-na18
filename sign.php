@@ -11,6 +11,8 @@
 require('./lib/init.php');
 date_default_timezone_set("Europe/Paris");
 
+
+
 if(empty($_POST)) {
 	require(ROOT . '/view/front/sign.html');
 } else {
@@ -19,25 +21,30 @@ if(empty($_POST)) {
 	$prenom = $_POST['prenom'];
 	$mail = $_POST['mail'];
 	$password = $_POST['password1'];
-	
-	$vSql = "SELECT login, nom FROM public.utilisateur WHERE nom = '".$nom."' OR login = '".$login."';" ;
-	$row = mQuery($vSql);
-	if(empty($row)){
-		var_dump("exists");
-	}else{
-		#creation utilisatuer
+	$panier_paye = 'true';
+	$code_promo = 'NULL';
+	$is_admin = 'false';
+	$date = new DateTime();
+	$date_crea =$date->format('Y-m-d');
+
+
+	#creation utilisatuer
 	$num_pannier = rand(3376,10000);
-	$sql = "INSERT INTO public.PANIER VALUES (".$num_pannier.",0,null,0,true);";
-	var_dump($sql);	
-	$row = mQuery($sql);
+	$sql = "INSERT INTO public.utilisateur VALUES ('$login','$password','$nom','$prenom','$mail','$date_crea',$is_admin,'$num_pannier','$code_promo','$panier_paye')";
+	$result = mConn()->prepare($sql);
+	$row = $result->execute();
 
-	$sql = "INSERT INTO public.utilisateur VALUES ('".$login."','".$password."','".$nom."','".$prenom."','".$mail."','".date("Y-m-d")."',false,".$num_pannier.");";
-	var_dump($sql);
-	$row = mQuery($sql);
-	
+
+	if ($row) {
+	  header('Location: log.php');
 	}
-	
-}
+	else {
 
+		echo 'Erreur lors de la création';
+		echo "\nPDO::errorInfo():\n";
+		print_r($result->errorInfo());
+
+	}
+}
 
 ?>
