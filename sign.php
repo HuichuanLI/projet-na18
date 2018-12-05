@@ -33,12 +33,15 @@ if(empty($_POST)) {
 
 
 	#creation utilisatuer
+
 	$typeuser = $_POST['typeuser'];
 	if($typeuser == "admin"){
 		$is_admin = 'true';
 	}else{
 		$is_admin = 'false';
 	}
+
+
 
 
 	$sql = "INSERT INTO public.utilisateur(

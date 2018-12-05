@@ -1,5 +1,5 @@
 # projet de course de UTC NA18 
-Ver 0.0.3 (01/12/2018)
+Ver 0.0.3 (02/12/2018)
 
 This is a repo for NA18 project on PHP and SQL.
 
@@ -7,6 +7,7 @@ ver 0.0.1 The fist init for create the projet
 
 ver 0.0.2 creation the login page 
 
+ver 0.0.3 creation the sign page 
 # pour la question de  git 
 on va utiliser la gitkraken :
 tu peux installer sur lien :
@@ -39,11 +40,22 @@ postgresql (v 10.5)
  ## back
     page de login (/login.php) (réalisé)
     page de modifier de mot de passe (/modify.php) (réalisé)
-    page de creatation de compte 
+    page de creatation de compte (/sign.php) (réalisé)
     page de profil 
     page de historique commande
     page de createion d'annonce
     page de modifier d'annonce 
+    
+# login to ssh 
+
+Compte : na18a027@tuxa.sme.utc
+mot de passe : FCCSel7x
+
+scp filenames na18a027@tuxa.sme.utc:/volsme/user1x/users/na18a027/public_html
+
+
+pgamdin4 :  psql --host=tuxa.sme.utc --user=na18a027 --dbname=dbna18a027
+
 
  
   
