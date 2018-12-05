@@ -29,8 +29,10 @@ if(empty($_POST)) {
 
 
 	#creation utilisatuer
-	$num_pannier = rand(3376,10000);
-	$sql = "INSERT INTO public.utilisateur VALUES ('$login','$password','$nom','$prenom','$mail','$date_crea',$is_admin,'$num_pannier','$code_promo','$panier_paye')";
+	
+
+	$sql = "INSERT INTO public.utilisateur(
+	login, mdp, nom, prénom, mail, date_creation_compte, est_admin, est_paye) VALUES ('$login','$password','$nom','$prenom','$mail','$date_crea',$is_admin,'$panier_paye')";
 	$result = mConn()->prepare($sql);
 	$row = $result->execute();
 
