@@ -17,7 +17,28 @@
     </ul>
   </nav>
   <div id="main">
-
+    <table>
+        <tr>
+            <td>ref_produit</td>
+            <td>nom_produit</td>
+            <td>description</td>
+            <td>etat_produit</td>
+            <td>categorie_produit</td>
+            <td>marque</td>
+        </tr>
+         <?php
+         var_dump($row);
+         foreach($row as $value) {?>
+        <tr>
+           <td><?php echo $value['ref_produit'];?></td>
+           <td><?php echo $value['nom_produit'];?></td>
+           <td><?php echo $value['description'];?></td>
+           <td><?php echo $value['etat_produit'];?></td>
+           <td><?php echo $value['categorie_produit'];?></td>
+           <td><?php echo $value['marque'];?></td>
+        </tr>
+        <?php }?>
+    </table>
     <div id="rside">
       <aside>
         <form action="">
@@ -33,7 +54,7 @@
               <a href="http://localhost/~Vladimir/projet/view/front/creation.html">  <li>Création</li></a>
                 <a href="http://localhost/~Vladimir/projet/view/front/librairie.html">  <li>Librairie</li></a>
                   <a href="http://localhost/~Vladimir/projet/view/front/mode.html">  <li>Mode</li></a>
-                    <a href="http://localhost/~Vladimir/projet/view/front/high-tech.html">  <li>High-Tech</li></a>
+                    <a href="http://localhost/~Vladimir/projet/high-tech.php">  <li>High-Tech</li></a>
 
                     </ul>
                   </aside>
