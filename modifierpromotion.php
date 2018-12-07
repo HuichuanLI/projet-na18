@@ -15,9 +15,10 @@ session_start();
 if(isset($_POST['promotion'])){
 	
 	// update the promotion
-	if(isset($_POST['debut'])){
-		// $sql = ""
 
+	if(isset($_POST['debut'])){
+		$sql = "UPDATE public.promotion SET  debut='".$_POST['debut']."', fin='".$_POST['fin']."', rabais='".$_POST['rabais']."' WHERE promotion.nom_promo= '".$_POST['promotion']."';";
+		$row = mQuery($sql);
 	}
 
 

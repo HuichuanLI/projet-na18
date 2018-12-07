@@ -28,10 +28,7 @@ if(empty($_POST)) {
 	
 	$date = new DateTime();
 	$date_crea =$date->format('Y-m-d');
-
-
 	#creation utilisatuer
-
 	$typeuser = $_POST['typeuser'];
 	if($typeuser == "admin"){
 		$is_admin = 'true';
