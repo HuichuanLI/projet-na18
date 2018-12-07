@@ -16,7 +16,7 @@ date_default_timezone_set("Europe/Paris");
 if(empty($_POST)) {
 	require(ROOT . '/view/front/sign.html');
 } else {
-
+	
 	if(empty($_POST['login']) || empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['mail']) || empty($_POST['password1'])){
 		  header('Location: sign.php?result=empty');
 	}
@@ -25,36 +25,19 @@ if(empty($_POST)) {
 	$prenom = $_POST['prenom'];
 	$mail = $_POST['mail'];
 	$password = $_POST['password1'];
-	$panier_paye = 'true';
-	$code_promo = 'NULL';
-
-	$date = new DateTime();
-	$date_crea =$date->format('Y-m-d');
-
-
-	#creation utilisatuer
-	$typeuser = $_POST['typeuser'];
-	if($typeuser == "admin"){
-		$is_admin = 'true';
+	
+	$vSql = "SELECT login, nom FROM public.utilisateur WHERE nom = '".$nom."' OR login = '".$login."';" ;
+	$row = mQuery($vSql);
+	if(empty($row)){
+		var_dump("exists");
 	}else{
 		$is_admin = 'false';
 	}
 
-
-	$sql = "INSERT INTO public.utilisateur(
-	 login, mdp, nom, prénom, mail, date_creation_compte, est_admin, est_paye) VALUES ('$login','$password','$nom','$prenom','$mail','$date_crea',$is_admin,'$panier_paye')";
-
-	$result = mConn()->prepare($sql);
-	$row = $result->execute();
-
-	# when the user is vendeur
-	if($typeuser == "vendeur"){
-		$description = $_POST["description"];
-		$siret = $_POST["siret"];
-		$nom_magasin = $_POST["magasin"];
-		$sql = "INSERT INTO public.vendeur(login, description, siret, nom_magasin) VALUES ('$login', '$description', '$siret', '$nom_magasin');";
-		$result = mConn()->prepare($sql);
-		$row = $result->execute();
+	$sql = "INSERT INTO public.utilisateur VALUES ('".$login."','".$password."','".$nom."','".$prenom."','".$mail."','".date("Y-m-d")."',false,".$num_pannier.");";
+	var_dump($sql);
+	$row = mQuery($sql);
+	
 	}
 
 	if ($row) {

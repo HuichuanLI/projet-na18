@@ -20,8 +20,8 @@
 </head>
 <body>
     <header>
-        <a href="http://localhost/~Vladimir/projet/"><h1>Accueil</h1></a>
-        <h4>Création de compte</h4>
+        <a href="index.php"><h1>Backend</h1></a>
+        <h4>create your compte</h4>
     </header>
     <div id="main">
         <div id="respond" class="comment-respond">
@@ -62,9 +62,9 @@
                 </div>
                 <? if (isset($_GET['result'])):   ?>
                 <div class="alert alert-danger" role="alert">
-                  ERROR :
+                  ERROR :  
                             <? echo $_GET['result']; ?>
-
+                  
                 </div>
                  <?php endif; ?>
                 <input type="submit" value="submit">

@@ -1,4 +1,7 @@
 
+
+
+
 function getval(sel)
 {
 
@@ -8,3 +11,4 @@ function getval(sel)
    		$("#vendeur").hide();
    }
 }
+
