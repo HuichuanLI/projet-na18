@@ -8,7 +8,6 @@
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/adm.css">
-    
 </head>
 <body>
     <header>
@@ -32,36 +31,55 @@
               <ul>
                  <li><a href="listuser.php">List of users</a></li>
               </ul>
-              <ul>
+               <ul>
                  <li><a href="listpromotion.php">List of promotion</a></li>
               </ul>
           </aside>
           
         </div>
 
-      
+
 
         <div id="rside">
-            <table>
+            <table  class="table">
                 <tr>
-                    <td>ref_produitt</td>
-                    <td>nom_produit</td>
-                    <td>description</td>
-                    <td>etat_produit</td>
-                    <td>categorie_produit</td>
-                    <td>marque</td>
+                    <td>Login</td>
+                    <td>Password</td>
+                    <td>Nom</td>
+                    <td>Prénom</td>
+                    <td>Mail</td>
+                    <td>Date de creation</td>
+                    <td>pannier</td>
+                    <td>Paye</td> 
+                    <td>Modifier</td>
                 </tr>
                  <?php foreach($row as $value) {?>
                 <tr>
-                   <td><?php echo $value['ref_produit'];?></td>
-                   <td><?php echo $value['nom_produit'];?></td>
-                   <td><?php echo $value['description'];?></td>
-                   <td><?php echo $value['etat_produit'];?></td>
-                   <td><?php echo $value['categorie_produit'];?></td>
-                   <td><?php echo $value['marque'];?></td>
+                   <td><?php echo $value['login'];?></td>
+                   <td><?php echo $value['mdp'];?></td>
+                   <td><?php echo $value['nom'];?></td>
+                   <td><?php echo $value['prénom'];?></td>
+                   <td><?php echo $value['mail'];?></td>
+                   <td><?php echo $value['date_creation_compte'];?></td>
+                   <td><?php echo $value['num_panier'];?></td>
+                   <td><?php echo $value['est_paye'];?></td>
+                   <td>
+                   <form action="modifieruser.php" method="post" id="modify<?php echo $value['login'];?>">
+                      <input type="text" name="login" value="<?php echo $value['login'];?>"  style="display: none"></input>
+                      <input class="btn btn-primary" type="submit" value="Modifier">
+                   </form>
+                  </td>
                 </tr>
                 <?php }?>
             </table>
+
+            <? if (isset($_GET['result'])):   ?>
+                <div class="alert alert-danger" role="alert">
+                  ERROR :  
+                            <? echo $_GET['result']; ?>
+                  
+                </div>
+                 <?php endif; ?>
             <div id="pagebar">
                 Pages:&nbsp;
                 <a href="#">1</a>

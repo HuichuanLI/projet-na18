@@ -4,18 +4,19 @@
 *
 *@author huichuan.li
 *@link https://github.com/HuichuanLI
-*@since 2017.6
+*@since 2018.6
 *@copyright Gpl
 */
+
 require('./lib/init.php');
+date_default_timezone_set("Europe/Paris");
+
+
 session_start();
+
 if(empty($_SESSION['login'])){
   header('Location: log.php');
 }
-
-
-$sql = "SELECT * FROM UTILISATEUR_ACHETE_PRODUIT, PRODUIT WHERE PRODUIT.ref_produit = UTILISATEUR_ACHETE_PRODUIT.ref_produit AND UTILISATEUR_ACHETE_PRODUIT.login = '".$_SESSION['login']."';";
-$row = mQuery($sql);
 
 if($_SESSION['admin'] == false){
 	$admin = "false";
@@ -23,4 +24,14 @@ if($_SESSION['admin'] == false){
 	$admin = "true";
 }
 
-include(ROOT.'/view/admin/homepage.html');
+
+$sql = "SELECT * FROM promotion";
+$result = mConn()->prepare($sql);
+$result->execute();
+$row = mQuery($sql);
+
+require(ROOT . '/view/admin/listpropmotion.html');
+
+
+?>
+

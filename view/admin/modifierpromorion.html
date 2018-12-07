@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modifier mot de passe</title>
+
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/art.css">
+    <style>
+    form {
+    width:30%;
+    margin:0 auto;
+    }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  
+</head>
+<body>
+    <header>
+        <a href="index.php"><h1>Backend</h1></a>
+    </header>
+    <div id="main">
+        <div id="respond" class="comment-respond">
+            <form action="#" method="post">
+                <p>
+                Promotion : <input placeholder="promotion" name="promotion" type="text" value="<?php echo $_POST['promotion'];?>" size="30"  readonly="readonly">
+                </p>
+
+                <p>
+                Debut : <input placeholder="debut" name="debut" type="text" value="<?php echo $value['debut'];?>" size="30" >
+                </p>
+                Fin : <input placeholder="fin" name="fin" type="text" value="<?php echo $value['fin'];?>" size="30" >
+                </p>
+                <p>
+                rabais : <input placeholder="rabais" name="rabais" type="text" value="<?php echo $value['rabais'];?>" size="30" readonly="readonly">
+                </p>                
+                <p>
+                    <input type="submit" value="submit">
+                    <a class="btn btn-primary" href="listpromotion.php" role="button">return</a>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                      Delete the promotion
+                    </button>
+                </p>
+            </form>
+
+            
+
+
+              <!-- Modal -->
+              <form action="#" method="post">
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Delete promotion</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      Are you sure to delte the promotion ?
+                    </div>
+                    <div class="modal-footer">
+                      
+                        <input placeholder="login" name="login" type="text" value="<?php echo $_POST['login'];?>" size="30"  style="display: none">
+                        <input name="delete" value="ture" style="display: none">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <input class="btn btn-primary" type="submit" value="Submit">
+                    </div>
+                  </div>
+                </div>
+                </div>
+              </form>
+        </div>
+    </div>
+    <footer>
+        Copyright &copy; 2018 · GeneratePress · WordPress
+    </footer>
+
+</body>
+
+  <script type="text/javascript" src = "./script/modifieruser.js"></script>
+</html>
+
+

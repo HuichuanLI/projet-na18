@@ -11,8 +11,6 @@
 require('./lib/init.php');
 date_default_timezone_set("Europe/Paris");
 
-
-
 if(empty($_POST)) {
 	require(ROOT . '/view/front/sign.html');
 } else {
@@ -40,8 +38,6 @@ if(empty($_POST)) {
 	}else{
 		$is_admin = 'false';
 	}
-
-
 
 	$sql = "INSERT INTO public.utilisateur(
 	 login, mdp, nom, prénom, mail, date_creation_compte, est_admin, est_paye) VALUES ('$login','$password','$nom','$prenom','$mail','$date_crea',$is_admin,'$panier_paye')";

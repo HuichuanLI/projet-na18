@@ -11,3 +11,4 @@ function getval(sel)
    		$("#vendeur").hide();
    }
 }
+
