@@ -34,6 +34,7 @@
 
     nav {
         background: #222;
+
     }
 
     nav ul {
@@ -97,7 +98,7 @@
 
     aside:first-child,article:first-child {
         margin-top: 20px;
-    } 
+    }
 
 /*     aside:last-child {
     margin-bottom: 10px;
@@ -134,7 +135,7 @@
         box-sizing:border-box;
         background: #222;
         text-align: center;
-        color: white; 
+        color: white;
         font:17px/22px '微软雅黑','黑体',sans-serif;
     }
 
@@ -156,6 +157,7 @@
         color: black;
     }
 
+
     .entry_header,.entry_header a{
         color: #666666;
         font-size: 12px;
@@ -168,7 +170,7 @@
     .catlink::before {
         font-family: FontAwesome;
         content: "\f07b" ;
-        padding:0px 4px; 
+        padding:0px 4px;
     }
 
     .comment::before{
@@ -180,7 +182,7 @@
     .entry_content {
         margin-top: 30px;
         color:#3a3a3a;
-        font:15px/22px '新宋体','宋体',serif; 
+        font:15px/22px '新宋体','宋体',serif;
     }
 
     article:last-of-type {
