@@ -20,7 +20,7 @@
           <aside>
               <h4>Personal Center</h4>
               <ul>
-                  
+                   <li><a href="information.php">Gestion information</a></li>
                   <li><a href="modify.php">Modify the password</a></li>
                   <li><a href="logout.php">Log out</a></li>
               </ul>
@@ -34,6 +34,10 @@
                <ul>
                  <li><a href="listpromotion.php">List of promotion</a></li>
               </ul>
+              <ul>
+                 <li><a href="listproduit.php">List of produits</a></li>
+              </ul>
+              
           </aside>
           
         </div>
@@ -65,12 +69,14 @@
             </table>
 
             <? if (isset($_GET['result'])):   ?>
-                <div class="alert alert-danger" role="alert">
-                  ERROR :  
+                <div class="alert alert-info" role="alert">
+                  Result :  
                             <? echo $_GET['result']; ?>
                   
                 </div>
                  <?php endif; ?>
+
+            <button type="button" class="btn btn-link"><a href="addpromotion.php">Add promotion</a></button>
             <div id="pagebar">
                 Pages:&nbsp;
                 <a href="#">1</a>

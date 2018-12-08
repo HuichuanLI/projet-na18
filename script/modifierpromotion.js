@@ -1,7 +1,5 @@
-
-
-
-$('.date').datepicker({
-        'format': 'yyyy-m-d',
-        'autoclose': true
- });
+$(function() {
+    $('.datetimepicker').datetimepicker({
+      pickTime: false
+    });
+  });

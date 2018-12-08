@@ -45,14 +45,14 @@
                 <p>
                 Promotion : 
                 <div>
-                    <input placeholder="promotion" name="promotion" type="text" value="<?php echo $_POST['promotion'];?>" size="30"  readonly="readonly">
+                    <input placeholder="promotion" name="promotion" type="text" value="" size="30"  >
                 </div>
                 </p>
 
                 <p>
                 Debut : 
                 <div class="datetimepicker" >
-                    <input placeholder="debut"  data-format="yyyy-MM-dd" type="text" name="debut" value="<?php echo $value['debut'];?>"   ></input>
+                    <input placeholder="debut"  data-format="yyyy-MM-dd" type="text" name="debut" value=""   ></input>
                     <span class="add-on">
                         <i class="fas fa-calendar-alt"></i>
                         </i>
@@ -62,7 +62,7 @@
 
                 Fin : 
                 <div class="datetimepicker" >
-                    <input placeholder="fin"  data-format="yyyy-MM-dd" type="text" name="fin" value="<?php echo $value['fin'];?>"   ></input>
+                    <input placeholder="fin"  data-format="yyyy-MM-dd" type="text" name="fin" value=""   ></input>
                     <span class="add-on">
                          <i class="fas fa-calendar-alt"></i>
                         </i>
@@ -73,46 +73,25 @@
                 <p>
                 rabais : 
                 <div>
-                     <input placeholder="rabais" name="rabais" type="text" value="<?php echo $value['rabais'];?>" size="30" >
+                     <input placeholder="rabais" name="rabais" type="text" value="" size="30" >
                 </div>
-                </p> 
-                       
-            
-           
+                
                 <p>
                     <input type="submit" value="submit">
                     <a class="btn btn-primary" href="listpromotion.php" role="button">return</a>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                      Delete the promotion
-                    </button>
                 </p>
-            </form>
 
-        
-              <!-- Modal -->
-              <form action="#" method="post">
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Delete promotion</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      Are you sure to delte the promotion ?
-                    </div>
-                    <div class="modal-footer">
-                      
-                        <input placeholder="login" name="promotion" type="text" value="<?php echo $_POST['promotion'];?>" size="30"  style="display: none">
-                        <input name="delete" value="ture" style="display: none">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <input class="btn btn-primary" type="submit" value="Submit">
-                    </div>
-                  </div>
+                <? if (isset($_GET['result'])):   ?>
+                <div class="alert alert-danger" role="alert">
+                  ERROR :  
+                            <? echo $_GET['result']; ?>
+                  
                 </div>
-                </div>
+                 <?php endif; ?>
+                       
+            
+           
+            
               </form>
         </div>
     </div>

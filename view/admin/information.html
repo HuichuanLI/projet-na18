@@ -28,7 +28,7 @@
         <div id="respond" class="comment-respond">
             <form action="#" method="post">
                 <p>
-                Votre login : <input placeholder="login" name="login" type="text" value="<?php echo $_POST['login'];?>" size="30"  readonly="readonly">
+                Votre login : <input placeholder="login" name="login" type="text" value="<?php echo $_SESSION['login'];?>" size="30"  readonly="readonly">
                 </p>
 
                 <p>
@@ -61,37 +61,27 @@
                     Nom magasin : <input placeholder="magasin" name="magasin" type="text" value="<?php echo $value['nom_magasin'];?>" size="30">
                     </p>
                 </div>
+
+                <div id="address" style="display: none" >
+                    <p>
+                    Ville : <textarea class="form-control" name="ville" rows="3"  ><?php echo $address['description'];?></textarea>
+                    </p>
+                    <p>
+                    cp(6) : <input placeholder="cp" name="cp" type="text" value="<?php echo $address['siret'];?>" size="30" maxlength="14">
+                    </p>
+                    type_voie : <input placeholder="type_voie" name="type_voie" type="text" value="<?php echo $address['nom_magasin'];?>" size="30">
+                    </p>
+                    num_voie : <input placeholder="num_voie" name="num_voie" type="text" value="<?php echo $address['nom_magasin'];?>" size="30">
+                    </p>
+                    nom_voie : <input placeholder="nom_voie" name="nom_voie" type="text" value="<?php echo $address['nom_magasin'];?>" size="30">
+                    </p>
+                </div>
+
+
                 <input type="submit" value="submit">
                 <a class="btn btn-primary" href="listuser.php" role="button">return</a>
                 
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                  Delete the user
-                </button>
             </p>
-            </form>
-                <!-- Modal -->
-            <form action="#" method="post">
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Delete user</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      Are you sure to delte the user ?
-                    </div>
-                    <div class="modal-footer">
-                        <input placeholder="login" name="login" type="text" value="<?php echo $_POST['login'];?>" size="30"  style="display: none">
-                        <input name="delete" value="ture" style="display: none">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <input class="btn btn-primary" type="submit" value="Submit">
-                    </div>
-                  </div>
-                </div>
-                </div>
             </form>
         </div>
     </div>

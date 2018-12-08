@@ -34,16 +34,29 @@ date_default_timezone_set("Europe/Paris");
 		}
 
 		if(isset($_POST['delete'])){
+
 			if($_POST['login'] != $_SESSION['login']){
+
+				$sql = "DELETE  FROM public.utilisateur_consulte_annonce WHERE ref_annonce IN ( select utilisateur_consulte_annonce.ref_annonce from utilisateur_consulte_annonce ,annonce where utilisateur_consulte_annonce.ref_annonce = annonce.ref_annonce  and  annonce.login_vendeur ='".$_POST['login']."') ;";	
+				$row = mExec($sql);
+				$sql = "DELETE FROM public.annonce WHERE annonce.login_vendeur ='".$_POST['login']."';";
+				$row = mExec($sql);
 				$sql = "DELETE FROM public.vendeur WHERE vendeur.login = '".$_POST['login']."';";
-				$row = mQuery($sql);
+				$row = mExec($sql);
 				$sql = "DELETE FROM public.utilisateur WHERE utilisateur.login = '".$_POST['login']."';";
-				$row = mQuery($sql);
+				$row = mExec($sql);
+				$sql = "DELETE FROM public.adresse WHERE login = '".$_POST['login']."';";
+				$row = mExec($sql);
+				$sql = "DELETE FROM public.utilisateur_consulte_annonce WHERE login = '".$_POST['login']."';";
+				$row = mExec($sql);
+				$sql = "DELETE FROM public.utilisateur_achete_produit WHERE login = '".$_POST['login']."';";
+				$row = mExec($sql);	
+				header('Location: listuser.php?result=avec success');				
+
 			}else{
 
 				header('Location: listuser.php?result=delete yourself');
 			}
-			
 		}
 		$vSql = "SELECT * FROM public.utilisateur left join  public.vendeur ON utilisateur.login = vendeur.login WHERE utilisateur.login = '".$_POST['login']."'";
 		$row = mQuery($vSql);
