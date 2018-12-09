@@ -2,18 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Backend</title>
+    <title>Panneau de configuration</title>
     <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/adm.css">
-    
+
 </head>
 <body>
     <header>
-        <h1>Backend</h1>
-        <h4> <?php echo $_SESSION['login'];?></h1>
+        <h1><a href ="index.php">Accueil</a></h1>
+        <h4> <?php echo $_SESSION['login'];?></h4>
     </header>
 
     <div id="main">
@@ -35,20 +35,20 @@
                  <li><a href="listpromotion.php">List of promotion</a></li>
               </ul>
           </aside>
-          
+
         </div>
 
-      
+
 
         <div id="rside">
             <table>
                 <tr>
-                    <td>ref_produit</td>
-                    <td>nom_produit</td>
-                    <td>description</td>
-                    <td>etat_produit</td>
-                    <td>categorie_produit</td>
-                    <td>marque</td>
+                    <td>Référence du produit</td>
+                    <td>Nom du produit</td>
+                    <td>Description</td>
+                    <td>Etat du produit</td>
+                    <td>Catégorie du produit</td>
+                    <td>Marque</td>
                 </tr>
                  <?php foreach($row as $value) {?>
                 <tr>
