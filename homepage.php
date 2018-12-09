@@ -32,6 +32,6 @@ if($vendeur == NULL){
 }else{
 	$vendeur = "true";
 }
-$_SESSION['vendeur'] = true;
+$_SESSION['vendeur'] = $vendeur;
 include(ROOT.'/view/admin/homepage.html');
 ?>
