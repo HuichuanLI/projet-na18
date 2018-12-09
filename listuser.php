@@ -25,6 +25,15 @@ if($_SESSION['admin'] == false){
 }
 
 
+if($_SESSION['vendeur'] == false){
+	$vendeur = "false";
+}else{
+	$vendeur = "true";
+}
+
+
+
+
 $sql = "SELECT * FROM utilisateur";
 $result = mConn()->prepare($sql);
 $result->execute();

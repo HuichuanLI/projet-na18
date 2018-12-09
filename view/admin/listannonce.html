@@ -20,7 +20,7 @@
           <aside>
               <h4>Personal Center</h4>
               <ul>
-                   <li><a href="information.php">Gestion information</a></li>
+                  <li><a href="information.php">Gestion information</a></li>
                   <li><a href="modify.php">Modify the password</a></li>
                   <li><a href="logout.php">Log out</a></li>
               </ul>
@@ -39,7 +39,7 @@
               </ul>
               
           </aside>
-          <aside id="vendeur" style="display: none">
+           <aside id="vendeur" style="display: none">
               <input type="text" id="isvendeur" value="<?php echo $vendeur;?>" style="display: none">
               <h4>Vendeur</h4>
               <ul>
@@ -47,52 +47,44 @@
               </ul>
           </aside>
 
-
           
         </div>
 
 
 
         <div id="rside">
-            <table  class="table">
+           <table  class="table">
                 <tr>
-                    <td>Login</td>
-                    <td>Password</td>
-                    <td>Nom</td>
-                    <td>Prénom</td>
-                    <td>Mail</td>
-                    <td>Date de creation</td>
-                    <td>pannier</td>
-                    <td>Paye</td> 
-                    <td>Modifier</td>
+                    <td>ref annonce</td>
+                    <td>date mise en ligne</td>
+                    <td>ref produit</td>
                 </tr>
                  <?php foreach($row as $value) {?>
                 <tr>
-                   <td><?php echo $value['login'];?></td>
-                   <td><?php echo $value['mdp'];?></td>
-                   <td><?php echo $value['nom'];?></td>
-                   <td><?php echo $value['prénom'];?></td>
-                   <td><?php echo $value['mail'];?></td>
-                   <td><?php echo $value['date_creation_compte'];?></td>
-                   <td><?php echo $value['num_panier'];?></td>
-                   <td><?php echo $value['est_paye'];?></td>
-                   <td>
-                   <form action="modifieruser.php" method="post" id="modify<?php echo $value['login'];?>">
-                      <input type="text" name="login" value="<?php echo $value['login'];?>"  style="display: none"></input>
-                      <input class="btn btn-primary" type="submit" value="Modifier">
-                   </form>
-                  </td>
+                   <td><?php echo $value['ref_annonce'];?></td>
+                   <td><?php echo $value['date_mise_en_ligne'];?></td>
+                   <td><?php echo $value['ref_produit'];?></td>
+                    <td>
+                        <form action="#" method="post" id="delete<?php echo $value['ref_annonce'];?>">
+                          <input type="text" name="delete"   style="display: none"></input>
+                          <input type="text" name="ref_annonce" value="<?php echo $value['ref_annonce'];?>"  style="display: none"></input>
+                          <input class="btn btn-primary" type="submit" value="delete">
+                        </form>
+                    </td>
                 </tr>
                 <?php }?>
             </table>
 
             <? if (isset($_GET['result'])):   ?>
-                <div class="alert alert-danger" role="alert">
+                <div class="alert alert-info" role="alert">
                   ERROR :  
                             <? echo $_GET['result']; ?>
                   
                 </div>
-                 <?php endif; ?>
+            <?php endif; ?>
+
+            <button type="button" class="btn btn-link"><a href="addannonce.php">Add annonce</a></button>
+          
             <div id="pagebar">
                 Pages:&nbsp;
                 <a href="#">1</a>

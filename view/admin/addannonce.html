@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Add promotion</title>
+    <title>Add annonce</title>
     <link rel="stylesheet" type="text/css" media="screen"
      href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
 
@@ -43,14 +43,14 @@
         <div id="respond" class="comment-respond">
             <form action="#" method="post">
                 <p>
-                Promotion : 
+                Ref annonce : 
                 <div>
-                    <input placeholder="promotion" name="promotion" type="text" value="" size="30"  >
+                    <input placeholder="Ref annonce" name="Ref annonce" type="text" value="" size="30"  >
                 </div>
                 </p>
 
                 <p>
-                Debut : 
+                Date mise en ligne : 
                 <div class="datetimepicker" >
                     <input placeholder="debut"  data-format="yyyy-MM-dd" type="text" name="debut" value=""   ></input>
                     <span class="add-on">
@@ -60,35 +60,21 @@
                 </div>
                 </p>
 
-                Fin : 
+                Ref produit : 
                 <div class="datetimepicker" >
                     <input placeholder="fin"  data-format="yyyy-MM-dd" type="text" name="fin" value=""   ></input>
-                    <span class="add-on">
-                         <i class="fas fa-calendar-alt"></i>
-                        </i>
-                    </span>
+                    
+                    
                 </div>
                 
                 </p>
-                <p>
-                rabais : 
-                <div>
-                     <input placeholder="rabais" name="rabais" type="text" value="" size="30" >
-                </div>
+              
                 
                 <p>
                     <input type="submit" value="submit">
-                    <a class="btn btn-primary" href="listpromotion.php" role="button">return</a>
+                    <a class="btn btn-primary" href="listannonce.php" role="button">return</a>
                 </p>
 
-                <? if (isset($_GET['result'])):   ?>
-                <div class="alert alert-danger" role="alert">
-                  ERROR :  
-                            <? echo $_GET['result']; ?>
-                  
-                </div>
-                 <?php endif; ?>
-                       
             
            
             
