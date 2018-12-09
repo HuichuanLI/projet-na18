@@ -61,11 +61,13 @@
                 </p>
 
                 Ref produit : 
-                <div class="datetimepicker" >
-                    <input placeholder="fin"  data-format="yyyy-MM-dd" type="text" name="fin" value=""   ></input>
+                <select name="ref_produit"  id="ref_produit" class="form-control">
+                    <?php foreach($result as $value) {?>
+                        <option value="<?php echo $value['ref_produit'];?>" ><?php echo $value['ref_produit'];?>-<?php echo $value['nom_produit'];?> </option>
+                    <?php }?>
+                </select>
+
                     
-                    
-                </div>
                 
                 </p>
               

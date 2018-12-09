@@ -43,7 +43,6 @@ function mQuery($sql){
 function mExec($sql){
   $connexion = mConn();
   $resultset = $connexion->prepare($sql);
-  $resultset->execute();
   if ($resultset->execute() == true) {
    return "true";
   }
