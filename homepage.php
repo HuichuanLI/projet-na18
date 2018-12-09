@@ -6,6 +6,7 @@
 *@link https://github.com/HuichuanLI
 *@since 2017.6
 *@copyright Gpl
+
 */
 require('./lib/init.php');
 session_start();
@@ -34,4 +35,3 @@ if($vendeur == NULL){
 }
 $_SESSION['vendeur'] = $vendeur;
 include(ROOT.'/view/admin/homepage.html');
-?>
