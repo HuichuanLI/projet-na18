@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Backend</title>
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/adm.css">
+</head>
+<body>
+    <header>
+        <h1>Backend</h1>
+        <h4> <?php echo $_SESSION['login'];?></h1>
+    </header>
+
+    <div id="main">
+        <div id="lside">
+          <aside>
+              <h4>Personal Center</h4>
+              <ul>
+                  <li><a href="information.php">Gestion information</a></li>
+                  <li><a href="address.php">Votre address</a></li>
+                  <li><a href="modify.php">Modify the password</a></li>
+                  <li><a href="logout.php">Log out</a></li>
+              </ul>
+          </aside>
+          <aside id="admin" style="display: none">
+              <input type="text" id="typeuser" value="<?php echo $admin;?>" style="display: none">
+              <h4>Adminstration</h4>
+              <ul>
+                 <li><a href="listuser.php">List of users</a></li>
+              </ul>
+               <ul>
+                 <li><a href="listpromotion.php">List of promotion</a></li>
+              </ul>
+              <ul>
+                 <li><a href="listproduit.php">List of produits</a></li>
+              </ul>
+              
+          </aside>
+          <aside id="vendeur" style="display: none">
+              <input type="text" id="isvendeur" value="<?php echo $vendeur;?>" style="display: none">
+              <h4>Vendeur</h4>
+              <ul>
+                 <li><a href="listannonce.php">List of annonce</a></li>
+              </ul>
+               <ul>
+                 <li><a href="listsoldes.php">List of produits sold</a></li>
+              </ul>
+          </aside>
+
+
+          
+        </div>
+
+
+
+        <div id="rside">
+            <table  class="table">
+                <tr>
+                    <td>Ref annonce</td>
+                    <td>date mise en ligne</td>
+                    <td>Ref produit</td>
+                    <td>Login Vendeur</td>
+                    <td>Login</td>
+                </tr>
+                 <?php foreach($row as $value) {?>
+                <tr>
+                   <td><?php echo $value['ref_annonce'];?></td>
+                   <td><?php echo $value['date_mise_en_ligne'];?></td>
+                   <td><?php echo $value['ref_produit'];?></td>
+                   <td><?php echo $value['login_vendeur'];?></td>
+                   <td><?php echo $value['login'];?></td>
+                </tr>
+                <?php }?>
+            </table>
+
+            <? if (isset($_GET['result'])):   ?>
+                <div class="alert alert-danger" role="alert">
+                  ERROR :  
+                    <? echo $_GET['result']; ?>
+                </div>
+                 <?php endif; ?>
+            <div id="pagebar">
+                Pages:&nbsp;
+                <a href="#">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                4
+                <a href="#">5</a>
+                <a href="#">6</a>
+            </div>
+        </div>
+    </div>
+    <footer>
+        Copyright &copy; 2018 · GeneratePress · WordPress
+    </footer>
+</body>
+<script type="text/javascript" src = "./script/homepage.js"></script>
+</html>
