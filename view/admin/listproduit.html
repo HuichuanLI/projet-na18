@@ -8,7 +8,6 @@
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/adm.css">
-    
 </head>
 <body>
     <header>
@@ -21,7 +20,7 @@
           <aside>
               <h4>Personal Center</h4>
               <ul>
-                  <li><a href="information.php">Gestion information</a></li>
+                  
                   <li><a href="modify.php">Modify the password</a></li>
                   <li><a href="logout.php">Log out</a></li>
               </ul>
@@ -32,7 +31,7 @@
               <ul>
                  <li><a href="listuser.php">List of users</a></li>
               </ul>
-              <ul>
+               <ul>
                  <li><a href="listpromotion.php">List of promotion</a></li>
               </ul>
               <ul>
@@ -40,22 +39,13 @@
               </ul>
               
           </aside>
-
-           <aside id="vendeur" style="display: none">
-              <input type="text" id="isvendeur" value="<?php echo $vendeur;?>" style="display: none">
-              <h4>Vendeur</h4>
-              <ul>
-                 <li><a href="listannonce.php">List of annonce</a></li>
-              </ul>
-          </aside>
-
           
         </div>
 
-      
+
 
         <div id="rside">
-            <table  class="table">
+           <table  class="table">
                 <tr>
                     <td>ref produit</td>
                     <td>nom produit</td>
@@ -78,9 +68,23 @@
                    <td><?php echo $value['prix'];?></td>
                    <td><?php echo $value['nom_promo'];?></td>
                    <td><?php echo $value['url_photo'];?></td>
+                    <td>
+                        <form action="modifyproduit.php" method="post" id="delete<?php echo $value['ref_produit'];?>">
+                          <input type="text" name="ref_produit" value="<?php echo $value['ref_produit'];?>"  style="display: none"></input>
+                          <input class="btn btn-primary" type="submit" value="modify">
+                        </form>
+                    </td>
                 </tr>
                 <?php }?>
             </table>
+
+            <? if (isset($_GET['result'])):   ?>
+                <div class="alert alert-info" role="alert">
+                  ERROR :  
+                            <? echo $_GET['result']; ?>
+                  
+                </div>
+                 <?php endif; ?>
             <div id="pagebar">
                 Pages:&nbsp;
                 <a href="#">1</a>

@@ -1,6 +1,7 @@
 
 
 
+var typeuser = $("#typeuser").val();
 
 function getval(sel)
 {
@@ -11,3 +12,6 @@ function getval(sel)
    		$("#vendeur").hide();
    }
 }
+
+
+

@@ -41,10 +41,8 @@ postgresql (v 10.5)
     page de login (/login.php) (réalisé)
     page de modifier de mot de passe (/modify.php) (réalisé)
     page de creatation de compte (/sign.php) (réalisé)
-    page de profil 
     page de historique commande
     page de createion d'annonce
-    page de modifier d'annonce 
     
 # login to ssh 
 

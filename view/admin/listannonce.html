@@ -8,7 +8,6 @@
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/adm.css">
-    
 </head>
 <body>
     <header>
@@ -32,7 +31,7 @@
               <ul>
                  <li><a href="listuser.php">List of users</a></li>
               </ul>
-              <ul>
+               <ul>
                  <li><a href="listpromotion.php">List of promotion</a></li>
               </ul>
               <ul>
@@ -40,7 +39,6 @@
               </ul>
               
           </aside>
-
            <aside id="vendeur" style="display: none">
               <input type="text" id="isvendeur" value="<?php echo $vendeur;?>" style="display: none">
               <h4>Vendeur</h4>
@@ -52,35 +50,41 @@
           
         </div>
 
-      
+
 
         <div id="rside">
-            <table  class="table">
+           <table  class="table">
                 <tr>
+                    <td>ref annonce</td>
+                    <td>date mise en ligne</td>
                     <td>ref produit</td>
-                    <td>nom produit</td>
-                    <td>description</td>
-                    <td>etat produit</td>
-                    <td>categorie produit</td>
-                    <td>marque</td>
-                    <td>prix</td>
-                    <td>nom promo</td>
-                    <td>url photo</td>
                 </tr>
                  <?php foreach($row as $value) {?>
                 <tr>
+                   <td><?php echo $value['ref_annonce'];?></td>
+                   <td><?php echo $value['date_mise_en_ligne'];?></td>
                    <td><?php echo $value['ref_produit'];?></td>
-                   <td><?php echo $value['nom_produit'];?></td>
-                   <td><?php echo $value['description'];?></td>
-                   <td><?php echo $value['etat_produit'];?></td>
-                   <td><?php echo $value['categorie_produit'];?></td>
-                   <td><?php echo $value['marque'];?></td>
-                   <td><?php echo $value['prix'];?></td>
-                   <td><?php echo $value['nom_promo'];?></td>
-                   <td><?php echo $value['url_photo'];?></td>
+                    <td>
+                        <form action="#" method="post" id="delete<?php echo $value['ref_annonce'];?>">
+                          <input type="text" name="delete"   style="display: none"></input>
+                          <input type="text" name="ref_annonce" value="<?php echo $value['ref_annonce'];?>"  style="display: none"></input>
+                          <input class="btn btn-primary" type="submit" value="delete">
+                        </form>
+                    </td>
                 </tr>
                 <?php }?>
             </table>
+
+            <? if (isset($_GET['result'])):   ?>
+                <div class="alert alert-info" role="alert">
+                  ERROR :  
+                            <? echo $_GET['result']; ?>
+                  
+                </div>
+            <?php endif; ?>
+
+            <button type="button" class="btn btn-link"><a href="addannonce.php">Add annonce</a></button>
+          
             <div id="pagebar">
                 Pages:&nbsp;
                 <a href="#">1</a>

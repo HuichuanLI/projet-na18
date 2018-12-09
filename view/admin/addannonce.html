@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add annonce</title>
+    <link rel="stylesheet" type="text/css" media="screen"
+     href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+
+  
+    <script type="text/javascript"
+     src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
+    </script>
+    <script type="text/javascript"
+     src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
+    </script>
+
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/art.css">
+
+    <style>
+    form {
+    width:30%;
+    margin:0 auto;
+    }
+    </style>
+
+
+  
+</head>
+<body>
+    <header>
+        <a href="index.php"><h1>Backend</h1></a>
+    </header>
+    <div id="main">
+        <div id="respond" class="comment-respond">
+            <form action="#" method="post">
+                <p>
+                Ref annonce : 
+                <div>
+                    <input placeholder="Ref annonce" name="Ref annonce" type="text" value="" size="30"  >
+                </div>
+                </p>
+
+                <p>
+                Date mise en ligne : 
+                <div class="datetimepicker" >
+                    <input placeholder="debut"  data-format="yyyy-MM-dd" type="text" name="debut" value=""   ></input>
+                    <span class="add-on">
+                        <i class="fas fa-calendar-alt"></i>
+                        </i>
+                    </span>
+                </div>
+                </p>
+
+                Ref produit : 
+                <select name="ref_produit"  id="ref_produit" class="form-control">
+                    <?php foreach($result as $value) {?>
+                        <option value="<?php echo $value['ref_produit'];?>" ><?php echo $value['ref_produit'];?>-<?php echo $value['nom_produit'];?> </option>
+                    <?php }?>
+                </select>
+
+                    
+                
+                </p>
+              
+                
+                <p>
+                    <input type="submit" value="submit">
+                    <a class="btn btn-primary" href="listannonce.php" role="button">return</a>
+                </p>
+
+            
+           
+            
+              </form>
+        </div>
+    </div>
+    <footer>
+        Copyright &copy; 2018 · GeneratePress · WordPress
+    </footer>
+
+</body>
+
+  <script type="text/javascript" src = "./script/modifierpromotion.js"></script>
+</html>
+
+

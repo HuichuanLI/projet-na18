@@ -1,39 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  
+  <head>
     <meta charset="UTF-8">
     <title>Projet de Na18</title>
-<link rel="stylesheet" href="./css/reset.css">
-<link rel="stylesheet" href="./css/index.css">
-</head>
-<body>
-  <header>
-      <h1>Projet de Na18</h1>
-      
-  </header>
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/index.css"></head>
+   
+  <body>
+    <header>
+      <h1>Marketplace</h1></header>
     <nav>
-        <ul>
-            <li><a href="log.php">gestion compte</a></li>
-        </ul>
+      <ul>
+        <li>
+          <a href="log.php">Se connecter</a></li>
+      </ul>
     </nav>
     <div id="main">
-       
-        <div id="rside">
-            <aside>
-                <form action="">
-                    <input type="text" name="search" placeholder="Search...">
-                </form>
-            </aside>
-            <aside>
-                <h4>Categorie</h4>
-                <ul>
-                   
-                </ul>
-            </aside>
+        <div id="lside">
+      <table  class="table">
+         <thead>
+        <tr>
+          <td>ref_produit</td>
+          <td>nom_produit</td>
+          <td>description</td>
+          <td>etat_produit</td>
+          <td>categorie_produit</td>
+          <td>marque</td></tr>
+      </thead>
+        <?php foreach($row as $value) {?>
+          <tr>
+            <td>
+              <?php echo $value[ 'ref_produit'];?></td>
+            <td>
+              <?php echo $value[ 'nom_produit'];?></td>
+            <td>
+              <?php echo $value[ 'description'];?></td>
+            <td>
+              <?php echo $value[ 'etat_produit'];?></td>
+            <td>
+              <?php echo $value[ 'categorie_produit'];?></td>
+            <td>
+              <?php echo $value[ 'marque'];?></td>
+          </tr>
+          <?php }?></table>
         </div>
+      <div id="rside">
+        <aside>
+          <form action="">
+            <input type="text" name="search" placeholder="Search..."></form>
+        </aside>
+        <aside>
+          <h4>Categorie</h4>
+          <ul>
+            <a href="http://localhost/~Vladimir/projet/view/front/deco.html">
+              <li>Déco</li></a>
+            <a href="http://localhost/~Vladimir/projet/view/front/deco.html">
+              <li>Mobilier</li></a>
+            <a href="http://localhost/~Vladimir/projet/view/front/loisir.html">
+              <li>Loisir</li></a>
+            <a href="http://localhost/~Vladimir/projet/view/front/creation.html">
+              <li>Création</li></a>
+            <a href="http://localhost/~Vladimir/projet/view/front/librairie.html">
+              <li>Librairie</li></a>
+            <a href="http://localhost/~Vladimir/projet/view/front/mode.html">
+              <li>Mode</li></a>
+            <a href="http://localhost/~Vladimir/projet/high-tech.php">
+              <li>High-Tech</li></a>
+          </ul>
+        </aside>
+      </div>
     </div>
-    <footer>
-        Copyright &copy; 2018 · GeneratePress · WordPress
-    </footer>
-</body>
+    <footer>Copyright &copy; 2018 · GeneratePress · WordPress</footer></body>
+
 </html>

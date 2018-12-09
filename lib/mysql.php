@@ -8,6 +8,7 @@
 *@copyright Gpl
 */
 //connect to the sql
+
 error_reporting(E_ALL ^ E_DEPRECATED);
 
 function mConn() {
@@ -36,5 +37,19 @@ function mQuery($sql){
   }else{
     return null;
   }
-  
 }
+
+//insert function 
+function mExec($sql){
+  $connexion = mConn();
+  $resultset = $connexion->prepare($sql);
+  if ($resultset->execute() == true) {
+   return "true";
+  }
+  else {
+    return "false";
+  }
+}
+
+  
+
