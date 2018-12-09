@@ -60,32 +60,19 @@
         <div id="rside">
             <table  class="table">
                 <tr>
+                    <td>Ref annonce</td>
+                    <td>date mise en ligne</td>
+                    <td>Ref produit</td>
+                    <td>Login Vendeur</td>
                     <td>Login</td>
-                    <td>Password</td>
-                    <td>Nom</td>
-                    <td>Prénom</td>
-                    <td>Mail</td>
-                    <td>Date de creation</td>
-                    <td>pannier</td>
-                    <td>Paye</td> 
-                    <td>Modifier</td>
                 </tr>
                  <?php foreach($row as $value) {?>
                 <tr>
+                   <td><?php echo $value['ref_annonce'];?></td>
+                   <td><?php echo $value['date_mise_en_ligne'];?></td>
+                   <td><?php echo $value['ref_produit'];?></td>
+                   <td><?php echo $value['login_vendeur'];?></td>
                    <td><?php echo $value['login'];?></td>
-                   <td><?php echo $value['mdp'];?></td>
-                   <td><?php echo $value['nom'];?></td>
-                   <td><?php echo $value['prénom'];?></td>
-                   <td><?php echo $value['mail'];?></td>
-                   <td><?php echo $value['date_creation_compte'];?></td>
-                   <td><?php echo $value['num_panier'];?></td>
-                   <td><?php echo $value['est_paye'];?></td>
-                   <td>
-                   <form action="modifieruser.php" method="post" id="modify<?php echo $value['login'];?>">
-                      <input type="text" name="login" value="<?php echo $value['login'];?>"  style="display: none"></input>
-                      <input class="btn btn-primary" type="submit" value="Modifier">
-                   </form>
-                  </td>
                 </tr>
                 <?php }?>
             </table>
@@ -93,8 +80,7 @@
             <? if (isset($_GET['result'])):   ?>
                 <div class="alert alert-danger" role="alert">
                   ERROR :  
-                            <? echo $_GET['result']; ?>
-                  
+                    <? echo $_GET['result']; ?>
                 </div>
                  <?php endif; ?>
             <div id="pagebar">
