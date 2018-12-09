@@ -33,7 +33,7 @@ function mQuery($sql){
     $index++;
   }
   if(isset($result)){
-    return $result;  
+    return $result;
   }else{
     return null;
   }

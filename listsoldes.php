@@ -24,6 +24,7 @@ if($_SESSION['admin'] == false){
 	$admin = "true";
 }
 
+
 if($_SESSION['vendeur'] == false){
 	$vendeur = "false";
 }else{
@@ -31,12 +32,12 @@ if($_SESSION['vendeur'] == false){
 }
 
 
-$sql = "SELECT * FROM utilisateur";
-$result = mConn()->prepare($sql);
-$result->execute();
+
+
+$sql = "SELECT * FROM annonce,utilisateur_achete_produit where annonce.ref_produit = utilisateur_achete_produit.ref_produit and annonce.login_vendeur = '".$_SESSION['login']."';";
 $row = mQuery($sql);
 
-require(ROOT . '/view/admin/listuser.html');
+require(ROOT . '/view/admin/listsoldes.html');
 
 
 ?>

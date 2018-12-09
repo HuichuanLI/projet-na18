@@ -11,6 +11,8 @@
 require('./lib/init.php');
 date_default_timezone_set("Europe/Paris");
 
+
+
 if(empty($_POST)) {
 	require(ROOT . '/view/front/sign.html');
 } else {

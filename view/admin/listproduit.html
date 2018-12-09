@@ -20,7 +20,8 @@
           <aside>
               <h4>Personal Center</h4>
               <ul>
-                  
+                  <li><a href="information.php">Gestion information</a></li>
+                  <li><a href="address.php">Votre address</a></li>
                   <li><a href="modify.php">Modify the password</a></li>
                   <li><a href="logout.php">Log out</a></li>
               </ul>
@@ -39,6 +40,17 @@
               </ul>
               
           </aside>
+          <aside id="vendeur" style="display: none">
+              <input type="text" id="isvendeur" value="<?php echo $vendeur;?>" style="display: none">
+              <h4>Vendeur</h4>
+              <ul>
+                 <li><a href="listannonce.php">List of annonce</a></li>
+              </ul>
+               <ul>
+                 <li><a href="listsoldes.php">List of produits sold</a></li>
+              </ul>
+          </aside>
+
           
         </div>
 
