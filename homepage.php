@@ -34,3 +34,4 @@ if($vendeur == NULL){
 }
 $_SESSION['vendeur'] = true;
 include(ROOT.'/view/admin/homepage.html');
+?>
