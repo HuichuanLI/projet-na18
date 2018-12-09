@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modifier mot de passe</title>
+
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/art.css">
+    <style>
+    form {
+    width:30%;
+    margin:0 auto;
+    }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   
+  
+</head>
+<body>
+    <header>
+        <a href="index.php"><h1>Backend</h1></a>
+    </header>
+    <div id="main">
+        <div id="respond" class="comment-respond">
+            <form action="#" method="post">
+                <div id="address"  >
+                    <p>
+                    Ville :<input placeholder="ville" name="ville" type="text" value="<?php echo $address['ville'];?>" size="30">
+                    </p>
+                    <p>
+                    cp(5) : <input placeholder="cp" name="cp" type="text" value="<?php echo $address['cp'];?>" size="30" maxlength="5">
+                    </p>
+                    type_voie :  
+                    <input type="text" id="typevoie" style="display: none" value="<?php echo $address['type_voie'];?>">
+                    <select name="type_voie"  id="type_voie" class="form-control" >
+                                  <option value="rue" >rue</option>
+                                  <option value="square">square</option>
+                                  <option value="impasse">impasse</option>
+                                  <option value="place">place</option>
+                                   <option value="avenue">avenue</option>
+                                </select>
+                    </p>
+                    num_voie : <input placeholder="num_voie" name="num_voie" type="text" value="<?php echo $address['num_voie'];?>" size="30">
+                    </p>
+                    nom_voie : <input placeholder="nom_voie" name="nom_voie" type="text" value="<?php echo $address['nom_voie'];?>" size="30">
+                    </p>
+                </div>
+                <p>
+                    <input type="submit" value="submit">
+                    <a class="btn btn-primary" href="listproduit.php" role="button">return</a>
+                </p>  
+            </form>
+
+          <? if (isset($_GET['result'])):   ?>
+            <div class="alert alert-info" role="alert">
+              ERROR :  
+                        <? echo $_GET['result']; ?>
+              
+            </div>
+             <?php endif; ?>
+            
+           
+        </div>
+    </div>
+    <footer>
+        Copyright &copy; 2018 · GeneratePress · WordPress
+    </footer>
+
+</body>
+  <script type="text/javascript" src = "./script/address.js"></script>
+</html>
+
+

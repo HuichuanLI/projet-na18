@@ -25,6 +25,12 @@ if($_SESSION['admin'] == false){
 
 
 
+if($_SESSION['vendeur'] == false){
+	$vendeur = "false";
+}else{
+	$vendeur = "true";
+}
+
 $sql = "SELECT * FROM produit";
 $row = mQuery($sql);
 

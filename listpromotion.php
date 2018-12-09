@@ -24,6 +24,13 @@ if($_SESSION['admin'] == false){
 	$admin = "true";
 }
 
+if($_SESSION['vendeur'] == false){
+	$vendeur = "false";
+}else{
+	$vendeur = "true";
+}
+
+
 
 $sql = "SELECT * FROM promotion";
 $result = mConn()->prepare($sql);

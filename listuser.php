@@ -24,7 +24,6 @@ if($_SESSION['admin'] == false){
 	$admin = "true";
 }
 
-
 if($_SESSION['vendeur'] == false){
 	$vendeur = "false";
 }else{

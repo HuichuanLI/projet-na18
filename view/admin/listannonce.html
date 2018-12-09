@@ -21,6 +21,7 @@
               <h4>Personal Center</h4>
               <ul>
                   <li><a href="information.php">Gestion information</a></li>
+                  <li><a href="address.php">Votre address</a></li>
                   <li><a href="modify.php">Modify the password</a></li>
                   <li><a href="logout.php">Log out</a></li>
               </ul>
@@ -80,7 +81,7 @@
 
             <? if (isset($_GET['result'])):   ?>
                 <div class="alert alert-info" role="alert">
-                  ERROR :  
+                  information :  
                             <? echo $_GET['result']; ?>
                   
                 </div>
