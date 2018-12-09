@@ -32,8 +32,6 @@ if($_SESSION['vendeur'] == false){
 }
 
 
-
-
 $sql = "SELECT * FROM utilisateur";
 $result = mConn()->prepare($sql);
 $result->execute();
