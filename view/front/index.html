@@ -36,12 +36,10 @@
               <?php
               foreach($row as $value) {?>
                   <div class="card col-5 pull-right" id="cb" >
-                    <img class="card-img-top" src="img/jeanpg.jpg"  alt="Card image"/>
-
+                    <img class="card-img-top" src="<?php echo $value['url_photo']; ?>"  alt="Card image"/>
                     <div class="card-body">
                       <h4 class="card-title">Nom : <?php echo $value['nom_produit']; ?></h4>
                       <p class="card-text">Référence produit : <?php echo $value['ref_produit'];?></p>
-
                       <p class="card-text"> Description : <?php echo $value['description'];?></p>
                       <p class="card-text">État du produit : <?php echo $value['etat_produit'];?></p>
                       <p class="card-text">Prix : <?php echo $value['prix'];?>€</p>
