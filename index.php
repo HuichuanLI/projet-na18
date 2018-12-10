@@ -19,11 +19,12 @@ $result  = mQuery($sql);
   if (isset($_POST['buy'])){
     $reprod = $_POST['buy'];
     $login_acheteur = $_SESSION['login'];
+    $qt = $_POST['qt'];
 
     $sql2 = "INSERT INTO produit_est_dans_le_panier VALUES
-    ('$reprod','$login_acheteur')";
-    $result = mConn()->prepare($sql2);
-    $retour = $result->execute();
+    ('$reprod','$login_acheteur','$qt')";
+
+    $result = mExec($sql2);
   }
 
 

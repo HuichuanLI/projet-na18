@@ -30,7 +30,7 @@
              <?php } ?>
 
           </ul>
-        </nav>  
+        </nav>
         <div id="main">
           <div class="row " id="lside">
               <?php
@@ -64,12 +64,14 @@
                     <legend>Ajout au panier : </legend>
                   Rentrez la référence du produit que vous voulez rajouter au panier : <br><br>
 
-                         Ref produit : 
+                         Ref produit :
                 <select name="buy"  id="buy" class="form-control">
                     <?php foreach($result as $value) {?>
                         <option value="<?php echo $value['ref_produit'];?>" ><?php echo $value['ref_produit'];?>-<?php echo $value['nom_produit'];?> </option>
                     <?php }?>
                 </select>
+                Quantité :
+                <input type="number" name="qt" size="1"> <br><br>
                   <input type="submit" value="Panier">
                 </fieldset>
 

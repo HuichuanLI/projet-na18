@@ -18,7 +18,7 @@
     </style>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  
+
 </head>
 <body>
     <header>
@@ -38,7 +38,7 @@
                 </p>
                 <p>
                 Votre mail : <input placeholder="mail" name="mail" type="text" value="<?php echo $value['mail'];?>" size="30" readonly="readonly">
-                </p>                
+                </p>
                 <p>
                 Password : <input placeholder="password" name="password1" type="password" value="<?php echo $value['mdp'];?>" size="30">
                 </p>
@@ -63,7 +63,7 @@
                 </div>
                 <input type="submit" value="submit">
                 <a class="btn btn-primary" href="listuser.php" role="button">return</a>
-                
+
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                   Delete the user
                 </button>
@@ -81,7 +81,7 @@
                       </button>
                     </div>
                     <div class="modal-body">
-                      Are you sure to delte the user ?
+                      Are you sure to delete the user ?
                     </div>
                     <div class="modal-footer">
                         <input placeholder="login" name="login" type="text" value="<?php echo $_POST['login'];?>" size="30"  style="display: none">
@@ -104,5 +104,3 @@
 
   <script type="text/javascript" src = "./script/modifieruser.js"></script>
 </html>
-
-

@@ -1,4 +1,4 @@
-  
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,7 +18,7 @@
     <header>
      <h1>Marketplace</h1>
     </header>
-    
+
 
     <nav>
       <ul id="ulnav">
@@ -37,16 +37,20 @@
         <?php if ($row!=NULL){?>
           <table class ="table table-striped" id ="tablep">
               <tr>
+                  <td>Référence</td>
                   <td>Nom du produit</td>
                   <td>Etat du produit</td>
                   <td>Prix</td>
+                  <td>Quantité</td>
               </tr>
           <?php
           foreach($row as $value) {?>
             <tr>
+              <td><?php echo $value['ref_produit'];?></td>
                <td><?php echo $value['nom_produit'];?></td>
                <td><?php echo $value['etat_produit'];?></td>
                <td><?php echo $value['prix'];?></td>
+               <td><?php echo $value['quantite']?></td>
             </tr>
           <?php }?>
         </table>
@@ -60,9 +64,18 @@
 
         <aside>
           <form method = post action = "panier.php">
+            <fieldset>
+              <legend>Achat : </legend>
             Rentrez la référence du produit que vous voulez acheter : <br><br>
             <input type="text" name="achat" placeholder="ex : A1382">
             <input type="submit" value="Acheter">
+          </fieldset>
+          <fieldset>
+            <legend>Supprimer : </legend>
+            <input type="text" name="supp" placeholder="ex : A1382">
+            <input type="submit" value="Supprimer"> <br><br>
+            
+          </fieldset>
           </form>
         </aside>
 
@@ -75,8 +88,8 @@
         $nb = 0;
 
         foreach ($row as $value) {
-          $solde = $solde + $value['prix'];
-          $nb++;
+          $solde = $solde + $value['prix'] * $value['quantite'];
+          $nb = $nb + 1 * $value['quantite'];
         }?>
         <h4><?php echo "Solde" ?> : <?php echo $solde ?> <?php echo "€" ?></h4>
         <h4>  <?php echo "Nombre d'article" ?> : <?php echo $nb ?></h4>

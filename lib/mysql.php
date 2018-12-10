@@ -40,7 +40,7 @@ function mQuery($sql){
   }
 }
 
-//insert function 
+//insert function
 function mExec($sql){
   $connexion = mConn();
   $resultset = $connexion->prepare($sql);
@@ -51,6 +51,3 @@ function mExec($sql){
     return "false";
   }
 }
-
-  
-

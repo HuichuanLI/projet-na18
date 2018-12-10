@@ -22,7 +22,7 @@ if(empty($_POST)) {
 	$password = $_POST['password1'];
 	$panier_paye = 'true';
 	$code_promo = 'NULL';
-	
+
 	$date = new DateTime();
 	$date_crea =$date->format('Y-m-d');
 	#creation utilisatuer
@@ -34,10 +34,10 @@ if(empty($_POST)) {
 	}
 	$sql = "INSERT INTO public.utilisateur(
 	 login, mdp, nom, prénom, mail, date_creation_compte, est_admin, est_paye) VALUES ('$login','$password','$nom','$prenom','$mail','$date_crea',$is_admin,'$panier_paye')";
-	
+
 	$result = mConn()->prepare($sql);
 	$row = $result->execute();
-	
+
 	# when the user is vendeur
 	if($typeuser == "vendeur"){
 		$description = $_POST["description"];
