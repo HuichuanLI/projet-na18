@@ -11,6 +11,9 @@ session_start();
 $sql = "SELECT * FROM produit, annonce WHERE produit.ref_produit = annonce.ref_produit";
 $row = mQuery($sql);
 
+
+$sql = "SELECT ref_produit,nom_produit FROM public.produit";
+$result  = mQuery($sql);
 //requête qui gère l'achat
 
 

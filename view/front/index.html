@@ -7,11 +7,12 @@
   <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
   <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
   <link rel="stylesheet" href="./css/index.css"></head>
 
   <body>
@@ -29,17 +30,13 @@
              <?php } ?>
 
           </ul>
-        </nav>
+        </nav>  
         <div id="main">
           <div class="row " id="lside">
-
               <?php
-
               foreach($row as $value) {?>
-
-
-                  <div class="card col-xs-6 pull-right" id="cb" style="width:400px">
-                    <img class="card-img-top" src="img/jeanpg.jpg" width="286px" height="180px" alt="Card image"/>
+                  <div class="card col-5 pull-right" id="cb" >
+                    <img class="card-img-top" src="img/jeanpg.jpg"  alt="Card image"/>
 
                     <div class="card-body">
                       <h4 class="card-title">Nom : <?php echo $value['nom_produit']; ?></h4>
@@ -67,7 +64,13 @@
                   <fieldset>
                     <legend>Ajout au panier : </legend>
                   Rentrez la référence du produit que vous voulez rajouter au panier : <br><br>
-                  <input type="text" name = "buy" placeholder="ex : A1382">
+
+                         Ref produit : 
+                <select name="buy"  id="buy" class="form-control">
+                    <?php foreach($result as $value) {?>
+                        <option value="<?php echo $value['ref_produit'];?>" ><?php echo $value['ref_produit'];?>-<?php echo $value['nom_produit'];?> </option>
+                    <?php }?>
+                </select>
                   <input type="submit" value="Panier">
                 </fieldset>
 
@@ -76,19 +79,19 @@
                 <aside>
                   <h4>Categorie</h4>
                   <ul>
-                    <a href="http://localhost/~Vladimir/projet/deco.php">
+                    <a href="deco.php">
                       <li>Déco</li></a>
-                      <a href="http://localhost/~Vladimir/projet/mobilier.php">
+                      <a href="mobilier.php">
                         <li>Mobilier</li></a>
-                        <a href="http://localhost/~Vladimir/projet/loisir.php">
+                        <a href="loisir.php">
                           <li>Loisir</li></a>
-                          <a href="http://localhost/~Vladimir/projet/creation.php">
+                          <a href="creation.php">
                             <li>Création</li></a>
-                            <a href="http://localhost/~Vladimir/projet/librairie.php">
+                            <a href="librairie.php">
                               <li>Librairie</li></a>
-                              <a href="http://localhost/~Vladimir/projet/mode.php">
+                              <a href="mode.php">
                                 <li>Mode</li></a>
-                                <a href="http://localhost/~Vladimir/projet/high-tech.php">
+                                <a href="high-tech.php">
                                   <li>High-Tech</li></a>
                                 </ul>
                               </aside>

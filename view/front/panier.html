@@ -1,11 +1,10 @@
+  
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
   <meta charset="UTF-8">
-  <title>Panier</title>
-  <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <title>Projet de Na18</title>
   <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
   <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
@@ -17,28 +16,10 @@
 
   <body>
     <header>
-      <?php if(empty($row)) {?>
-
-
-        <h1><?php echo "Solde" ?> : <?php echo 0 ?> <?php echo "€" ?></h1>
-        <h1>  <?php echo "Nombre d'article" ?> : <?php echo "0" ?></h1>
-
-
-
-      <?php } else {?>
-        <?php $solde = 0;
-        $nb = 0;
-
-        foreach ($row as $value) {
-          $solde = $solde + $value['prix'];
-          $nb++;
-        }?>
-        <h1><?php echo "Solde" ?> : <?php echo $solde ?> <?php echo "€" ?></h1>
-        <h1>  <?php echo "Nombre d'article" ?> : <?php echo $nb ?></h1>
-      <?php  } ?>
-
-
+     <h1>Marketplace</h1>
     </header>
+    
+
     <nav>
       <ul id="ulnav">
         <?php if(empty($_SESSION['login'])) { ?>
@@ -53,40 +34,28 @@
 
     <div id="main">
       <div class="row " id="lside">
-
-
         <?php if ($row!=NULL){?>
-
-          <table class ="table table-striped table-dark" id ="tablep">
-
+          <table class ="table table-striped" id ="tablep">
               <tr>
-
                   <td>Nom du produit</td>
-
                   <td>Etat du produit</td>
-
                   <td>Prix</td>
               </tr>
-
           <?php
           foreach($row as $value) {?>
             <tr>
                <td><?php echo $value['nom_produit'];?></td>
-
                <td><?php echo $value['etat_produit'];?></td>
-
                <td><?php echo $value['prix'];?></td>
             </tr>
           <?php }?>
         </table>
-
         <?php }else{ ?>
-
           <p id = "aucunprod">  <?php echo "  Le panier est vide...";?></p>
-
         <?php }?>
 
       </div>
+
       <div id="rside">
 
         <aside>
@@ -98,6 +67,21 @@
         </aside>
 
       </div>
+      <?php if(empty($row)) {?>
+        <h1><?php echo "Solde" ?> : <?php echo 0 ?> <?php echo "€" ?></h1>
+        <h1>  <?php echo "Nombre d'article" ?> : <?php echo "0" ?></h1>
+      <?php } else {?>
+        <?php $solde = 0;
+        $nb = 0;
+
+        foreach ($row as $value) {
+          $solde = $solde + $value['prix'];
+          $nb++;
+        }?>
+        <h4><?php echo "Solde" ?> : <?php echo $solde ?> <?php echo "€" ?></h4>
+        <h4>  <?php echo "Nombre d'article" ?> : <?php echo $nb ?></h4>
+      <?php  } ?>
+
 
     </div>
     <footer>Copyright &copy; 2018 · GeneratePress · WordPress</footer></body>
