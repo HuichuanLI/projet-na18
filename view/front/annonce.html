@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<link rel="stylesheet" href="./css/reset.css">
+<link rel="stylesheet" href="./css/index.css">
+<link rel="stylesheet" href="./css/art.css">
+</head>
+<body>
+    <header>
+        <h1>Blog of huichuanLI</h1>
+        <h4>work hard!</h4>
+    </header>
+    <nav>
+        <ul id="ulnav">
+          <?php if(empty($_SESSION['login'])) { ?>
+              <li><a href="log.php">Se connecter</a></li>
+            <?php }else { ?>
+             <li><a href="homepage.php"> Mon compte : <?php echo $_SESSION['login']; ?> </a></li>
+             <li><a href="panier.php">Mon panier</a></li>
+             <?php } ?>
+          </ul>
+        </nav>  
+    <div id="main">
+        <div id="lside">
+            <article>
+                <h2></h2>
+                
+            </article>
+         
+          
+        </div>
+    </div>
+    <footer>
+        Copyright &copy; 2018 · LI Huichuan  · Vladi Mur· Ma Nar   
+    </footer>
+</body>
+</html>

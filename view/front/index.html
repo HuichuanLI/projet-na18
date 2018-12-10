@@ -41,6 +41,7 @@
                     <div class="card-body">
                       <h4 class="card-title">Nom : <?php echo $value['nom_produit']; ?></h4>
                       <p class="card-text">Référence produit : <?php echo $value['ref_produit'];?></p>
+
                       <p class="card-text"> Description : <?php echo $value['description'];?></p>
                       <p class="card-text">État du produit : <?php echo $value['etat_produit'];?></p>
                       <p class="card-text">Prix : <?php echo $value['prix'];?>€</p>
@@ -48,7 +49,7 @@
                       <p class="card-text">Référence annonce : <?php echo $value['ref_annonce'];?></p>
                       <p class="card-text">Date de mise en ligne : <?php echo $value['date_mise_en_ligne'];?></p>
                       <p class="card-text">Vendeur : <?php echo $value['login_vendeur'];?></p>
-
+                      <a href="annonce.php?ref_produit=<?php echo $value['ref_produit'];?>">>details<</a>
                     </div>
                   </div>
 
@@ -97,7 +98,8 @@
                               </aside>
                             </div>
                           </div>
-                          <footer>Copyright &copy; 2018 · GeneratePress · WordPress
+                          <footer>Copyright &copy; 2018 · LI Huichuan  · Vladi Mur· Ma Nar   
+
 
 
                           </footer></body>
