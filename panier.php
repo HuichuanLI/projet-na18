@@ -13,6 +13,8 @@ if(!empty($_SESSION['login'])){
   WHERE produit.ref_produit = produit_est_dans_le_panier.ref_produit";
   $row = mQuery($sql);
 
+
+
   if(isset($_POST['achat'])){
 
     $refProd = $_POST['achat'];
@@ -22,11 +24,9 @@ if(!empty($_SESSION['login'])){
     $retour = $result->execute();
 
     if ($retour) {
-
-      $delSql = "DELETE FROM produit_est_dans_le_panier
+      $delSql = "DELETE FROM produitest_dans_le_panier
       WHERE ref_produit = '$refProd'";
-      $vresult = mConn()->prepare($delSql);
-      $vretour = $vresult->execute();
+      $vretour = $mExec($delSql);
       header('Location: panier.php');
 
     }
