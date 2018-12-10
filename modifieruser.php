@@ -38,9 +38,12 @@ date_default_timezone_set("Europe/Paris");
 			if($_POST['login'] != $_SESSION['login']){
 
 				$sql = "DELETE  FROM public.utilisateur_consulte_annonce WHERE ref_annonce IN ( select utilisateur_consulte_annonce.ref_annonce from utilisateur_consulte_annonce ,annonce where utilisateur_consulte_annonce.ref_annonce = annonce.ref_annonce  and  annonce.login_vendeur ='".$_POST['login']."') ;";	
+				var_dump($sql);
 				$row = mExec($sql);
+					
 				$sql = "DELETE FROM public.annonce WHERE annonce.login_vendeur ='".$_POST['login']."';";
 				$row = mExec($sql);
+				
 				$sql = "DELETE FROM public.vendeur WHERE vendeur.login = '".$_POST['login']."';";
 				$row = mExec($sql);
 				$sql = "DELETE FROM public.utilisateur WHERE utilisateur.login = '".$_POST['login']."';";

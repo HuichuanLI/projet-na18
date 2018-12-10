@@ -38,10 +38,8 @@ if(empty($_POST)) {
 		unset($_SESSION['admin']);
 	    $_SESSION['login']=$row[0]['login'];
 	    $_SESSION['admin']=$row[0]['est_admin'];
-	    header('Location: homepage.php');
+	    header('Location: index.php');
 	}
 }
-
-?>
 
 ?>

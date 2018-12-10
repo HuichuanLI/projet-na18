@@ -23,6 +23,7 @@ function mConn() {
 
 //select function
 function mQuery($sql){
+  
   $connexion = mConn();
   $resultset = $connexion->prepare($sql);
   $resultset->execute();
@@ -39,7 +40,7 @@ function mQuery($sql){
   }
 }
 
-//insert function 
+//insert function
 function mExec($sql){
   $connexion = mConn();
   $resultset = $connexion->prepare($sql);
@@ -50,6 +51,3 @@ function mExec($sql){
     return "false";
   }
 }
-
-  
-

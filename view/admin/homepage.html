@@ -2,18 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Backend</title>
+    <title>Panneau de configuration</title>
     <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/adm.css">
-    
+
 </head>
 <body>
     <header>
-        <h1>Backend</h1>
-        <h4> <?php echo $_SESSION['login'];?></h1>
+        <h1><a href ="index.php">Accueil</a></h1>
+        <h4> <?php echo $_SESSION['login'];?></h4>
     </header>
 
     <div id="main">
@@ -39,22 +39,24 @@
               <ul>
                  <li><a href="listproduit.php">List of produits</a></li>
               </ul>
-              
+
           </aside>
 
-           <aside id="vendeur" style="display: none">
+          <aside id="vendeur" style="display: none">
               <input type="text" id="isvendeur" value="<?php echo $vendeur;?>" style="display: none">
               <h4>Vendeur</h4>
               <ul>
-                 <li><a href="listannonce.php">List of annonce</a></li>
+                 <li><a href="listannonce.php">Gestion des annonces</a></li>
               </ul>
-              <ul>
-                 <li><a href="listsoldes.php">List of produits sold</a></li>
+               <ul>
+                 <li><a href="listsoldes.php">Produits vendus</a></li>
               </ul>
           </aside>
 
-          
         </div>
+
+
+
         <div id="rside">
             <table  class="table">
                 <tr>
@@ -96,14 +98,15 @@
 
       <? if (isset($_GET['result'])):   ?>
                 <div class="alert alert-info" role="alert">
-                  information :  
+                  information :
                             <? echo $_GET['result']; ?>
-                  
+
                 </div>
             <?php endif; ?>
 
     <footer>
-        Copyright &copy; 2018 · GeneratePress · WordPress
+        Copyright &copy; 2018 · LI Huichuan  · Vladi Mur· Ma Nar   
+
     </footer>
 </body>
 <script type="text/javascript" src = "./script/homepage.js"></script>

@@ -7,14 +7,11 @@
 *@since 2017.6
 *@copyright Gpl
 */
-
 require('./lib/init.php');
-
 session_start();
 if(empty($_SESSION['login'])){
 	header('Location: log.php');
 }
-
 if(empty($_POST)) {
 	require(ROOT . '/view/front/modifier.html');
 } else {
@@ -24,6 +21,4 @@ if(empty($_POST)) {
 	$row = mQuery($sql);
 	header('Location: homepage.php');
 }
-
-
 ?>
