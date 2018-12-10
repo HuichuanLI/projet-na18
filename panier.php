@@ -15,21 +15,33 @@ if(!empty($_SESSION['login'])){
 
 
 
-  if(isset($_POST['achat'])){
+  if(isset($_POST['achat']) && isset($_POST['supp'])){
 
     $refProd = $_POST['achat'];
+    $supp = $_POST['supp'];
+
+
+
+
     $sql2 = "INSERT INTO UTILISATEUR_ACHETE_PRODUIT VALUES
     ('$refProd', '$login')";
-    $result = mConn()->prepare($sql2);
-    $retour = $result->execute();
+    $result = mExec($sql2);
 
-    if ($retour) {
-      $delSql = "DELETE FROM produitest_dans_le_panier
+
+    if ($result) {
+      $delSql = "DELETE FROM produit_est_dans_le_panier
       WHERE ref_produit = '$refProd'";
-      $vretour = $mExec($delSql);
+      $vretour = mExec($delSql);
       header('Location: panier.php');
 
     }
+
+    $sql3 = "DELETE FROM produit_est_dans_le_panier
+    WHERE ref_produit = '$supp'";
+    $vretour2 = mExec($sql3);
+    header('Location: panier.php');
+
+
 
   }
 

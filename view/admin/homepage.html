@@ -39,17 +39,17 @@
               <ul>
                  <li><a href="listproduit.php">List of produits</a></li>
               </ul>
-              
+
           </aside>
 
           <aside id="vendeur" style="display: none">
               <input type="text" id="isvendeur" value="<?php echo $vendeur;?>" style="display: none">
               <h4>Vendeur</h4>
               <ul>
-                 <li><a href="listannonce.php">List of annonce</a></li>
+                 <li><a href="listannonce.php">Gestion des annonces</a></li>
               </ul>
                <ul>
-                 <li><a href="listsoldes.php">List of produits sold</a></li>
+                 <li><a href="listsoldes.php">Produits vendus</a></li>
               </ul>
           </aside>
 
@@ -98,9 +98,9 @@
 
       <? if (isset($_GET['result'])):   ?>
                 <div class="alert alert-info" role="alert">
-                  information :  
+                  information :
                             <? echo $_GET['result']; ?>
-                  
+
                 </div>
             <?php endif; ?>
 

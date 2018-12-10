@@ -14,7 +14,7 @@ error_reporting(E_ALL ^ E_DEPRECATED);
 function mConn() {
   static $connexion = null;
   if($connexion === null) {
-    $connexion = new PDO('pgsql:host=db;port=5432;dbname=yyh', 'yyh', 'haha1sbccy');
+    $connexion = new PDO('pgsql:host=tuxa.sme.utc;port=5432;dbname=dbna18a027', 'na18a027', 'FCCSel7x');
   }
 
   return $connexion;
@@ -39,7 +39,7 @@ function mQuery($sql){
   }
 }
 
-//insert function 
+//insert function
 function mExec($sql){
   $connexion = mConn();
   $resultset = $connexion->prepare($sql);
@@ -50,6 +50,3 @@ function mExec($sql){
     return "false";
   }
 }
-
-  
-

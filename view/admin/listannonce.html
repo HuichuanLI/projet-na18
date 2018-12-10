@@ -21,9 +21,9 @@
               <h4>Personal Center</h4>
               <ul>
                   <li><a href="information.php">Gestion information</a></li>
-                  <li><a href="address.php">Votre address</a></li>
-                  <li><a href="modify.php">Modify the password</a></li>
-                  <li><a href="logout.php">Log out</a></li>
+                  <li><a href="address.php">Modifier adresse</a></li>
+                  <li><a href="modify.php">Modifier le mot de passe</a></li>
+                  <li><a href="logout.php">Se déconnecter</a></li>
               </ul>
           </aside>
           <aside id="admin" style="display: none">
@@ -38,20 +38,20 @@
               <ul>
                  <li><a href="listproduit.php">List of produits</a></li>
               </ul>
-              
+
           </aside>
            <aside id="vendeur" style="display: none">
               <input type="text" id="isvendeur" value="<?php echo $vendeur;?>" style="display: none">
               <h4>Vendeur</h4>
               <ul>
-                 <li><a href="listannonce.php">List of annonce</a></li>
+                 <li><a href="listannonce.php">Gestion des annonces</a></li>
               </ul>
                <ul>
-                 <li><a href="listsoldes.php">List of produits sold</a></li>
+                 <li><a href="listsoldes.php">Produits vendus</a></li>
               </ul>
           </aside>
 
-          
+
         </div>
 
 
@@ -81,14 +81,14 @@
 
             <? if (isset($_GET['result'])):   ?>
                 <div class="alert alert-info" role="alert">
-                  information :  
+                  information :
                             <? echo $_GET['result']; ?>
-                  
+
                 </div>
             <?php endif; ?>
 
             <button type="button" class="btn btn-link"><a href="addannonce.php">Add annonce</a></button>
-          
+
             <div id="pagebar">
                 Pages:&nbsp;
                 <a href="#">1</a>
