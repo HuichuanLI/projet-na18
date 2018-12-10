@@ -14,18 +14,16 @@ $row = mQuery($sql);
 //requête qui gère l'achat
 
 
+  if (isset($_POST['buy'])){
+    $reprod = $_POST['buy'];
+    $login_acheteur = $_SESSION['login'];
 
-if(!empty($_SESSION['login'])){
+    $sql2 = "INSERT INTO produit_est_dans_le_panier VALUES
+    ('$reprod','$login_acheteur')";
 
-  $reprod = isset($_POST['buy']);
-  $login_acheteur = $_SESSION['login'];
-
-  $sql2 = "INSERT INTO UTILISATEUR_ACHETE_PRODUIT VALUES
-  ('$reprod', '$login_acheteur')";
-
-  $result = mConn()->prepare($sql2);
-  $retour = $result->execute();
-}
+    $result = mConn()->prepare($sql2);
+    $retour = $result->execute();
+  }
 
 
 require('./view/front/index.html');

@@ -2,10 +2,9 @@
 <html lang="en">
 
 
-
 <head>
   <meta charset="UTF-8">
-  <title>Projet de Na18</title>
+  <title>Panier</title>
   <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
   <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -18,7 +17,7 @@
 
   <body>
     <header>
-      <h1>Marketplace</h1></header>
+      <h1>Panier</h1></header>
       <nav>
         <ul id="ulnav">
           <?php if(empty($_SESSION['login'])) { ?>
@@ -50,36 +49,24 @@
                       <p class="card-text">État du produit : <?php echo $value['etat_produit'];?></p>
                       <p class="card-text">Prix : <?php echo $value['prix'];?>€</p>
                       <p class="card-text"> Marque : <?php echo $value['marque'];?></p>
-                      <p class="card-text">Référence annonce : <?php echo $value['ref_annonce'];?></p>
-                      <p class="card-text">Date de mise en ligne : <?php echo $value['date_mise_en_ligne'];?></p>
-                      <p class="card-text">Vendeur : <?php echo $value['login_vendeur'];?></p>
                     </div>
                   </div>
                 <?php }?>
 
               <?php }else{ ?>
 
-                  <p id = "aucunprod">  <?php echo "  Il n'y actuellement aucun produit dans cette catégorie";?></p>
+                  <p id = "aucunprod">  <?php echo "  Le panier est vide...";?></p>
 
                 <?php }?>
-
-
-
-
-
 
             </div>
             <div id="rside">
 
               <aside>
-                <form method = post action = "index.php">
-                  <fieldset>
-                    <legend>Ajout au panier : </legend>
-                  Rentrez la référence du produit que vous voulez rajouter au panier : <br><br>
-                  <input type="text" name = "buy" placeholder="ex : A1382">
-                  <input type="submit" value="Panier">
-                </fieldset>
-
+                <form method = post action = "panier.php">
+                  Rentrez la référence du produit que vous voulez acheter : <br><br>
+                  <input type="text" name="achat" placeholder="ex : A1382">
+                  <input type="submit" value="Acheter">
                 </form>
                 </aside>
 
