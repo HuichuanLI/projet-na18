@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Modifier mot de passe</title>
+    <title>Créer un compte</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/reset.css">
@@ -20,8 +20,8 @@
 </head>
 <body>
     <header>
-        <a href="index.php"><h1>Backend</h1></a>
-        <h4>create your compte</h4>
+        <a href="index.php"><h1>Retour accueil</h1></a>
+        <h4>Création de compte</h4>
     </header>
     <div id="main">
         <div id="respond" class="comment-respond">
@@ -33,7 +33,7 @@
                 Votre nom : <input placeholder="nom" name="nom" type="text" value="" size="30" >
                 </p>
                 <p>
-                Votre prenom : <input placeholder="prenom" name="prenom" type="text" value="" size="30" >
+                Votre prenom : <input placeholder="prenom" name="prénom" type="text" value="" size="30" >
                 </p>
                 <p>
                 Votre mail : <input placeholder="mail" name="mail" type="text" value="" size="30">
@@ -62,12 +62,12 @@
                 </div>
                 <? if (isset($_GET['result'])):   ?>
                 <div class="alert alert-danger" role="alert">
-                  ERROR :  
+                  ERROR :
                             <? echo $_GET['result']; ?>
-                  
+
                 </div>
                  <?php endif; ?>
-                <input type="submit" value="submit">
+                <input type="submit" value="créer le compte">
             </p>
             </form>
         </div>

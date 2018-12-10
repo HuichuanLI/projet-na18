@@ -25,6 +25,7 @@
             <?php }else { ?>
 
              <li><a href="homepage.php"> Mon compte : <?php echo $_SESSION['login']; ?> </a></li>
+             <li><a href="panier.php">Mon panier</a></li>
              <?php } ?>
 
           </ul>
@@ -38,7 +39,7 @@
 
 
                   <div class="card col-xs-6 pull-right" id="cb" style="width:400px">
-                    <img class="card-img-top" src="http://localhost/~Vladimir/projet/img/jeanpg.jpg" width="286px" height="180px" alt="Card image">
+                    <img class="card-img-top" src="img/jeanpg.jpg" width="286px" height="180px" alt="Card image"/>
 
                     <div class="card-body">
                       <h4 class="card-title">Nom : <?php echo $value['nom_produit']; ?></h4>
@@ -50,6 +51,7 @@
                       <p class="card-text">Référence annonce : <?php echo $value['ref_annonce'];?></p>
                       <p class="card-text">Date de mise en ligne : <?php echo $value['date_mise_en_ligne'];?></p>
                       <p class="card-text">Vendeur : <?php echo $value['login_vendeur'];?></p>
+
                     </div>
                   </div>
 
@@ -62,9 +64,13 @@
             <div id="rside">
               <aside>
                 <form method = post action = "index.php">
-                  Rentrez la référence du produit que vous voulez acheter : <br><br>
-                  <input type="text" name="buy" placeholder="ex : A1382">
-                  <input type="submit" value="Acheter">
+                  <fieldset>
+                    <legend>Ajout au panier : </legend>
+                  Rentrez la référence du produit que vous voulez rajouter au panier : <br><br>
+                  <input type="text" name = "buy" placeholder="ex : A1382">
+                  <input type="submit" value="Panier">
+                </fieldset>
+
                 </form>
                 </aside>
                 <aside>
@@ -88,6 +94,9 @@
                               </aside>
                             </div>
                           </div>
-                          <footer>Copyright &copy; 2018 · GeneratePress · WordPress</footer></body>
+                          <footer>Copyright &copy; 2018 · GeneratePress · WordPress
+
+
+                          </footer></body>
 
                           </html>
