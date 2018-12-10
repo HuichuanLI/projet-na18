@@ -23,6 +23,7 @@ function mConn() {
 
 //select function
 function mQuery($sql){
+  
   $connexion = mConn();
   $resultset = $connexion->prepare($sql);
   $resultset->execute();

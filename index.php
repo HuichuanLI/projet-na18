@@ -16,7 +16,6 @@ $sql = "SELECT ref_produit,nom_produit FROM public.produit";
 $result  = mQuery($sql);
 //requête qui gère l'achat
 
-
   if (isset($_POST['buy'])){
     $reprod = $_POST['buy'];
     $login_acheteur = $_SESSION['login'];

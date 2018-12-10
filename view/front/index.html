@@ -36,8 +36,7 @@
               <?php
               foreach($row as $value) {?>
                   <div class="card col-5 pull-right" id="cb" >
-                    <img class="card-img-top" src="img/jeanpg.jpg"  alt="Card image"/>
-
+                    <img class="card-img-top" src="<?php echo $value['url_photo']; ?>"  alt="Card image"/>
                     <div class="card-body">
                       <h4 class="card-title">Nom : <?php echo $value['nom_produit']; ?></h4>
                       <p class="card-text">Référence produit : <?php echo $value['ref_produit'];?></p>
@@ -48,7 +47,7 @@
                       <p class="card-text">Référence annonce : <?php echo $value['ref_annonce'];?></p>
                       <p class="card-text">Date de mise en ligne : <?php echo $value['date_mise_en_ligne'];?></p>
                       <p class="card-text">Vendeur : <?php echo $value['login_vendeur'];?></p>
-
+                      <a href="annonce.php?ref_produit=<?php echo $value['ref_produit'];?>">>details<</a>
                     </div>
                   </div>
 
@@ -99,7 +98,8 @@
                               </aside>
                             </div>
                           </div>
-                          <footer>Copyright &copy; 2018 · GeneratePress · WordPress
+                          <footer>Copyright &copy; 2018 · LI Huichuan  · Vladi Mur· Ma Nar   
+
 
 
                           </footer></body>

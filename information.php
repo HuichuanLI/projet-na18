@@ -13,12 +13,13 @@ date_default_timezone_set("Europe/Paris");
 
 
 session_start();
-$vSql = "SELECT * FROM public.utilisateur left join  public.vendeur ON utilisateur.login = vendeur.login WHERE utilisateur.login = '".$_SESSION['login']."'";
-$row = mQuery($vSql);
-$value = $row[0];
 
+if(empty($_SESSION['login'])){
+  header('Location: log.php');
+}
 
-
+$vSql = "SELECT * FROM public.utilisateur  WHERE utilisateur.login = '".$_SESSION['login']."'";
+$value = mQuery($vSql)[0];
 
 
 if(empty($value["description"])){
