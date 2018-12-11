@@ -31,7 +31,12 @@ margin:0 auto;
                     <input type="submit" value="se connecter">
                     <a href="sign.php" class="btn btn-default btn-lg btn-block">créer un compte </a>
                 </p>
-
+                   <?if (isset($_GET['result'])): ?>
+                    <div class="alert alert-info" role="alert">
+                      information :
+                        <?echo $_GET['result']; ?>
+                    </div>
+                  <?php endif;?>
             </form>
         </div>
 

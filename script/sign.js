@@ -1,8 +1,9 @@
 
 
+
+
+
 var typeuser = $("#typeuser").val();
-
-
 function getval(sel)
 {
 

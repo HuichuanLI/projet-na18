@@ -25,7 +25,7 @@ if(empty($_POST)) {
 	$row = mQuery($vSql);
 
 	if(!$row) {
-    	header('Location: log.php');
+    	header('Location: log.php?result=login or password error');
 	} else {
 	    unset($_SESSION['login']);
 		unset($_SESSION['admin']);

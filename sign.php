@@ -6,7 +6,9 @@ if(empty($_POST)) {
 } else {
 	if(empty($_POST['login']) || empty($_POST['nom']) || empty($_POST['prénom']) || empty($_POST['mail']) || empty($_POST['password1'])){
 		  header('Location: sign.php?result=empty');
+		  exit();
 	}
+
 
 	$login = $_POST['login'];
 	$nom = $_POST['nom'];
@@ -45,7 +47,7 @@ if(empty($_POST)) {
 	  	header('Location: log.php');
 	}
 	else {
-		 header('Location: sign.php?result=existe');
+		 header('Location: log.php?result=existe');
 	}
 }
 ?>
