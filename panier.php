@@ -10,7 +10,8 @@ if(!empty($_SESSION['login'])){
 
 
   $sql = "SELECT * FROM produit_est_dans_le_panier, produit
-  WHERE produit.ref_produit = produit_est_dans_le_panier.ref_produit";
+  WHERE produit.ref_produit = produit_est_dans_le_panier.ref_produit
+  AND produit_est_dans_le_panier.login = '$login'";
   $row = mQuery($sql);
 
 
@@ -43,45 +44,39 @@ if(!empty($_SESSION['login'])){
       $result = mExec($sql2);
     }
 
+ if($qt <= $qt_panier ){
+   $update_valeur_panier = $qt_panier['quantite'] - $qt;
+   $update_valeur_table_achat = $qt_achat['quantite'] + $qt;
 
 
+   $updtSql =  "UPDATE produit_est_dans_le_panier
+   SET quantite = $update_valeur_panier
+   WHERE ref_produit = '$refProd'";
+   $result = mExec($updtSql);
+
+   $updtSql2 =  "UPDATE UTILISATEUR_ACHETE_PRODUIT
+   SET quantite = $update_valeur_table_achat
+   WHERE ref_produit = '$refProd'";
+   $result = mExec($updtSql2);
+
+   if($update_valeur_panier == 0) {
+     $delSql = "DELETE FROM produit_est_dans_le_panier
+     WHERE ref_produit = '$refProd'";
+     $vretour = mExec($delSql);
+     header('Location: panier.php');
+   }
+   header('Location: panier.php');
+ }
 
 
-
-    // mettre a jour les qt!!
-
-    if ($qt <= $qt_panier) {
-
-      $update_valeur_panier = $qt_panier['quantite'] - $qt;
-      $update_valeur_table_achat = $qt_achat['quantite'] + $qt;
-
-
-      $updtSql =  "UPDATE produit_est_dans_le_panier
-      SET quantite = $update_valeur_panier
-      WHERE ref_produit = '$refProd'";
-      $result = mExec($updtSql);
-
-      $updtSql2 =  "UPDATE UTILISATEUR_ACHETE_PRODUIT
-      SET quantite = $update_valeur_table_achat
-      WHERE ref_produit = '$refProd'";
-      $result = mExec($updtSql2);
-
-      if($update_valeur_panier == 0) {
-        $delSql = "DELETE FROM produit_est_dans_le_panier
-        WHERE ref_produit = '$refProd'";
-        $vretour = mExec($delSql);
-        header('Location: panier.php');
-      }
-      header('Location: panier.php');
-    }
 
 
 
 
   //form delete
-  $sql3 = "DELETE FROM produit_est_dans_le_panier
+  $sqldel = "DELETE FROM produit_est_dans_le_panier
   WHERE ref_produit = '$supp'";
-  $vretour2 = mExec($sql3);
+  $vretour2 = mExec($sqldel);
   header('Location: panier.php');
 
 }
