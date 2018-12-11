@@ -12,6 +12,8 @@
 <body>
     <header>
         <h1>Backend</h1>
+         
+
         <h4> <?php echo $_SESSION['login'];?></h1>
     </header>
 
@@ -55,7 +57,7 @@
         </div>
 
 
-
+         <?php if ($row != NULL) {?>
         <div id="rside">
            <table  class="table">
                 <tr>
@@ -63,6 +65,7 @@
                     <td>date mise en ligne</td>
                     <td>ref produit</td>
                 </tr>
+                
                  <?php foreach($row as $value) {?>
                 <tr>
                    <td><?php echo $value['ref_annonce'];?></td>
@@ -79,6 +82,8 @@
                 <?php }?>
             </table>
 
+
+
             <? if (isset($_GET['result'])):   ?>
                 <div class="alert alert-info" role="alert">
                   information :
@@ -86,6 +91,10 @@
 
                 </div>
             <?php endif; ?>
+             <?php } else {?>
+                  <p id = "aucunprod">  <?php echo
+                          "  Il n'y actuellement aucun commandes faites"; ?></p>
+            <?php }?>
 
             <button type="button" class="btn btn-link"><a href="addannonce.php">Add annonce</a></button>
 
@@ -98,7 +107,9 @@
                 <a href="#">5</a>
                 <a href="#">6</a>
             </div>
+
         </div>
+
     </div>
     <footer>
         Copyright &copy; 2018 · LI Huichuan  · Vladi Mur· Ma Nar   
