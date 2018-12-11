@@ -1,19 +1,10 @@
 <?php
-/***
-*index.php front-page
-*
-*@author huichuan.li
-*@link https://github.com/HuichuanLI
-*@since 2018.6
-*@copyright Gpl
-*/
-
 require('./lib/init.php');
 date_default_timezone_set("Europe/Paris");
-
 if(empty($_POST)) {
 	require(ROOT . '/view/admin/addpromotion.html');
 }else{
+
 	if(empty($_POST['promotion']) || empty($_POST['debut']) || empty($_POST['fin']) || empty($_POST['rabais']) ){
 		  header('Location: sign.php?addpromotion=empty');
 	}else{

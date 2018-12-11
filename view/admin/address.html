@@ -52,19 +52,17 @@
                 </div>
                 <p>
                     <input type="submit" value="submit">
-                    <a class="btn btn-primary" href="listproduit.php" role="button">return</a>
+                    <a class="btn btn-primary" href="homepage.php" role="button">return</a>
                 </p>  
             </form>
 
-          <? if (isset($_GET['result'])):   ?>
+            <? if (isset($_GET['result'])):   ?>
             <div class="alert alert-info" role="alert">
               ERROR :  
                         <? echo $_GET['result']; ?>
               
             </div>
-             <?php endif; ?>
-            
-           
+             <?php endif; ?>  
         </div>
     </div>
     <footer>

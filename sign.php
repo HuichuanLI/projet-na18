@@ -1,12 +1,4 @@
 <?php
-/***
-*index.php front-page
-*
-*@author huichuan.li
-*@link https://github.com/HuichuanLI
-*@since 2018.6
-*@copyright Gpl
-*/
 require('./lib/init.php');
 date_default_timezone_set("Europe/Paris");
 if(empty($_POST)) {
@@ -15,6 +7,7 @@ if(empty($_POST)) {
 	if(empty($_POST['login']) || empty($_POST['nom']) || empty($_POST['prénom']) || empty($_POST['mail']) || empty($_POST['password1'])){
 		  header('Location: sign.php?result=empty');
 	}
+
 	$login = $_POST['login'];
 	$nom = $_POST['nom'];
 	$prenom = $_POST['prénom'];
@@ -32,6 +25,7 @@ if(empty($_POST)) {
 	}else{
 		$is_admin = 'false';
 	}
+	
 	$sql = "INSERT INTO public.utilisateur(
 	 login, mdp, nom, prénom, mail, date_creation_compte, est_admin, est_paye) VALUES ('$login','$password','$nom','$prenom','$mail','$date_crea',$is_admin,'$panier_paye')";
 
