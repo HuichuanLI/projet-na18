@@ -13,7 +13,7 @@
 <body>
     <header>
         <h1><a href ="index.php">Accueil</a></h1>
-        <h4> <?php echo $_SESSION['login'];?></h4>
+        <h4> <?php echo $_SESSION['login']; ?></h4>
     </header>
 
     <div id="main">
@@ -28,7 +28,7 @@
               </ul>
           </aside>
           <aside id="admin" style="display: none">
-              <input type="text" id="typeuser" value="<?php echo $admin;?>" style="display: none">
+              <input type="text" id="typeuser" value="<?php echo $admin; ?>" style="display: none">
               <h4>Adminstration</h4>
               <ul>
                  <li><a href="listuser.php">List of users</a></li>
@@ -43,7 +43,7 @@
           </aside>
 
           <aside id="vendeur" style="display: none">
-              <input type="text" id="isvendeur" value="<?php echo $vendeur;?>" style="display: none">
+              <input type="text" id="isvendeur" value="<?php echo $vendeur; ?>" style="display: none">
               <h4>Vendeur</h4>
               <ul>
                  <li><a href="listannonce.php">Gestion des annonces</a></li>
@@ -55,9 +55,8 @@
 
         </div>
 
-
-
         <div id="rside">
+             <?php if ($row != NULL) {?>
             <table  class="table">
                 <tr>
                     <td>ref produit</td>
@@ -70,17 +69,18 @@
                     <td>nom promo</td>
                     <td>url photo</td>
                 </tr>
-                 <?php foreach($row as $value) {?>
+
+                 <?php foreach ($row as $value) {?>
                 <tr>
-                   <td><?php echo $value['ref_produit'];?></td>
-                   <td><?php echo $value['nom_produit'];?></td>
-                   <td><?php echo $value['description'];?></td>
-                   <td><?php echo $value['etat_produit'];?></td>
-                   <td><?php echo $value['categorie_produit'];?></td>
-                   <td><?php echo $value['marque'];?></td>
-                   <td><?php echo $value['prix'];?></td>
-                   <td><?php echo $value['nom_promo'];?></td>
-                   <td><?php echo $value['url_photo'];?></td>
+                   <td><?php echo $value['ref_produit']; ?></td>
+                   <td><?php echo $value['nom_produit']; ?></td>
+                   <td><?php echo $value['description']; ?></td>
+                   <td><?php echo $value['etat_produit']; ?></td>
+                   <td><?php echo $value['categorie_produit']; ?></td>
+                   <td><?php echo $value['marque']; ?></td>
+                   <td><?php echo $value['prix']; ?></td>
+                   <td><?php echo $value['nom_promo']; ?></td>
+                   <td><?php echo $value['url_photo']; ?></td>
                 </tr>
                 <?php }?>
             </table>
@@ -93,19 +93,22 @@
                 <a href="#">5</a>
                 <a href="#">6</a>
             </div>
+              <?php } else {?>
+                  <p id = "aucunprod">  <?php echo
+                          "  Il n'y actuellement aucun commandes faites"; ?></p>
+                <?php }?>
+
         </div>
     </div>
-
-      <? if (isset($_GET['result'])):   ?>
-                <div class="alert alert-info" role="alert">
-                  information :
-                            <? echo $_GET['result']; ?>
-
-                </div>
-            <?php endif; ?>
+      <?if (isset($_GET['result'])): ?>
+        <div class="alert alert-info" role="alert">
+          information :
+            <?echo $_GET['result']; ?>
+        </div>
+      <?php endif;?>
 
     <footer>
-        Copyright &copy; 2018 · LI Huichuan  · Vladi Mur· Ma Nar   
+        Copyright &copy; 2018 · LI Huichuan  · Vladi Mur· Ma Nar
 
     </footer>
 </body>

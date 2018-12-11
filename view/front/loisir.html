@@ -21,53 +21,61 @@
       <h1>Marketplace</h1></header>
       <nav>
         <ul id="ulnav">
-          <?php if(empty($_SESSION['login'])) { ?>
+          <?php
+if (empty($_SESSION['login'])) { ?>
               <li><a href="log.php">Se connecter</a></li>
-            <?php }else { ?>
+            <?php
+} else { ?>
 
-             <li><a href="homepage.php"> Mon compte : <?php echo $_SESSION['login']; ?> </a></li>
-             <?php } ?>
+             <li><a href="homepage.php"> Mon compte : <?php
+    echo $_SESSION['login']; ?> </a></li>
+             <?php
+} ?>
              <li><a href="index.php"> Retour à l'accueil </a></li>
           </ul>
         </nav>
 
         <div id="main">
           <div class="row " id="lside">
-
-
-             <?php if ($row!=NULL){?>
+             <?php
+if ($row != NULL) { ?>
                <?php
-              foreach($row as $value) {?>
+    foreach ($row as $value) { ?>
 
 
                   <div class="card col-xs-6 pull-right" id="cb" style="width:400px">
                     <img class="card-img-top" src="img_avatar1.png" alt="Card image">
 
                     <div class="card-body">
-                      <h4 class="card-title">Nom : <?php echo $value['nom_produit']; ?></h4>
-                      <p class="card-text">Référence produit : <?php echo $value['ref_produit'];?></p>
-                      <p class="card-text"> Description : <?php echo $value['description'];?></p>
-                      <p class="card-text">État du produit : <?php echo $value['etat_produit'];?></p>
-                      <p class="card-text">Prix : <?php echo $value['prix'];?>€</p>
-                      <p class="card-text"> Marque : <?php echo $value['marque'];?></p>
-                      <p class="card-text">Référence annonce : <?php echo $value['ref_annonce'];?></p>
-                      <p class="card-text">Date de mise en ligne : <?php echo $value['date_mise_en_ligne'];?></p>
-                      <p class="card-text">Vendeur : <?php echo $value['login_vendeur'];?></p>
+                      <h4 class="card-title">Nom : <?php
+        echo $value['nom_produit']; ?></h4>
+                      <p class="card-text">Référence produit : <?php
+        echo $value['ref_produit']; ?></p>
+                      <p class="card-text"> Description : <?php
+        echo $value['description']; ?></p>
+                      <p class="card-text">État du produit : <?php
+        echo $value['etat_produit']; ?></p>
+                      <p class="card-text">Prix : <?php
+        echo $value['prix']; ?>€</p>
+                      <p class="card-text"> Marque : <?php
+        echo $value['marque']; ?></p>
+                      <p class="card-text">Référence annonce : <?php
+        echo $value['ref_annonce']; ?></p>
+                      <p class="card-text">Date de mise en ligne : <?php
+        echo $value['date_mise_en_ligne']; ?></p>
+                      <p class="card-text">Vendeur : <?php
+        echo $value['login_vendeur']; ?></p>
                     </div>
                   </div>
-                <?php }?>
+                <?php
+    } ?>
 
-              <?php }else{ ?>
-
-                  <p id = "aucunprod">  <?php echo "  Il n'y actuellement aucun produit dans cette catégorie";?></p>
-
-                <?php }?>
-
-
-
-
-
-
+              <?php
+} else { ?>
+                <p id = "aucunprod">  <?php
+    echo "  Il n'y actuellement aucun produit dans cette catégorie"; ?></p>
+              <?php
+} ?>
             </div>
             <div id="rside">
 
@@ -82,11 +90,9 @@
 
                 </form>
                 </aside>
-
               </div>
+            </div>
+          <footer>Copyright &copy; 2018 · LI Huichuan  · Vladi Mur· Ma Nar</footer>
+        </body>
+  </html>
 
-                          </div>
-                          <footer>Copyright &copy; 2018 · LI Huichuan  · Vladi Mur· Ma Nar   
-</footer></body>
-
-                          </html>

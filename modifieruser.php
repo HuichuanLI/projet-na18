@@ -1,12 +1,4 @@
 <?php
-/***
-*index.php front-page
-*
-*@author huichuan.li
-*@link https://github.com/HuichuanLI
-*@since 2018.6
-*@copyright Gpl
-*/
 
 require('./lib/init.php');
 date_default_timezone_set("Europe/Paris");
@@ -74,12 +66,6 @@ date_default_timezone_set("Europe/Paris");
 			$value["typeuser"] = "vendeur";
 		}
 	}
-
-
-
-
-
-
 
 require(ROOT . '/view/admin/modifieruser.html');
 
