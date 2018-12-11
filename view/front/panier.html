@@ -68,13 +68,15 @@
               <legend>Achat : </legend>
             Rentrez la référence du produit que vous voulez acheter : <br><br>
             <input type="text" name="achat" placeholder="ex : A1382">
+            Quantité :
+            <input type="number" name="ach">
             <input type="submit" value="Acheter">
           </fieldset>
           <fieldset>
             <legend>Supprimer : </legend>
             <input type="text" name="supp" placeholder="ex : A1382">
             <input type="submit" value="Supprimer"> <br><br>
-            
+
           </fieldset>
           </form>
         </aside>
@@ -93,11 +95,12 @@
         }?>
         <h4><?php echo "Solde" ?> : <?php echo $solde ?> <?php echo "€" ?></h4>
         <h4>  <?php echo "Nombre d'article" ?> : <?php echo $nb ?></h4>
+
       <?php  } ?>
 
 
     </div>
-    <footer>Copyright &copy; 2018 · LI Huichuan  · Vladi Mur· Ma Nar   
+    <footer>Copyright &copy; 2018 · LI Huichuan  · Vladi Mur· Ma Nar
 </footer></body>
 
     </html>

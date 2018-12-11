@@ -100,7 +100,9 @@
                     </p>
                     <form method=post action="index.php">
                        <input type="text" name="buy" value="<?php echo $value[ 'ref_produit'];?>" style="display: none">
-                       <input class="btn btn-primary" type="submit" value="Ajouter dans pannier"> 
+                       Quantité :
+                         <input type="number" name="qt" required> <br><br>
+                       <input class="btn btn-primary" type="submit" value="Ajouter dans pannier" >
                     </form>
                     <br/>
                     <a class="btn btn-primary" href="index.php" role="button">return</a>

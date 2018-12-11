@@ -40,7 +40,7 @@
 
 
                   <div class="card col-xs-6 pull-right" id="cb" style="width:400px">
-                    <img class="card-img-top" src="img_avatar1.png" alt="Card image">
+                    <img class="card-img-top" src="<?php echo $value['url_photo']; ?>"  alt="Card image"/>
 
                     <div class="card-body">
                       <h4 class="card-title">Nom : <?php echo $value['nom_produit']; ?></h4>
@@ -70,6 +70,7 @@
                   <fieldset>
                     <legend>Ajout au panier : </legend>
                   Rentrez la référence du produit que vous voulez rajouter au panier : <br><br>
+                
                   <input type="text" name = "buy" placeholder="ex : A1382">
                   <input type="submit" value="Panier">
                 </fieldset>
@@ -80,7 +81,7 @@
               </div>
 
                           </div>
-                          <footer>Copyright &copy; 2018 · LI Huichuan  · Vladi Mur· Ma Nar   
+                          <footer>Copyright &copy; 2018 · LI Huichuan  · Vladi Mur· Ma Nar
 </footer></body>
 
                           </html>

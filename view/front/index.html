@@ -47,7 +47,7 @@
                       <p class="card-text">Référence annonce : <?php echo $value['ref_annonce'];?></p>
                       <p class="card-text">Date de mise en ligne : <?php echo $value['date_mise_en_ligne'];?></p>
                       <p class="card-text">Vendeur : <?php echo $value['login_vendeur'];?></p>
-                      <a href="annonce.php?ref_produit=<?php echo $value['ref_produit'];?>">>details<</a>
+                      <a href="annonce.php?ref_produit=<?php echo $value['ref_produit'];?>">>Détail de l'annonce<</a>
                     </div>
                   </div>
 
@@ -64,14 +64,14 @@
                     <legend>Ajout au panier : </legend>
                   Rentrez la référence du produit que vous voulez rajouter au panier : <br><br>
 
-                         Ref produit :
+                         Référence produit :
                 <select name="buy"  id="buy" class="form-control">
                     <?php foreach($result as $value) {?>
                         <option value="<?php echo $value['ref_produit'];?>" ><?php echo $value['ref_produit'];?>-<?php echo $value['nom_produit'];?> </option>
                     <?php }?>
                 </select>
                 Quantité :
-                <input type="number" name="qt" size="1"> <br><br>
+                <input type="number" name="qt" required> <br><br>
                   <input type="submit" value="Panier">
                 </fieldset>
 
@@ -98,7 +98,7 @@
                               </aside>
                             </div>
                           </div>
-                          <footer>Copyright &copy; 2018 · LI Huichuan  · Vladi Mur· Ma Nar   
+                          <footer>Copyright &copy; 2018 · LI Huichuan  · Vladi Mur· Ma Nar
 
 
 
