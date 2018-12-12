@@ -20,8 +20,6 @@ if(isset($_GET['categorie'])){
 }else{
     $sql = "SELECT * FROM produit, annonce WHERE produit.ref_produit = annonce.ref_produit";
     $row = mQuery($sql);
-
-
     $sql = "SELECT ref_produit,nom_produit FROM public.produit";
     $listproduit  = mQuery($sql);
 
