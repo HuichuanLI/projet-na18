@@ -14,7 +14,8 @@ if(empty($_SESSION['login'])){
 $vSql = "SELECT * FROM public.utilisateur   WHERE utilisateur.login = '".$_SESSION['login']."'";
 $value = mQuery($vSql)[0];
 
-$vSql = "SELECT * FROM public.utilisateur,public.vendeur WHERE vendeur.login = utilisateur.login AND utilisateur.login = '".$_SESSION['login']."' ";
+$vSql = "SELECT * FROM public.utilisateur LEFT JOIN public.vendeur ON vendeur.login = utilisateur.login WHERE utilisateur.login = '".$_SESSION['login']."' ";
+
 $value = array_merge($value,mQuery($vSql)[0]);
 
 

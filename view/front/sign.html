@@ -76,13 +76,13 @@
 
 
 
-                <? if (isset($_GET['result'])):   ?>
+                <? if (isset($_GET['result'])){   ?>
                 <div class="alert alert-danger" role="alert">
                   ERROR :
-                            <? echo $_GET['result']; ?>
+                            <? echo $_GET['result']; }?>
 
                 </div>
-                 <?php endif; ?>
+
                 <input type="submit" value="submit">
                  <a class="btn btn-primary" href="log.php" role="button">return</a>
             </p>

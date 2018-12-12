@@ -11,7 +11,7 @@
 </head>
 <body>
     <header>
-        <a href="homepage.php"><h2>Retour panneau de configuration</h2></a>
+        <a href="homepage.php"><h1>Accueil</h1></a>
         <h4> <?php echo $_SESSION['login'];?></h1>
     </header>
 
@@ -90,13 +90,13 @@
                 <?php }?>
             </table>
 
-            <? if (isset($_GET['result'])):   ?>
+            <? if (isset($_GET['result'])){   ?>
                 <div class="alert alert-info" role="alert">
                   ERROR :
-                            <? echo $_GET['result']; ?>
+                            <? echo $_GET['result']; } ?>
 
                 </div>
-                 <?php endif; ?>
+
             <div id="pagebar">
                 <!-- Pages:&nbsp;
                 <a href="#">1</a>

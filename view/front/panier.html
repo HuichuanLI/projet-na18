@@ -22,11 +22,12 @@
     <nav>
       <ul id="ulnav">
         <?php if(empty($_SESSION['login'])) { ?>
-          <li><a href="log.php">Se connecter</a></li>
-        <?php }else { ?>
+            <li><a href="log.php">Se connecter</a></li>
+          <?php }else { ?>
 
-          <li><a href="homepage.php"> Mon compte : <?php echo $_SESSION['login']; ?> </a></li>
-        <?php } ?>
+           <li><a href="homepage.php"> Mon compte : <?php echo $_SESSION['login']; ?> </a></li>
+
+           <?php } ?>
         <li><a href="index.php"> Retour à l'accueil </a></li>
       </ul>
     </nav>
@@ -42,10 +43,9 @@
                   <td>Prix</td>
                   <td>Quantité</td>
               </tr>
-          <?php
-          foreach($row as $value) {?>
+          <?php foreach($row as $value) {?>
             <tr>
-              <td><?php echo $value['ref_produit'];?></td>
+               <td><?php echo $value['ref_produit'];?></td>
                <td><?php echo $value['nom_produit'];?></td>
                <td><?php echo $value['etat_produit'];?></td>
                <td><?php echo $value['prix'];?></td>
@@ -94,12 +94,7 @@
 
           </fieldset>
           </form>
-            <?if (isset($_GET['result'])): ?>
-                <div class="alert alert-info" role="alert">
-                  information :
-                    <?echo $_GET['result']; ?>
-                </div>
-      <?php endif;?>
+
 
         </aside>
 
