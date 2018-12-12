@@ -1,106 +1,78 @@
 <?php
 require('./lib/init.php');
 session_start();
-
-
 if(!empty($_SESSION['login'])){
-
   $login = $_SESSION['login'];
-
-
-
   $sql = "SELECT * FROM produit_est_dans_le_panier, produit
   WHERE produit.ref_produit = produit_est_dans_le_panier.ref_produit
   AND produit_est_dans_le_panier.login = '$login'";
   $row = mQuery($sql);
+  $listproduit = $row;
 
 
+  // ACHETE ACTION
+  if(isset($_POST['achat'])){
+    $sql = "SELECT * FROM produit_est_dans_le_panier WHERE ref_produit = '".$_POST['achat']."' AND produit_est_dans_le_panier.login = '$login'";
+    $result = mQuery($sql);
+    $qtoriginal = $result[0]["quantite"];
+    if((int)$_POST['ach']<= (int)$qtoriginal){
 
-
-
-  if(isset($_POST['achat']) && isset($_POST['supp'])){
-
-    $refProd = $_POST['achat'];
-    $supp = $_POST['supp'];
-
-    if(isset($_POST['ach'])){
-      $qt = $_POST['ach'];
-    }
-
-    if(isset($_POST['spr'])){
-      $qtsupr = $_POST['spr'];
-    }
-
-    //quantite panier
-    $Quant = "SELECT quantite FROM produit_est_dans_le_panier
-    WHERE ref_produit = '$refProd'";
-    $qt_panier = mQuery($Quant)[0];
-
-
-    $sql3 = "SELECT quantite FROM UTILISATEUR_ACHETE_PRODUIT
-    WHERE ref_produit = '$refProd'";
-    $qt_achat = mQuery($sql3)[0];
-    var_dump($qt_achat);
-
-
-var_dump($qt <= $qt_panier && $qt_achat['quantite'] == NULL);
-
-    if ($qt <= $qt_panier && $qt_achat['quantite'] == NULL){
-      $sql2 = "INSERT INTO UTILISATEUR_ACHETE_PRODUIT VALUES
-      ('$refProd', '$login','$qt')";
-      $result = mExec($sql2);
-    }
-
-    if( empty($_POST["ach"]) && (int)$qt <= (int)$qt_panier ){
-      $update_valeur_panier = $qt_panier['quantite'] - $qt;
-      $update_valeur_table_achat = $qt_achat['quantite'] + $qt;
-
-
-      $updtSql =  "UPDATE produit_est_dans_le_panier
-      SET quantite = $update_valeur_panier
-      WHERE ref_produit = '$refProd'";
-      $result = mExec($updtSql);
-
-      $updtSql2 =  "UPDATE UTILISATEUR_ACHETE_PRODUIT
-      SET quantite = $update_valeur_table_achat
-      WHERE ref_produit = '$refProd'";
-      $result = mExec($updtSql2);
-
-      if($update_valeur_panier == 0) {
-        $delSql = "DELETE FROM produit_est_dans_le_panier
-        WHERE ref_produit = '$refProd'";
-        $vretour = mExec($delSql);
-        header('Location: panier.php');
+      $qt_mainteant = $qtoriginal - (int)$_POST['ach'];
+      if($qt_mainteant == 0){
+        $sql = "DELETE FROM public.produit_est_dans_le_panier WHERE ref_produit = '".$_POST['achat']."' AND produit_est_dans_le_panier.login = '$login'";
+        $result = mExec($sql);
+      }else{
+        $sql = "UPDATE public.produit_est_dans_le_panier SET  quantite= $qt_mainteant WHERE ref_produit = '".$_POST['achat']."' AND produit_est_dans_le_panier.login = '$login'";
+        $result = mExec($sql);
       }
-      header('Location: panier.php');
+
+      #achete action dans la table de utilisateur_achete_produit
+
+      $sql = "SELECT * FROM public.utilisateur_achete_produit WHERE  ref_produit = '".$_POST['achat']."' AND login = '$login'";
+      $result = mQuery($sql);
+
+     // quand il a deja achat
+     if($result == null){
+        $sql = "INSERT INTO public.utilisateur_achete_produit(ref_produit, login, quantite) VALUES ('".$_POST['achat']."','$login' , ".$_POST['ach']."); ";
+        $result = mExec($sql);
+     }else{
+        $achete = (int)$result[0]['quantite'] + (int)$_POST['ach'];
+        $sql = "UPDATE public.utilisateur_achete_produit SET  quantite= ".$achete."  WHERE ref_produit = '".$_POST['achat']."' AND login = '$login'";
+        $result = mExec($sql);
+     }
+
+    header('Location: homepage.php?result=achete avec succes');
+    }else{
+       header('Location: panier.php?result=error');
     }
-
-
-
-
-
-//a fixer
-    //form delete
-    if(isset($_POST['spr'])){
-      $suppr_val = (int)$qt_panier['quantite'] - (int)$qtsupr;
-      $sqldel = "UPDATE produit_est_dans_le_panier
-      SET quantite = $suppr_val
-      WHERE ref_produit = '$supp'";
-      $vretour2 = mExec($sqldel);
-      header('Location: panier.php');
-
-      if($suppr_val == 0){
-        $sqldel = "DELETE FROM produit_est_dans_le_panier
-        WHERE ref_produit = '$supp'";
-        $vretour2 = mExec($sqldel);
-      }
-    }
-
-
   }
 
+  //SUPPRIMER ACTION
+  if(isset($_POST['supp'])){
+    $sql = "SELECT * FROM produit_est_dans_le_panier WHERE ref_produit = '".$_POST['supp']."' AND produit_est_dans_le_panier.login = '$login'";
+    $result = mQuery($sql);
+    $qtoriginal = $result[0]["quantite"];
+      $qtoriginal = $result[0]["quantite"];
+      $supnum = (int)$_POST["supnum"];
+      if((int)$qtoriginal < (int)$supnum){
+          header('Location: panier.php?result=error');
+      }else{
+          $qt_mainteant  = (int)$qtoriginal - (int)$supnum;
+         if($qt_mainteant == 0){
+            $sql = "DELETE FROM public.produit_est_dans_le_panier WHERE ref_produit = '".$_POST['supp']."' AND produit_est_dans_le_panier.login = '$login'";
+            $result = mExec($sql);
+          }else{
+            $sql = "UPDATE public.produit_est_dans_le_panier SET  quantite= $qt_mainteant WHERE ref_produit = '".$_POST['supp']."' AND produit_est_dans_le_panier.login = '$login'";
+            $result = mExec($sql);
+          }
+          if($result == "true"){
+               header('Location: panier.php');
+          }
+      }
+  }
+
+}else{
+  header('Location: login.php?result=please login');
 }
-
 include(ROOT . '/view/front/panier.html');
-
 ?>

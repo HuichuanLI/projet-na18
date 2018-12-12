@@ -22,7 +22,7 @@
 </head>
 <body>
     <header>
-        <h1>Information</h1>
+        <a href="index.php"><h1>Accueil</h1></a>
     </header>
     <div id="main">
         <div id="respond" class="comment-respond">
@@ -45,7 +45,7 @@
                 <input id="usertype" value="<?php echo $value['typeuser'];?>" style="display: none;">
 
                 Type of user :
-                <select name="typeuser"  id="typeuser" class="form-control" onchange="getval(this);">
+                <select name="typeuser"  id="typeuser" class="form-control" onchange="getval(this);" disabled="disabled">
                   <option value="admin" >admin</option>
                   <option value="vendeur">vendeur</option>
                   <option value="acheteur" selected="selected">acheteur</option>
@@ -64,8 +64,17 @@
 
 
 
+
+
                 <input type="submit" value="submit">
-                <a class="btn btn-primary" href="homepage.php" role="button">Retour</a>
+                <a class="btn btn-primary" href="homepage.php" role="button">return</a>
+                <?if (isset($_GET['result'])): ?>
+                <div class="alert alert-info" role="alert">
+                  information :
+                    <?echo $_GET['result']; ?>
+                </div>
+              <?php endif;?>
+
 
             </p>
             </form>

@@ -60,15 +60,15 @@
         <div id="rside">
             <table  class="table">
                 <tr>
-                    <td>ref produit</td>
-                    <td>nom produit</td>
+                    <td>reférence du produit</td>
+                    <td>nom du produit</td>
                     <td>description</td>
-                    <td>etat produit</td>
-                    <td>categorie produit</td>
+                    <td>état du produit</td>
+                    <td>catégorie du produit</td>
                     <td>marque</td>
                     <td>prix</td>
-                    <td>nom promo</td>
-                    <td>url photo</td>
+                    <td>nom de la promotion</td>
+      
                 </tr>
                  <?php foreach($row as $value) {?>
                 <tr>
@@ -80,7 +80,7 @@
                    <td><?php echo $value['marque'];?></td>
                    <td><?php echo $value['prix'];?></td>
                    <td><?php echo $value['nom_promo'];?></td>
-                   <td><?php echo $value['url_photo'];?></td>
+
                 </tr>
                 <?php }?>
             </table>

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -66,30 +65,42 @@
           <form method = post action = "panier.php">
             <fieldset>
               <legend>Achat : </legend>
-
             Rentrez la référence du produit que vous voulez acheter : <br><br>
             <select name="achat"  id="achat" class="form-control">
-                      <?php foreach($row as $value) {?>
-                          <option value="<?php echo $value['ref_produit'];?>" ><?php echo $value['ref_produit'];?>-<?php echo $value['nom_produit'];?> </option>
-                      <?php }?>
-              </select>
+                    <?php foreach($listproduit as $value) {?>
+                        <option value="<?php echo $value['ref_produit'];?>" ><?php echo $value['ref_produit'];?>-<?php echo $value['nom_produit'];?> </option>
+                    <?php }?>
+            </select>
+
             Quantité :
-            <input type="number" name="ach" min = 0><br><br>
+            <input type="number" name="ach" min=0>
             <input type="submit" value="Acheter">
           </fieldset>
+
+
+          </form>
+          <form method = post action = "panier.php">
           <fieldset>
             <legend>Supprimer : </legend>
+
             <select name="supp"  id="supp" class="form-control">
-                      <?php foreach($row as $value) {?>
-                          <option value="<?php echo $value['ref_produit'];?>" ><?php echo $value['ref_produit'];?>-<?php echo $value['nom_produit'];?> </option>
-                      <?php }?>
-              </select>
-            Quantité :
-            <input type="number" name="spr" min = 0><br><br>
+                    <?php foreach($listproduit as $value) {?>
+                        <option value="<?php echo $value['ref_produit'];?>" ><?php echo $value['ref_produit'];?>-<?php echo $value['nom_produit'];?> </option>
+                    <?php }?>
+            </select>
+            <input type="number" name="supnum" min=0>
+
             <input type="submit" value="Supprimer"> <br><br>
 
           </fieldset>
           </form>
+            <?if (isset($_GET['result'])): ?>
+                <div class="alert alert-info" role="alert">
+                  information :
+                    <?echo $_GET['result']; ?>
+                </div>
+      <?php endif;?>
+
         </aside>
 
       </div>
@@ -108,6 +119,7 @@
         <h4>  <?php echo "Nombre d'article" ?> : <?php echo $nb ?></h4>
 
       <?php  } ?>
+
 
 
     </div>
