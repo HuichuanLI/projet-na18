@@ -21,23 +21,23 @@
           <aside>
               <h4>Panneau utilisateur</h4>
               <ul>
-                  <li><a href="information.php">Gestion information</a></li>
-                  <li><a href="address.php">Votre address</a></li>
-                  <li><a href="modify.php">Modify the password</a></li>
-                  <li><a href="logout.php">Log out</a></li>
+                  <li><a href="information.php">Gestion des informations</a></li>
+                  <li><a href="address.php">Adresse</a></li>
+                  <li><a href="modify.php">Modifier le mot de passe</a></li>
+                  <li><a href="logout.php">Se déconnecter</a></li>
               </ul>
           </aside>
           <aside id="admin" style="display: none">
               <input type="text" id="typeuser" value="<?php echo $admin;?>" style="display: none">
-              <h4>Adminstration</h4>
+              <h4>Administration</h4>
               <ul>
-                 <li><a href="listuser.php">List of users</a></li>
+                 <li><a href="listuser.php">Gestionnaire d'utilisateur</a></li>
               </ul>
               <ul>
-                 <li><a href="listpromotion.php">List of promotion</a></li>
+                 <li><a href="listpromotion.php">Gestionnaire des promotions</a></li>
               </ul>
               <ul>
-                 <li><a href="listproduit.php">List of produits</a></li>
+                 <li><a href="listproduit.php">Liste des produits disponibles</a></li>
               </ul>
 
           </aside>
@@ -46,7 +46,7 @@
               <input type="text" id="isvendeur" value="<?php echo $vendeur;?>" style="display: none">
               <h4>Vendeur</h4>
               <ul>
-                 <li><a href="listannonce.php">Gestion des annonces</a></li>
+                 <li><a href="listannonce.php">Gestionnaire annonces</a></li>
               </ul>
                <ul>
                  <li><a href="listsoldes.php">Produits vendus</a></li>
@@ -85,13 +85,13 @@
                 <?php }?>
             </table>
             <div id="pagebar">
-                Pages:&nbsp;
+                <!-- Pages:&nbsp;
                 <a href="#">1</a>
                 <a href="#">2</a>
                 <a href="#">3</a>
                 <a href="#">4</a>
                 <a href="#">5</a>
-                <a href="#">6</a>
+                <a href="#">6</a> -->
             </div>
         </div>
     </div>
@@ -105,7 +105,7 @@
             <?php endif; ?>
 
     <footer>
-        Copyright &copy; 2018 · LI Huichuan  · Vladi Mur· Ma Nar   
+        Copyright &copy; 2018 · LI Huichuan  · Vladi Mur· Ma Nar
 
     </footer>
 </body>

@@ -38,7 +38,7 @@
               <ul>
                  <li><a href="listproduit.php">List of produits</a></li>
               </ul>
-              
+
           </aside>
           <aside id="vendeur" style="display: none">
               <input type="text" id="isvendeur" value="<?php echo $vendeur;?>" style="display: none">
@@ -52,7 +52,7 @@
           </aside>
 
 
-          
+
         </div>
 
 
@@ -67,7 +67,7 @@
                     <td>Mail</td>
                     <td>Date de creation</td>
                     <td>pannier</td>
-                    <td>Paye</td> 
+                    <td>Paye</td>
                     <td>Modifier</td>
                 </tr>
                  <?php foreach($row as $value) {?>
@@ -92,24 +92,24 @@
 
             <? if (isset($_GET['result'])):   ?>
                 <div class="alert alert-danger" role="alert">
-                  ERROR :  
+                  ERROR :
                             <? echo $_GET['result']; ?>
-                  
+
                 </div>
                  <?php endif; ?>
             <div id="pagebar">
-                Pages:&nbsp;
+                <!-- Pages:&nbsp;
                 <a href="#">1</a>
                 <a href="#">2</a>
                 <a href="#">3</a>
                 4
                 <a href="#">5</a>
-                <a href="#">6</a>
+                <a href="#">6</a> -->
             </div>
         </div>
     </div>
     <footer>
-        Copyright &copy; 2018 · LI Huichuan  · Vladi Mur· Ma Nar   
+        Copyright &copy; 2018 · LI Huichuan  · Vladi Mur· Ma Nar
 
     </footer>
 </body>

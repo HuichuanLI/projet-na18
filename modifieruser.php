@@ -14,7 +14,7 @@ date_default_timezone_set("Europe/Paris");
 
 	session_start();
 	if(isset($_POST['login'])){
-		// submit to change the information of user 
+		// submit to change the information of user
 		if(isset($_POST['nom'])){
 			if($_POST['typeuser'] == "admin"){
 				$admin = 'true';
@@ -30,31 +30,33 @@ date_default_timezone_set("Europe/Paris");
 			if($vendeur == 'true'){
 				$updatesql = "UPDATE public.vendeur SET description='".$_POST['description']."', siret='".$_POST['siret']."', nom_magasin='".$_POST['magasin']."' WHERE login = '".$_POST['login']."';";
 				$row = mQuery($updatesql);
-			}	
+			}
 		}
 
 		if(isset($_POST['delete'])){
 
 			if($_POST['login'] != $_SESSION['login']){
 
-				$sql = "DELETE  FROM public.utilisateur_consulte_annonce WHERE ref_annonce IN ( select utilisateur_consulte_annonce.ref_annonce from utilisateur_consulte_annonce ,annonce where utilisateur_consulte_annonce.ref_annonce = annonce.ref_annonce  and  annonce.login_vendeur ='".$_POST['login']."') ;";	
-				var_dump($sql);
-				$row = mExec($sql);
-					
-				$sql = "DELETE FROM public.annonce WHERE annonce.login_vendeur ='".$_POST['login']."';";
-				$row = mExec($sql);
-				
-				$sql = "DELETE FROM public.vendeur WHERE vendeur.login = '".$_POST['login']."';";
-				$row = mExec($sql);
-				$sql = "DELETE FROM public.utilisateur WHERE utilisateur.login = '".$_POST['login']."';";
-				$row = mExec($sql);
-				$sql = "DELETE FROM public.adresse WHERE login = '".$_POST['login']."';";
-				$row = mExec($sql);
-				$sql = "DELETE FROM public.utilisateur_consulte_annonce WHERE login = '".$_POST['login']."';";
-				$row = mExec($sql);
-				$sql = "DELETE FROM public.utilisateur_achete_produit WHERE login = '".$_POST['login']."';";
-				$row = mExec($sql);	
-				header('Location: listuser.php?result=avec success');				
+				$sql1 = "DELETE  FROM public.utilisateur_consulte_annonce WHERE ref_annonce IN ( select utilisateur_consulte_annonce.ref_annonce from utilisateur_consulte_annonce ,annonce where utilisateur_consulte_annonce.ref_annonce = annonce.ref_annonce  and  annonce.login_vendeur ='".$_POST['login']."') ;";
+
+				$row1 = mExec($sql1);
+
+				$sql2 = "DELETE FROM public.annonce WHERE annonce.login_vendeur ='".$_POST['login']."';";
+				$row2 = mExec($sql2);
+
+				$sql3 = "DELETE FROM public.vendeur WHERE vendeur.login = '".$_POST['login']."';";
+				$row3 = mExec($sql3);
+				$sql4 = "DELETE FROM public.utilisateur WHERE utilisateur.login = '".$_POST['login']."';";
+				$row4 = mExec($sql4);
+				$sql5 = "DELETE FROM public.adresse WHERE login = '".$_POST['login']."';";
+				$row5 = mExec($sql5);
+				$sql6 = "DELETE FROM public.utilisateur_consulte_annonce WHERE login = '".$_POST['login']."';";
+				$row6 = mExec($sql6);
+				$sql7 = "DELETE FROM public.utilisateur_achete_produit WHERE login = '".$_POST['login']."';";
+				$row7 = mExec($sql7);
+				$sql8 = "DELETE FROM public.produit_est_dans_le_panier WHERE login = '".$_POST['login']."';";
+				$row8 = mExec($sql7);
+				header('Location: listuser.php?result=avec success');
 
 			}else{
 

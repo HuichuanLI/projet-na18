@@ -66,15 +66,26 @@
           <form method = post action = "panier.php">
             <fieldset>
               <legend>Achat : </legend>
+
             Rentrez la référence du produit que vous voulez acheter : <br><br>
-            <input type="text" name="achat" placeholder="ex : A1382">
+            <select name="achat"  id="achat" class="form-control">
+                      <?php foreach($row as $value) {?>
+                          <option value="<?php echo $value['ref_produit'];?>" ><?php echo $value['ref_produit'];?>-<?php echo $value['nom_produit'];?> </option>
+                      <?php }?>
+              </select>
             Quantité :
-            <input type="number" name="ach">
+            <input type="number" name="ach" min = 0><br><br>
             <input type="submit" value="Acheter">
           </fieldset>
           <fieldset>
             <legend>Supprimer : </legend>
-            <input type="text" name="supp" placeholder="ex : A1382">
+            <select name="supp"  id="supp" class="form-control">
+                      <?php foreach($row as $value) {?>
+                          <option value="<?php echo $value['ref_produit'];?>" ><?php echo $value['ref_produit'];?>-<?php echo $value['nom_produit'];?> </option>
+                      <?php }?>
+              </select>
+            Quantité :
+            <input type="number" name="spr" min = 0><br><br>
             <input type="submit" value="Supprimer"> <br><br>
 
           </fieldset>

@@ -26,14 +26,43 @@ if(empty($_POST)) {
 	if(empty($_POST['Ref_annonce']) || empty($_POST['debut']) || empty($_POST['ref_produit'])){
 		header('Location: addannonce.php');
 	}
-	$sql ="INSERT INTO public.annonce(ref_annonce, date_mise_en_ligne, ref_produit, login_vendeur)VALUES ('".$_POST['Ref_annonce']."','".$_POST['debut']."','".$_POST['ref_produit']."' ,'".$_SESSION['login']."');";
-	$result = mExec($sql);
-	if($result == "true"){
-		header('Location: listannonce.php');	
+
+  $nomp = $_POST['Pnom'];
+  $marque = $_POST['Pmarque'];
+  $description = $_POST['Pdes'];
+  $etat = $_POST['Petat'];
+  $prix = $_POST['Pprix'];
+  $nomp = $_POST['Pnom'];
+  $cat = $_POST['Pcat'];
+  $url = $_POST['Purl'];
+  $ref = $_POST['ref_produit'];
+
+
+  $sql="INSERT INTO produit (ref_produit, nom_produit, description, etat_produit, marque, prix, categorie_produit, url_photo)
+  VALUES ('$ref','$nomp','$description','$etat','$marque','$prix','$cat','$url')";
+  $result = mExec($sql);
+
+
+
+  if($result == "true"){
+    header('Location: listannonce.php');
+  }else{
+    header('Location: listannonce.php?result=problème ajout produit');
+  }
+
+
+	$sql2 ="INSERT INTO public.annonce(ref_annonce, date_mise_en_ligne, ref_produit, login_vendeur)VALUES ('".$_POST['Ref_annonce']."','".$_POST['debut']."','$ref' ,'".$_SESSION['login']."');";
+	$result2 = mExec($sql2);
+
+
+
+
+	if($result2 == "true"){
+		header('Location: listannonce.php');
 	}else{
 		header('Location: listannonce.php?result=problem');
 	}
-	
+
 }
 
 ?>

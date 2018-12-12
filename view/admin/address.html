@@ -18,12 +18,13 @@
     </style>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-   
-  
+
+
 </head>
 <body>
+
     <header>
-        <a href="index.php"><h1>Backend</h1></a>
+        <a href="index.php"><h1>Retour accueil</h1></a>
     </header>
     <div id="main">
         <div id="respond" class="comment-respond">
@@ -35,7 +36,7 @@
                     <p>
                     cp(5) : <input placeholder="cp" name="cp" type="text" value="<?php echo $address['cp'];?>" size="30" maxlength="5">
                     </p>
-                    type_voie :  
+                    type_voie :
                     <input type="text" id="typevoie" style="display: none" value="<?php echo $address['type_voie'];?>">
                     <select name="type_voie"  id="type_voie" class="form-control" >
                                   <option value="rue" >rue</option>
@@ -53,27 +54,25 @@
                 <p>
                     <input type="submit" value="submit">
                     <a class="btn btn-primary" href="listproduit.php" role="button">return</a>
-                </p>  
+                </p>
             </form>
 
           <? if (isset($_GET['result'])):   ?>
             <div class="alert alert-info" role="alert">
-              ERROR :  
+              ERROR :
                         <? echo $_GET['result']; ?>
-              
+
             </div>
              <?php endif; ?>
-            
-           
+
+
         </div>
     </div>
     <footer>
-        Copyright &copy; 2018 · LI Huichuan  · Vladi Mur· Ma Nar   
+        Copyright &copy; 2018 · LI Huichuan  · Vladi Mur· Ma Nar
 
     </footer>
 
 </body>
   <script type="text/javascript" src = "./script/address.js"></script>
 </html>
-
-

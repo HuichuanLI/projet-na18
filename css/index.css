@@ -16,21 +16,25 @@
         height: 156px;
         padding: 40px 0px;
         box-sizing:border-box;
+
     }
 
     header h1,header h4{
         width: 1100px;
         margin:0 auto;
+
     }
 
     header h1 {
         font: 45px/56px '微软雅黑','黑体',sans-serif;
+
     }
 
     header h4{
         color: #999999;
         font: 19px/20px '新宋体','宋体',serif;
     }
+
 
     nav {
         background: #222;

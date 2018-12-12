@@ -1,96 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Add annonce</title>
-    <link rel="stylesheet" type="text/css" media="screen"
-     href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
+  <meta charset="UTF-8">
+  <title>Add annonce</title>
+  <link rel="stylesheet" type="text/css" media="screen"
+  href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    
-    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
-  
-    <script type="text/javascript"
-     src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
-    </script>
-    <script type="text/javascript"
-     src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
-    </script>
+  <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 
-    <link rel="stylesheet" href="./css/reset.css">
-    <link rel="stylesheet" href="./css/index.css">
-    <link rel="stylesheet" href="./css/art.css">
 
-    <style>
-    form {
+  <script type="text/javascript"
+  src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
+  </script>
+  <script type="text/javascript"
+  src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
+  </script>
+
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/index.css">
+  <link rel="stylesheet" href="./css/art.css">
+
+  <style>
+  form {
     width:30%;
     margin:0 auto;
-    }
-    </style>
+  }
+  </style>
 
 
-  
+
 </head>
 <body>
-    <header>
-        <a href="index.php"><h1>Backend</h1></a>
-    </header>
-    <div id="main">
-        <div id="respond" class="comment-respond">
-            <form action="#" method="post">
-                <p>
-                Ref annonce : 
-                <div>
-                    <input placeholder="Ref annonce" name="Ref annonce" type="text" value="" size="30"  >
-                </div>
-                </p>
+  <header>
+    <a href="index.php"><h1>Backend</h1></a>
+  </header>
+  <div id="main">
+    <div id="respond" class="comment-respond">
+      <form action="addannonce.php" method="post">
+        <p>
+          Reférence de l'annonce :
+          <div>
+            <input placeholder="Ex :#323883.."  name="Ref_annonce" pattern = "^#([0-9]+)$" type="text" value="" size="30"  >
+          </div>
+        </p>
 
-                <p>
-                Date mise en ligne : 
-                <div class="datetimepicker" >
-                    <input placeholder="debut"  data-format="yyyy-MM-dd" type="text" name="debut" value=""   ></input>
-                    <span class="add-on">
-                        <i class="fas fa-calendar-alt"></i>
-                        </i>
-                    </span>
-                </div>
-                </p>
-
-                Ref produit : 
-                <select name="ref_produit"  id="ref_produit" class="form-control">
-                    <?php foreach($result as $value) {?>
-                        <option value="<?php echo $value['ref_produit'];?>" ><?php echo $value['ref_produit'];?>-<?php echo $value['nom_produit'];?> </option>
-                    <?php }?>
-                </select>
-
-                    
-                
-                </p>
-              
-                
-                <p>
-                    <input type="submit" value="submit">
-                    <a class="btn btn-primary" href="listannonce.php" role="button">return</a>
-                </p>
-
-            
-           
-            
-              </form>
+        <p>
+          Date mise en ligne :
+          <div class="datetimepicker" >
+            <input placeholder="debut"  data-format="yyyy-MM-dd" type="text" name="debut" value=""></input>
+            <span class="add-on">
+              <i class="fas fa-calendar-alt"></i>
+            </i>
+          </span>
         </div>
-    </div>
-    <footer>
-        Copyright &copy; 2018 · LI Huichuan  · Vladi Mur· Ma Nar   
+      </p>
 
-    </footer>
+      Référence produit :
+      <input type="text" name="ref_produit" pattern="^[A-Z]([0-9]+)$" id="ref_produit" class="form-control" placeholder="Ex : X2323..">
+    </p>
+    Nom du produit :
+    <p><input type="text" name="Pnom"class="form-control"</p>
+    Description du produit :
+    <p><input type="text" name="Pdes"class="form-control"</p>
+    Etat du produit :
+    <p><select name="Petat"class="form-control"</p>
+      <option>bon
+        <option>moyen
+          <option>mauvais
+          </select>
+          Marque :
+          <p><input type="text" name="Pmarque"class="form-control"</p>
+          Prix :
+          <p><input type="text" name="Pprix"class="form-control"</p>
+          Catégorie du produit:
+          <p><select name="Pcat"class="form-control"</p>
+            <option>décoration
+              <option>mobilier
+                <option>loisir
+                  <option>création
+                    <option>librairie
+                      <option>mode
+                        <option>  high-tech
+                        </select>
+                        URL :
+                        <p><input type="text" placeholder="img/lien.format" pattern="^(img)/[A-Za-z]+\.([A-Za-z]{3})$" name="Purl"class="form-control"</p>
+                        <p>
+                          <input type="submit" value="submit">
+                          <a class="btn btn-primary" href="listannonce.php" role="button">return</a>
+                        </p>
 
-</body>
+                      </form>
+                    </div>
+                  </div>
+                  <footer>
+                    Copyright &copy; 2018 · LI Huichuan  · Vladi Mur· Ma Nar
 
-  <script type="text/javascript" src = "./script/modifierpromotion.js"></script>
-</html>
+                  </footer>
 
+                </body>
 
+                <script type="text/javascript" src = "./script/modifierpromotion.js"></script>
+                </html>
