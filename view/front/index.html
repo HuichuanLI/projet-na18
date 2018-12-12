@@ -76,28 +76,20 @@
                 <aside>
                   <h4>Categorie</h4>
                   <ul>
-                    <a href="index.php">
-                      <li>Déco</li></a>
-                      <a href="mobilier.php">
-                        <li>Mobilier</li></a>
-                        <a href="loisir.php">
-                          <li>Loisir</li></a>
-                          <a href="creation.php">
-                            <li>Création</li></a>
-                            <a href="librairie.php">
-                              <li>Librairie</li></a>
-                              <a href="mode.php">
-                                <li>Mode</li></a>
-                                <a href="high-tech.php">
-                                  <li>High-Tech</li></a>
-                                </ul>
-                              </aside>
-                            </div>
-                          </div>
-                          <footer>Copyright &copy; 2018 · LI Huichuan  · Vladi Mur· Ma Nar   
+                    <?php
+                      foreach($categories as $value) {?>
+                    <a href="index.php?categorie=<?php echo $value['categorie_produit'];?>">
+                      <li><?php echo $value['categorie_produit'];?></li></a>
+
+                    <?php }?>
+                    </ul>
+                </aside>
+                </div>
+              </div>
+              <footer>Copyright &copy; 2018 · LI Huichuan  · Vladi Mur· Ma Nar   
 
 
 
-                          </footer></body>
+                  </footer></body>
 
-                          </html>
+                  </html>

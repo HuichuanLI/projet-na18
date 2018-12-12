@@ -8,13 +8,29 @@ require('./lib/init.php');
 session_start();
 
 //requête pour récupérer les produits à afficher avec l'annonce qui correspont
-$sql = "SELECT * FROM produit, annonce WHERE produit.ref_produit = annonce.ref_produit";
-$row = mQuery($sql);
 
 
-$sql = "SELECT ref_produit,nom_produit FROM public.produit";
-$listproduit  = mQuery($sql);
+if(isset($_GET['categorie'])){
+    $categorie = $_GET['categorie'];   
+    $sql = "SELECT * FROM produit, annonce WHERE produit.ref_produit = annonce.ref_produit and produit.categorie_produit ='".$categorie."';";
+    $row = mQuery($sql);
+    $sql = "SELECT ref_produit,nom_produit FROM public.produit where produit.categorie_produit ='".$categorie."';";
+    $listproduit  = mQuery($sql);
 
+}else{
+    $sql = "SELECT * FROM produit, annonce WHERE produit.ref_produit = annonce.ref_produit";
+    $row = mQuery($sql);
+
+
+    $sql = "SELECT ref_produit,nom_produit FROM public.produit";
+    $listproduit  = mQuery($sql);
+
+}
+
+
+$sql = "SELECT distinct categorie_produit FROM produit;";
+
+$categories = mQuery($sql);
 
 //requête qui gère l'achat
 
