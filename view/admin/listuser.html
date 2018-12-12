@@ -1,117 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Backend</title>
-    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="./css/reset.css">
-    <link rel="stylesheet" href="./css/adm.css">
+  <meta charset="UTF-8">
+  <title>Backend</title>
+  <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/adm.css">
 </head>
 <body>
-    <header>
-        <h1>Backend</h1>
-        <h4> <?php echo $_SESSION['login'];?></h1>
+  <header>
+    <h1>Liste des utilisateurs</h1>
+    <h4> <?php echo $_SESSION['login'];?></h1>
     </header>
 
     <div id="main">
-        <div id="lside">
-          <aside>
-              <h4>Personal Center</h4>
-              <ul>
-                  <li><a href="information.php">Gestion information</a></li>
-                  <li><a href="address.php">Votre address</a></li>
-                  <li><a href="modify.php">Modify the password</a></li>
-                  <li><a href="logout.php">Log out</a></li>
-              </ul>
-          </aside>
-          <aside id="admin" style="display: none">
-              <input type="text" id="typeuser" value="<?php echo $admin;?>" style="display: none">
-              <h4>Adminstration</h4>
-              <ul>
-                 <li><a href="listuser.php">List of users</a></li>
-              </ul>
-               <ul>
-                 <li><a href="listpromotion.php">List of promotion</a></li>
-              </ul>
-              <ul>
-                 <li><a href="listproduit.php">List of produits</a></li>
-              </ul>
+      <div id="lside">
+        <aside>
+          <h4>Panneau utilisateur</h4>
+          <ul>
+            <li><a href="information.php">Gestionnaire des informations</a></li>
+            <li><a href="address.php">Adresse</a></li>
+            <li><a href="modify.php">Modifier le mot de passe</a></li>
+            <li><a href="logout.php">Se déconnecter</a></li>
+          </ul>
+        </aside>
+        <aside id="admin" style="display: none">
+          <input type="text" id="typeuser" value="<?php echo $admin;?>" style="display: none">
+          <h4>Adminstration</h4>
+          <ul>
+            <li><a href="listuser.php">Gestionnaire des utilisateurs</a></li>
+          </ul>
+          <ul>
+            <li><a href="listpromotion.php">Gestionnaire des promotions</a></li>
+          </ul>
+          <ul>
+            <li><a href="listproduit.php">Liste des produits disponibles</a></li>
+          </ul>
 
-          </aside>
-          <aside id="vendeur" style="display: none">
-              <input type="text" id="isvendeur" value="<?php echo $vendeur;?>" style="display: none">
-              <h4>Vendeur</h4>
-              <ul>
-                 <li><a href="listannonce.php">List of annonce</a></li>
-              </ul>
-               <ul>
-                 <li><a href="listsoldes.php">List of produits sold</a></li>
-              </ul>
-          </aside>
+        </aside>
+        <aside id="vendeur" style="display: none">
+          <input type="text" id="isvendeur" value="<?php echo $vendeur;?>" style="display: none">
+          <h4>Vendeur</h4>
+          <ul>
+            <li><a href="listannonce.php">Gestionnaire des annonces</a></li>
+          </ul>
+          <ul>
+            <li><a href="listsoldes.php">Lise des produits vendus</a></li>
+          </ul>
+        </aside>
 
 
+
+      </div>
+
+
+
+      <div id="rside">
+        <table  class="table">
+          <tr>
+            <td>Login</td>
+            <td>Password</td>
+            <td>Nom</td>
+            <td>Prénom</td>
+            <td>Mail</td>
+            <td>Date de creation</td>
+            <td>pannier</td>
+            <td>Paye</td>
+            <td>Modifier</td>
+          </tr>
+          <?php foreach($row as $value) {?>
+            <tr>
+              <td><?php echo $value['login'];?></td>
+              <td><?php echo $value['mdp'];?></td>
+              <td><?php echo $value['nom'];?></td>
+              <td><?php echo $value['prénom'];?></td>
+              <td><?php echo $value['mail'];?></td>
+              <td><?php echo $value['date_creation_compte'];?></td>
+              <td><?php echo $value['num_panier'];?></td>
+              <td><?php echo $value['est_paye'];?></td>
+              <td>
+                <form action="modifieruser.php" method="post" id="modify<?php echo $value['login'];?>">
+                  <input type="text" name="login" value="<?php echo $value['login'];?>"  style="display: none"></input>
+                  <input class="btn btn-primary" type="submit" value="Modifier">
+                </form>
+              </td>
+            </tr>
+          <?php }?>
+        </table>
+
+        <? if (isset($_GET['result'])):   ?>
+        <div class="alert alert-danger" role="alert">
+          ERROR :
+          <? echo $_GET['result']; ?>
 
         </div>
-
-
-
-        <div id="rside">
-            <table  class="table">
-                <tr>
-                    <td>Login</td>
-                    <td>Password</td>
-                    <td>Nom</td>
-                    <td>Prénom</td>
-                    <td>Mail</td>
-                    <td>Date de creation</td>
-                    <td>pannier</td>
-                    <td>Paye</td>
-                    <td>Modifier</td>
-                </tr>
-                 <?php foreach($row as $value) {?>
-                <tr>
-                   <td><?php echo $value['login'];?></td>
-                   <td><?php echo $value['mdp'];?></td>
-                   <td><?php echo $value['nom'];?></td>
-                   <td><?php echo $value['prénom'];?></td>
-                   <td><?php echo $value['mail'];?></td>
-                   <td><?php echo $value['date_creation_compte'];?></td>
-                   <td><?php echo $value['num_panier'];?></td>
-                   <td><?php echo $value['est_paye'];?></td>
-                   <td>
-                   <form action="modifieruser.php" method="post" id="modify<?php echo $value['login'];?>">
-                      <input type="text" name="login" value="<?php echo $value['login'];?>"  style="display: none"></input>
-                      <input class="btn btn-primary" type="submit" value="Modifier">
-                   </form>
-                  </td>
-                </tr>
-                <?php }?>
-            </table>
-
-            <? if (isset($_GET['result'])):   ?>
-                <div class="alert alert-danger" role="alert">
-                  ERROR :
-                            <? echo $_GET['result']; ?>
-
-                </div>
-                 <?php endif; ?>
-            <div id="pagebar">
-                <!-- Pages:&nbsp;
-                <a href="#">1</a>
-                <a href="#">2</a>
-                <a href="#">3</a>
-                4
-                <a href="#">5</a>
-                <a href="#">6</a> -->
-            </div>
-        </div>
+      <?php endif; ?>
+      <div id="pagebar">
+        <!-- Pages:&nbsp;
+        <a href="#">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        4
+        <a href="#">5</a>
+        <a href="#">6</a> -->
+      </div>
     </div>
-    <footer>
-        Copyright &copy; 2018 · LI Huichuan  · Vladi Mur· Ma Nar
+  </div>
+  <footer>
+    Copyright &copy; 2018 · LI Huichuan  · Vladi Mur· Ma Nar
 
-    </footer>
+  </footer>
 </body>
 <script type="text/javascript" src = "./script/homepage.js"></script>
 </html>

@@ -13,7 +13,7 @@
 <body>
     <header>
         <h1><a href ="index.php">Accueil</a></h1>
-        <h4> <?php echo $_SESSION['login'];?></h4>
+        <h4> <?php echo $_SESSION['login']; ?></h4>
     </header>
 
     <div id="main">
@@ -21,17 +21,17 @@
           <aside>
               <h4>Panneau utilisateur</h4>
               <ul>
-                  <li><a href="information.php">Gestion des informations</a></li>
+                  <li><a href="information.php">Gestionnaire des informations</a></li>
                   <li><a href="address.php">Adresse</a></li>
                   <li><a href="modify.php">Modifier le mot de passe</a></li>
                   <li><a href="logout.php">Se déconnecter</a></li>
               </ul>
           </aside>
           <aside id="admin" style="display: none">
-              <input type="text" id="typeuser" value="<?php echo $admin;?>" style="display: none">
-              <h4>Administration</h4>
+              <input type="text" id="typeuser" value="<?php echo $admin; ?>" style="display: none">
+              <h4>Adminstration</h4>
               <ul>
-                 <li><a href="listuser.php">Gestionnaire d'utilisateur</a></li>
+                 <li><a href="listuser.php">Gestionnaire des utilisateurs</a></li>
               </ul>
               <ul>
                  <li><a href="listpromotion.php">Gestionnaire des promotions</a></li>
@@ -43,10 +43,10 @@
           </aside>
 
           <aside id="vendeur" style="display: none">
-              <input type="text" id="isvendeur" value="<?php echo $vendeur;?>" style="display: none">
+              <input type="text" id="isvendeur" value="<?php echo $vendeur; ?>" style="display: none">
               <h4>Vendeur</h4>
               <ul>
-                 <li><a href="listannonce.php">Gestionnaire annonces</a></li>
+                 <li><a href="listannonce.php">Gestion des annonces</a></li>
               </ul>
                <ul>
                  <li><a href="listsoldes.php">Produits vendus</a></li>
@@ -55,32 +55,33 @@
 
         </div>
 
-
-
         <div id="rside">
+             <?php if ($row != NULL) {?>
             <table  class="table">
+                Liste des produit achetés :
                 <tr>
-                    <td>reférence du produit</td>
-                    <td>nom du produit</td>
-                    <td>description</td>
-                    <td>état du produit</td>
-                    <td>catégorie du produit</td>
-                    <td>marque</td>
-                    <td>prix</td>
-                    <td>nom de la promotion</td>
-      
+                    <td>Référence du produit</td>
+                    <td>Nom du produit</td>
+                    <td>Description</td>
+                    <td>Etat du produit</td>
+                    <td>Categorie produit</td>
+                    <td>Marque</td>
+                    <td>Prix</td>
+                    <td>Nom de la promotion</td>
+                    <td>Quantité</td>
                 </tr>
-                 <?php foreach($row as $value) {?>
-                <tr>
-                   <td><?php echo $value['ref_produit'];?></td>
-                   <td><?php echo $value['nom_produit'];?></td>
-                   <td><?php echo $value['description'];?></td>
-                   <td><?php echo $value['etat_produit'];?></td>
-                   <td><?php echo $value['categorie_produit'];?></td>
-                   <td><?php echo $value['marque'];?></td>
-                   <td><?php echo $value['prix'];?></td>
-                   <td><?php echo $value['nom_promo'];?></td>
 
+                 <?php foreach ($row as $value) {?>
+                <tr>
+                   <td><?php echo $value['ref_produit']; ?></td>
+                   <td><?php echo $value['nom_produit']; ?></td>
+                   <td><?php echo $value['description']; ?></td>
+                   <td><?php echo $value['etat_produit']; ?></td>
+                   <td><?php echo $value['categorie_produit']; ?></td>
+                   <td><?php echo $value['marque']; ?></td>
+                   <td><?php echo $value['prix']; ?></td>
+                   <td><?php echo $value['nom_promo']; ?></td>
+                   <td><?php echo $value['quantite']; ?></td>
                 </tr>
                 <?php }?>
             </table>
@@ -93,16 +94,19 @@
                 <a href="#">5</a>
                 <a href="#">6</a> -->
             </div>
+              <?php } else {?>
+                  <p id = "aucunprod">  <?php echo
+                          "Vous n'avez acheté aucun produit pour l'instant"; ?></p>
+                <?php }?>
+
         </div>
     </div>
-
-      <? if (isset($_GET['result'])):   ?>
-                <div class="alert alert-info" role="alert">
-                  information :
-                            <? echo $_GET['result']; ?>
-
-                </div>
-            <?php endif; ?>
+      <?if (isset($_GET['result'])): ?>
+        <div class="alert alert-info" role="alert">
+          information :
+            <?echo $_GET['result']; ?>
+        </div>
+      <?php endif;?>
 
     <footer>
         Copyright &copy; 2018 · LI Huichuan  · Vladi Mur· Ma Nar

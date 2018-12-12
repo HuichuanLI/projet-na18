@@ -58,6 +58,7 @@
 
 
         <div id="rside">
+           <?php if ($row != NULL) {?>
             <table  class="table">
                 <tr>
                     <td>Ref annonce</td>
@@ -92,6 +93,11 @@
                 <a href="#">5</a>
                 <a href="#">6</a> -->
             </div>
+
+          <?php } else {?>
+              <p id = "aucunprod">  <?php echo
+                      "Vous n'avez vendu aucun produit pour l'instant"; ?></p>
+            <?php }?>
         </div>
     </div>
     <footer>
