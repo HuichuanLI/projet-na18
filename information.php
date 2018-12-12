@@ -11,8 +11,11 @@ if(empty($_SESSION['login'])){
   header('Location: log.php');
 }
 
-$vSql = "SELECT * FROM public.utilisateur  WHERE utilisateur.login = '".$_SESSION['login']."'";
+$vSql = "SELECT * FROM public.utilisateur   WHERE utilisateur.login = '".$_SESSION['login']."'";
 $value = mQuery($vSql)[0];
+
+$vSql = "SELECT * FROM public.utilisateur,public.vendeur WHERE vendeur.login = utilisateur.login AND utilisateur.login = '".$_SESSION['login']."' ";
+$value = array_merge($value,mQuery($vSql)[0]);
 
 
 if(empty($value["description"])){
@@ -27,6 +30,23 @@ if(empty($value["description"])){
 	}
 }else{
 	$value["typeuser"] = "vendeur";
+}
+
+if(isset($_POST['login'])){
+
+	$sql = "UPDATE public.utilisateur SET mdp='".$_POST['password1']."', nom='".$_POST['nom']."', prénom='".$_POST['prenom']."' WHERE login='".$_POST['login']."';";
+	$result = mExec($sql);
+	if($value["typeuser"] == "vendeur"){
+		$sql = "UPDATE public.vendeur SET  description='".$_POST['description']."', siret='".$_POST['siret']."', nom_magasin='".$_POST['magasin']."' WHERE login='".$_POST['login']."';";
+		$result = mExec($sql);
+	}
+	if($result == true){
+		header('Location: information.php?result=avec success');	
+	}else{
+		header('Location: information.php?result=non success');
+	}
+	
+
 }
 
 if(empty($_POST)) {

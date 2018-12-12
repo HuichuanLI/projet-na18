@@ -13,18 +13,31 @@ $row = mQuery($sql);
 
 
 $sql = "SELECT ref_produit,nom_produit FROM public.produit";
-$result  = mQuery($sql);
+$listproduit  = mQuery($sql);
+
+
 //requête qui gère l'achat
 
   if (isset($_POST['buy'])){
     $reprod = $_POST['buy'];
     $login_acheteur = $_SESSION['login'];
-    $qt = $_POST['qt'];
+    $qt = $_POST['qt'];	
 
-    $sql2 = "INSERT INTO produit_est_dans_le_panier VALUES
-    ('$reprod','$login_acheteur','$qt')";
+    $sql = "SELECT * FROM public.produit_est_dans_le_panier where ref_produit = '".$reprod."' and login = '".$login_acheteur."';";
+    $result = mQuery($sql);
 
-    $result = mExec($sql2);
+    if($result == null){
+    	$insertsql = "INSERT INTO produit_est_dans_le_panier VALUES ('$reprod','$login_acheteur','$qt')";
+    	$result = mExec($insertsql);
+    }else{
+    	$qt = $result[0]["quantite"] + $qt;
+    	$updatesql = "UPDATE public.produit_est_dans_le_panier SET quantite='$qt' WHERE ref_produit = '".$reprod."' and login = '".$login_acheteur."';";
+    	$result = mExec($updatesql);
+    }
+    if($result == "true"){
+    	header('Location: panier.php');
+    }
+    
   }
 
 

@@ -38,16 +38,13 @@
                   <div class="card col-5 pull-right" id="cb" >
                     <img class="card-img-top" src="<?php echo $value['url_photo']; ?>"  alt="Card image"/>
                     <div class="card-body">
-                      <h4 class="card-title">Nom : <?php echo $value['nom_produit']; ?></h4>
+                      <h4 class="card-title"> <a href="annonce.php?ref_produit=<?php echo $value['ref_produit'];?>"><?php echo $value['nom_produit']; ?></a></h4>
                       <p class="card-text">Référence produit : <?php echo $value['ref_produit'];?></p>
-                      <p class="card-text"> Description : <?php echo $value['description'];?></p>
-                      <p class="card-text">État du produit : <?php echo $value['etat_produit'];?></p>
                       <p class="card-text">Prix : <?php echo $value['prix'];?>€</p>
                       <p class="card-text"> Marque : <?php echo $value['marque'];?></p>
                       <p class="card-text">Référence annonce : <?php echo $value['ref_annonce'];?></p>
                       <p class="card-text">Date de mise en ligne : <?php echo $value['date_mise_en_ligne'];?></p>
                       <p class="card-text">Vendeur : <?php echo $value['login_vendeur'];?></p>
-                      <a href="annonce.php?ref_produit=<?php echo $value['ref_produit'];?>">>details<</a>
                     </div>
                   </div>
 
@@ -63,10 +60,9 @@
                   <fieldset>
                     <legend>Ajout au panier : </legend>
                   Rentrez la référence du produit que vous voulez rajouter au panier : <br><br>
-
                          Ref produit :
                 <select name="buy"  id="buy" class="form-control">
-                    <?php foreach($result as $value) {?>
+                    <?php foreach($listproduit as $value) {?>
                         <option value="<?php echo $value['ref_produit'];?>" ><?php echo $value['ref_produit'];?>-<?php echo $value['nom_produit'];?> </option>
                     <?php }?>
                 </select>
@@ -80,7 +76,7 @@
                 <aside>
                   <h4>Categorie</h4>
                   <ul>
-                    <a href="deco.php">
+                    <a href="index.php">
                       <li>Déco</li></a>
                       <a href="mobilier.php">
                         <li>Mobilier</li></a>

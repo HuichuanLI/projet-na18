@@ -66,9 +66,8 @@
             <fieldset>
               <legend>Achat : </legend>
             Rentrez la référence du produit que vous voulez acheter : <br><br>
-            <input type="text" name="achat" placeholder="ex : A1382">
             <select name="achat"  id="achat" class="form-control">
-                    <?php foreach($result as $value) {?>
+                    <?php foreach($listproduit as $value) {?>
                         <option value="<?php echo $value['ref_produit'];?>" ><?php echo $value['ref_produit'];?>-<?php echo $value['nom_produit'];?> </option>
                     <?php }?>
             </select>
@@ -77,19 +76,31 @@
             <input type="number" name="ach" min=0>
             <input type="submit" value="Acheter">
           </fieldset>
+
+
+          </form>
+          <form method = post action = "panier.php">
           <fieldset>
             <legend>Supprimer : </legend>
+
             <select name="supp"  id="supp" class="form-control">
-                    <?php foreach($result as $value) {?>
+                    <?php foreach($listproduit as $value) {?>
                         <option value="<?php echo $value['ref_produit'];?>" ><?php echo $value['ref_produit'];?>-<?php echo $value['nom_produit'];?> </option>
                     <?php }?>
             </select>
-
+            <input type="number" name="supnum" min=0>
           
             <input type="submit" value="Supprimer"> <br><br>
 
           </fieldset>
           </form>
+            <?if (isset($_GET['result'])): ?>
+                <div class="alert alert-info" role="alert">
+                  information :
+                    <?echo $_GET['result']; ?>
+                </div>
+      <?php endif;?>
+
         </aside>
 
       </div>
@@ -109,6 +120,7 @@
 
       <?php  } ?>
 
+      
 
     </div>
     <footer>Copyright &copy; 2018 · LI Huichuan  · Vladi Mur· Ma Nar
