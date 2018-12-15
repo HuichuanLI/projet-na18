@@ -63,30 +63,31 @@
         <div id="rside">
              <?php if ($row != NULL) {?>
             <table  class="table">
-                Liste des produit achetés :
+                Liste des commandes à traiter :
                 <tr>
-                    <td>Référence du produit</td>
-                    <td>Nom du produit</td>
-                    <td>Description</td>
-                    <td>Etat du produit</td>
-                    <td>Categorie produit</td>
-                    <td>Marque</td>
-                    <td>Prix</td>
-                    <td>Nom de la promotion</td>
-                    <td>Quantité</td>
+                    <td>Ref Produit</td>
+                    <td>Ref annonce</td>
+                    <td>Num commande</td>
+                    <td>Quantite</td>
+                    <td>Date commande</td>
+                    <td>acheteur</td>
                 </tr>
 
                  <?php foreach ($row as $value) {?>
                 <tr>
                    <td><?php echo $value['ref_produit']; ?></td>
-                   <td><?php echo $value['nom_produit']; ?></td>
-                   <td><?php echo $value['description']; ?></td>
-                   <td><?php echo $value['etat_produit']; ?></td>
-                   <td><?php echo $value['categorie_produit']; ?></td>
-                   <td><?php echo $value['marque']; ?></td>
-                   <td><?php echo $value['prix']; ?></td>
-                   <td><?php echo $value['nom_promo']; ?></td>
+                   <td><?php echo $value['ref_annonce']; ?></td>
+                   <td><?php echo $value['num_commande']; ?></td>
                    <td><?php echo $value['quantite']; ?></td>
+                   <td><?php echo $value['date_commande']; ?></td>
+                   <td><?php echo $value['login']; ?></td>
+                   <td>
+                   <form action="#" method="post" id="livre<?php echo $value['ref_annonce'];?>">
+                          <input type="text" name="livre"   style="display: none"></input>
+                          <input type="text" name="num_commande" value="<?php echo $value['num_commande'];?>"  style="display: none"></input>
+                          <input class="btn btn-primary" type="submit" value="livré">
+                    </form>
+                     </td>
                 </tr>
                 <?php }?>
             </table>

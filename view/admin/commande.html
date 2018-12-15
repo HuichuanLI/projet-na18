@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Projet de Na18</title>
+  <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/index.css"></head>
+  <link rel="stylesheet" href="./css/commande.css"></head>
+
+
+  <body>
+    <header>
+     <h1><a href="index.php">Marketplace</a></h1>
+    </header>
+
+
+      <div class="container">
+            <div class="row bs-wizard" style="border-bottom:0;">
+                <div class="col-xs-3 bs-wizard-step complete">
+                  <div class="text-center bs-wizard-stepnum">Achetée</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center">Vous deja avaz acheté ce produit en <?php echo $result['date_commande'];?>. Passez le comande au vendeur.</div>
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step disabled" id="expe" style="border-bottom:0;"><!-- complete -->
+                  <div class="text-center bs-wizard-stepnum">Expédiée</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center">Vendeur a deja expédiée ton produit. </div>
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step disabled" id="livre" style="border-bottom:0;"><!-- complete -->
+                  <div class="text-center bs-wizard-stepnum">Livrée</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center">Ce produit est déjà livré. Vous avez les reçu.</div>
+                </div>
+                
+            </div>
+      </div>
+
+      <input   id="status" style="display: none" value="<?php echo $result['statut_commande'];?>"></input>
+    <div id="main">
+      
+      <form action="#" method="post" >
+        <input type="" name="recu" value="true" style="display: none"> </input>
+        <button class="btn btn-primary" type="submit" style="float: right;" id="recu">bien reçu</button>  
+      </form>
+
+      <div class="row " id="lside">
+       
+        <?php if ($row!=NULL){?>
+          <table class ="table table-hover table-fixed" id ="tablep">
+            <thead>
+              <tr>
+                  <td>ref_produit </td>
+                  <td>nom_produit</td>
+                  <td>etat_produit</td>
+                  <td>marque</td>
+                  <td>categorie_produit</td>
+                  <td>prix</td>
+                  <td>quantite</td>
+              </tr>
+            </thead>
+          <?php foreach($row as $value) {?>
+            <tr>
+               <td><?php echo $value['ref_produit'];?></td>
+               <td><?php echo $value['nom_produit'];?></td>
+               <td><?php echo $value['etat_produit'];?></td>
+               <td><?php echo $value['marque'];?></td>
+               <td><?php echo $value['categorie_produit'];?></td>
+                <td><?php echo $value['prix'];?></td>
+               <td><?php echo $value['quantite']?></td>
+            </tr>
+          <?php }?>
+
+        <?php }else{ ?>
+          <p id = "aucunprod">  <?php echo "  Le panier est vide...";?></p>
+        <?php }?>
+
+         <?php if(empty($row)) {?>
+        <tr>
+          <td ><?php echo "Solde" ?> : <?php echo 0 ?> <?php echo "€" ?></td>
+        </tr>
+        <tr>
+          <td>  <?php echo "Nombre d'article" ?> : <?php echo "0" ?></td>
+        </tr>
+      <?php } else {?>
+        <?php $solde = 0;
+        $nb = 0;
+
+        foreach ($row as $value) {
+          $solde = $solde + $value['prix'] * $value['quantite'];
+          $nb = $nb + 1 * $value['quantite'];
+        }?>
+        <tr>
+          <td><?php echo "Solde" ?> : <?php echo $solde ?> <?php echo "€<br/>" ?></td>
+          
+        </tr>
+        <tr>
+          <td>  <?php echo "Nombre d'article" ?> : <?php echo $nb ?></td>
+        </tr>
+      <?php  } ?>
+      </table>
+     
+    </div>
+    <a class="btn btn-primary" href="listecommandes.php" role="button"  align="right">return</a>
+      
+    </div>
+
+    <script type="text/javascript" src = "./script/commande.js"></script>
+   
+    <footer>Copyright &copy; 2018 · LI Huichuan  · Vladi Mur· Ma Nar
+</footer></body>
+
+    </html>

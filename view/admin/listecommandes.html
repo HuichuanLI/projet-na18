@@ -1,24 +1,26 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Backend</title>
+    <title>Panneau de configuration</title>
     <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/adm.css">
+
 </head>
 <body>
     <header>
-        <a href ="index.php"><h1> Accueil</h1></a>
-        <h4> <?php echo $_SESSION['login'];?></h1>
+        <h1><a href ="index.php">Accueil</a></h1>
+        <h4> <?php echo $_SESSION['login']; ?></h4>
     </header>
 
     <div id="main">
         <div id="lside">
           <aside>
-              <h4>Personal Center</h4>
+              <h4>Panneau utilisateur</h4>
               <ul>
                   <li><a href="listecommandes.php">Gestionnaire des commandes</a></li>
                   <li><a href="information.php">Gestionnaire des informations</a></li>
@@ -28,24 +30,25 @@
               </ul>
           </aside>
           <aside id="admin" style="display: none">
-              <input type="text" id="typeuser" value="<?php echo $admin;?>" style="display: none">
+              <input type="text" id="typeuser" value="<?php echo $admin; ?>" style="display: none">
               <h4>Adminstration</h4>
               <ul>
                  <li><a href="listuser.php">Gestionnaire des utilisateurs</a></li>
               </ul>
-               <ul>
+              <ul>
                  <li><a href="listpromotion.php">Gestionnaire des promotions</a></li>
               </ul>
               <ul>
-                 <li><a href="listproduit.php">Gestionnaire des produits</a></li>
+                 <li><a href="listproduit.php">Liste des produits disponibles</a></li>
               </ul>
 
           </aside>
-           <aside id="vendeur" style="display: none">
-              <input type="text" id="isvendeur" value="<?php echo $vendeur;?>" style="display: none">
+
+          <aside id="vendeur" style="display: none">
+              <input type="text" id="isvendeur" value="<?php echo $vendeur; ?>" style="display: none">
               <h4>Vendeur</h4>
               <ul>
-                 <li><a href="listannonce.php">Gestionnaire des annonces</a></li>
+                 <li><a href="listannonce.php">Gestion des annonces</a></li>
               </ul>
                <ul>
                  <li><a href="listsoldes.php">Produits vendus</a></li>
@@ -55,55 +58,50 @@
               </ul>
           </aside>
 
-
         </div>
 
-
-
         <div id="rside">
-           <table  class="table">
+             <?php if ($row != NULL) {?>
+            <table  class="table">
+                Liste des commandes :
                 <tr>
-                    <td>ref annonce</td>
-                    <td>date mise en ligne</td>
-                    <td>ref produit</td>
+                    <td>Num commandes</td>
+                    <td>date commande</td>
+                    <td>status</td>
                 </tr>
-                 <?php foreach($row as $value) {?>
+
+                 <?php foreach ($row as $value) {?>
                 <tr>
-                   <td><?php echo $value['ref_annonce'];?></td>
-                   <td><?php echo $value['date_mise_en_ligne'];?></td>
-                   <td><?php echo $value['ref_produit'];?></td>
-                    <td>
-                        <form action="#" method="post" id="delete<?php echo $value['ref_annonce'];?>">
-                          <input type="text" name="delete"   style="display: none"></input>
-                          <input type="text" name="ref_annonce" value="<?php echo $value['ref_annonce'];?>"  style="display: none"></input>
-                          <input class="btn btn-primary" type="submit" value="supprimer">
-                        </form>
-                    </td>
+                   <td><?php echo $value['num_commande']; ?></td>
+                   <td><?php echo $value['date_commande']; ?></td>
+                   <td><?php echo $value['statut_commande']; ?></td>
+                   <td><a href="commande.php?commande=<?php echo $value['num_commande']; ?>">Details</a></td>
                 </tr>
                 <?php }?>
             </table>
-
-            <? if (isset($_GET['result'])){   ?>
-                <div class="alert alert-info" role="alert">
-                  information :
-                            <? echo $_GET['result'];  }?>
-
-                </div>
-
-
-            <button type="button" class="btn btn-link"><a href="addannonce.php">Add annonce</a></button>
-
             <div id="pagebar">
                 <!-- Pages:&nbsp;
                 <a href="#">1</a>
                 <a href="#">2</a>
                 <a href="#">3</a>
-                4
+                <a href="#">4</a>
                 <a href="#">5</a>
                 <a href="#">6</a> -->
             </div>
+              <?php } else {?>
+                  <p id = "aucunprod">  <?php echo
+                          "Vous n'avez acheté aucun produit pour l'instant"; ?></p>
+                <?php }?>
+
         </div>
     </div>
+      <?if (isset($_GET['result'])){ ?>
+        <div class="alert alert-info" role="alert">
+
+            <? echo "information :" . $_GET['result']; } ?>
+        </div>
+
+
     <footer>
         Copyright &copy; 2018 · LI Huichuan  · Vladi Mur· Ma Nar
 
