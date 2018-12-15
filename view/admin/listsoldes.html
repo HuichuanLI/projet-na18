@@ -11,7 +11,7 @@
 </head>
 <body>
     <header>
-      <a href="index.php">  <h1>Accueik</h1></a>
+      <a href="index.php">  <h1>Accueil</h1></a>
         <h4> <?php echo $_SESSION['login'];?></h1>
     </header>
 
@@ -51,7 +51,10 @@
                  <li><a href="listsoldes.php">Liste des produits vendus</a></li>
               </ul>
               <ul>
-                 <li><a href="gestionlivre.php">Commandes passe</a></li>
+                 <li><a href="gestionlivre.php">Commandes Nouvelles</a></li>
+              </ul>
+              <ul>
+                 <li><a href="commanderecu.php">Commandes recus</a></li>
               </ul>
           </aside>
 
@@ -63,21 +66,20 @@
 
         <div id="rside">
            <?php if ($row != NULL) {?>
+            Liste des produits vendus :
             <table  class="table">
                 <tr>
                     <td>Ref annonce</td>
                     <td>date mise en ligne</td>
                     <td>Ref produit</td>
-                    <td>Login Vendeur</td>
-                    <td>Login</td>
+                    <td>nombre de vendu </td>
                 </tr>
                  <?php foreach($row as $value) {?>
                 <tr>
                    <td><?php echo $value['ref_annonce'];?></td>
                    <td><?php echo $value['date_mise_en_ligne'];?></td>
                    <td><?php echo $value['ref_produit'];?></td>
-                   <td><?php echo $value['login_vendeur'];?></td>
-                   <td><?php echo $value['login'];?></td>
+                   <td><?php echo $value['sum'];?></td>
                 </tr>
                 <?php }?>
             </table>

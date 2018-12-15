@@ -54,7 +54,10 @@
                  <li><a href="listsoldes.php">Produits vendus</a></li>
               </ul>
               <ul>
-                 <li><a href="gestionlivre.php">Commandes passe</a></li>
+                 <li><a href="gestionlivre.php">Commandes Nouvelles</a></li>
+              </ul>
+              <ul>
+                 <li><a href="commanderecu.php">Commandes recus</a></li>
               </ul>
           </aside>
 
@@ -85,7 +88,7 @@
                    <form action="#" method="post" id="livre<?php echo $value['ref_annonce'];?>">
                           <input type="text" name="livre"   style="display: none"></input>
                           <input type="text" name="num_commande" value="<?php echo $value['num_commande'];?>"  style="display: none"></input>
-                          <input class="btn btn-primary" type="submit" value="livré">
+                          <input class="btn btn-primary" type="submit" value="expédiée">
                     </form>
                      </td>
                 </tr>
@@ -102,7 +105,7 @@
             </div>
               <?php } else {?>
                   <p id = "aucunprod">  <?php echo
-                          "Vous n'avez acheté aucun produit pour l'instant"; ?></p>
+                          "Vous n'avez  aucun commandes pour l'instant"; ?></p>
                 <?php }?>
 
         </div>

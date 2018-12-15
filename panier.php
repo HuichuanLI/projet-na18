@@ -50,8 +50,10 @@ if(!empty($_SESSION['login'])){
     // update la table de date_commande  
     $date = new DateTime();
     $date_crea =$date->format('Y-m-d H:i:s');
-    $sqlcommande = "INSERT INTO public.commande(date_commande, statut_commande,login) VALUES ('".$date_crea."', 'payée',".$_SESSION['login'].");";
-    $result = mExec($sqlcommande);
+    $sqlcommande = "INSERT INTO public.commande(date_commande, statut_commande,login) VALUES ('".$date_crea."', 'payée','".$_SESSION['login']."');";
+   
+
+    // $result = mExec($sqlcommande);
 
     $sql = "SELECT * FROM public.commande where date_commande = '".$date_crea."';";
     $result = mQuery($sql);
@@ -63,7 +65,7 @@ if(!empty($_SESSION['login'])){
     }
    
 
-    header('Location: homepage.php?result=achete avec succes');
+    // header('Location: homepage.php?result=achete avec succes');
     }else{
        header('Location: panier.php?result=error');
     }
@@ -97,13 +99,16 @@ if(!empty($_SESSION['login'])){
   if(isset($_POST['achetertous'])){
     $date = new DateTime();
     $date_crea =$date->format('Y-m-d H:i:s');
-    $sqlcommande = "INSERT INTO public.commande(date_commande, statut_commande) VALUES ('".$date_crea."', 'payée',".$_SESSION['login'].");";
+    $sqlcommande = "INSERT INTO public.commande(date_commande, statut_commande,login) VALUES ('".$date_crea."', 'payée','".$_SESSION['login']."');";
     $result = mExec($sqlcommande);
 
     // probleme 
     $sql = "SELECT * FROM public.commande where date_commande = '".$date_crea."';";
     $result = mQuery($sql);
+    
     $num_commande = $result[0]["num_commande"];
+
+
 
     for($index = 0 ; $index < count($listproduit); $index++){
         $sql = "INSERT INTO public.produit_commande (ref_produit, num_commande, quantite) VALUES ('".$listproduit[$index]["ref_produit"]."', ".$num_commande.", ".$listproduit[$index]["quantite"].");";

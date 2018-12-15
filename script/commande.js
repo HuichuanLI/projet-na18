@@ -1,6 +1,11 @@
 var status = $("#status").val();
 
 
+if(status == "payée"){
+	$("#recu").hide();
+} 
+
+
 if(status == "expédiée"){
 	$("#expe").removeClass("disabled");
 	$("#expe").addClass("complete");
