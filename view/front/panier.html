@@ -48,7 +48,11 @@
                <td><?php echo $value['ref_produit'];?></td>
                <td><?php echo $value['nom_produit'];?></td>
                <td><?php echo $value['etat_produit'];?></td>
-               <td><?php echo $value['prix'];?></td>
+              <?php if(!empty($value['prix_maintenant']) && $value['prix_maintenant'] != $value['prix_original']) { ?>
+               <td><?php echo $value['prix_maintenant'];?></td>
+              <?php }else { ?>
+                <td><?php echo $value['prix'];?></td>
+              <?php }?>
                <td><?php echo $value['quantite']?></td>
             </tr>
           <?php }?>
@@ -88,6 +92,7 @@
                         <option value="<?php echo $value['ref_produit'];?>" ><?php echo $value['ref_produit'];?>-<?php echo $value['nom_produit'];?> </option>
                     <?php }?>
             </select>
+            Quantité :
             <input type="number" name="supnum" min=0>
 
 
@@ -114,7 +119,13 @@
         $nb = 0;
 
         foreach ($row as $value) {
-          $solde = $solde + $value['prix'] * $value['quantite'];
+          
+         if(!empty($value['prix_maintenant']) && $value['prix_maintenant'] != $value['prix_original']) { 
+              $solde = $solde + $value['prix_maintenant'] * $value['quantite'];
+            }else{ 
+              $solde = $solde + $value['prix'] * $value['quantite'];
+            }
+        
           $nb = $nb + 1 * $value['quantite'];
         }?>
         <h4><?php echo "Solde" ?> : <?php echo $solde ?> <?php echo "€" ?></h4>

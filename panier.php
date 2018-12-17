@@ -4,20 +4,22 @@ date_default_timezone_set("Europe/Paris");
 session_start();
 if(!empty($_SESSION['login'])){
   $login = $_SESSION['login'];
-  $sql = "SELECT * FROM produit_est_dans_le_panier, produit
+  $sql = "SELECT * FROM produit_est_dans_le_panier, produit left join solde_intermediate on solde_intermediate.ref_produit = produit.ref_produit 
   WHERE produit.ref_produit = produit_est_dans_le_panier.ref_produit
   AND produit_est_dans_le_panier.login = '$login'";
   $row = mQuery($sql);
+  
   $listproduit = $row;
 
-  
+
   // ACHETE ACTION
   // var_dump($sql);
 
   if(isset($_POST['achat'])){
     $sql = "SELECT * FROM produit_est_dans_le_panier WHERE ref_produit = '".$_POST['achat']."' AND produit_est_dans_le_panier.login = '$login'";
-    $result = mQuery($sql);
-    $qtoriginal = $result[0]["quantite"];
+    $result1 = mQuery($sql);
+    $qtoriginal = $result1[0]["quantite"];
+
 
 
     if((int)$_POST['ach']<= (int)$qtoriginal){
@@ -51,7 +53,9 @@ if(!empty($_SESSION['login'])){
     $date = new DateTime();
     $date_crea =$date->format('Y-m-d H:i:s');
     $sqlcommande = "INSERT INTO public.commande(date_commande, statut_commande,login) VALUES ('".$date_crea."', 'payée','".$_SESSION['login']."');";
-   
+    $result = mExec($sqlcommande);
+    
+
 
     // $result = mExec($sqlcommande);
 
@@ -59,13 +63,21 @@ if(!empty($_SESSION['login'])){
     $result = mQuery($sql);
     $num_commande = $result[0]["num_commande"];
     
-    for($index = 0 ; $index < count($listproduit); $index++){
-        $sql = "INSERT INTO public.produit_commande (ref_produit, num_commande, quantite) VALUES ('".$listproduit[$index]["ref_produit"]."', ".$num_commande.", ".$listproduit[$index]["quantite"].");";
-        $result = mExec($sql);
+    /* for the table prix*/ 
+    $sql = "SELECT * FROM public.produit left join solde_intermediate on solde_intermediate.ref_produit = produit.ref_produit where produit.ref_produit = '".$_POST['achat']."';";
+    $ligne = mQuery($sql);
+    if(!empty($ligne[0]['prix_maintenant']) && $ligne[0]['prix_maintenant'] != $ligne[0]['prix_original']){
+      $prix = $ligne[0]['prix_maintenant'];
+    }else{
+      $prix = $ligne[0]['prix'];
     }
+
+
+    $sql = "INSERT INTO public.produit_commande (ref_produit, num_commande, quantite,prix) VALUES ('".$_POST['achat']."', ".$num_commande.", ".$_POST['ach'].",".$prix.");";
+    $result = mExec($sql);
    
 
-    // header('Location: homepage.php?result=achete avec succes');
+    header('Location: homepage.php?result=achete avec succes');
     }else{
        header('Location: panier.php?result=error');
     }
@@ -111,7 +123,20 @@ if(!empty($_SESSION['login'])){
 
 
     for($index = 0 ; $index < count($listproduit); $index++){
-        $sql = "INSERT INTO public.produit_commande (ref_produit, num_commande, quantite) VALUES ('".$listproduit[$index]["ref_produit"]."', ".$num_commande.", ".$listproduit[$index]["quantite"].");";
+
+        $sql = "SELECT * FROM public.produit left join solde_intermediate on solde_intermediate.ref_produit = produit.ref_produit where produit.ref_produit = '".$listproduit[$index]["ref_produit"]."';";
+        $ligne = mQuery($sql);
+
+
+        if(!empty($ligne[0]['prix_maintenant']) && $ligne[0]['prix_maintenant'] != $ligne[0]['prix_original']){
+          $prix = $ligne[0]['prix_maintenant'];
+        }else{
+          $prix = $ligne[0]['prix'];
+        }
+
+
+
+        $sql = "INSERT INTO public.produit_commande (ref_produit, num_commande, quantite,prix) VALUES ('".$listproduit[$index]["ref_produit"]."', ".$num_commande.", ".$listproduit[$index]["quantite"].",".$prix.");";
         $result = mExec($sql);
 
         $sql = "SELECT * FROM public.utilisateur_achete_produit WHERE  ref_produit = '".$listproduit[$index]["ref_produit"]."' AND login = '$login'";

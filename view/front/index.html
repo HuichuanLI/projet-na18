@@ -41,7 +41,10 @@
                       <h4 class="card-title"> <a href="annonce.php?ref_produit=<?php echo $value['ref_produit'];?>"><?php echo $value['nom_produit']; ?></a></h4>
                       <p class="card-text">Référence produit : <?php echo $value['ref_produit'];?></p>
                       <p class="card-text">Prix : <?php echo $value['prix'];?>€</p>
-                      <p class="card-text"> Marque : <?php echo $value['marque'];?></p>
+                      <?php if(isset($value['prix_maintenant']) && $value['prix_maintenant'] != $value['prix_original']) { ?>
+                        <p style="color:#FF0000" class="card-text">Prix apres promotion : <?php echo $value['prix_maintenant'];?>€</p>  
+                      <?php }?>
+                      <p class="card-text">Marque : <?php echo $value['marque'];?></p>
                       <p class="card-text">Référence annonce : <?php echo $value['ref_annonce'];?></p>
                       <p class="card-text">Date de mise en ligne : <?php echo $value['date_mise_en_ligne'];?></p>
                       <p class="card-text">Vendeur : <?php echo $value['login_vendeur'];?></p>

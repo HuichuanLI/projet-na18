@@ -80,6 +80,14 @@
                         <?php echo $value[ 'prix'];?>
                             €
                     </p>
+                    <?php if(isset($result[ 'prix_maintenant'])) { ?>
+                    <p class="card-text"  style="color:#FF0000">
+                        Prix apres promotion :
+                        <?php echo $result[ 'prix_maintenant'];?>
+                            €
+                    </p>
+                    <?php } ?>
+
                     <p class="card-text">
                         Marque :
                         <?php echo $value[ 'marque'];?>
