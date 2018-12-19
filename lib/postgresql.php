@@ -5,7 +5,7 @@ error_reporting(E_ALL ^ E_DEPRECATED);
 function mConn() {
   static $connexion = null;
   if($connexion === null) {
-    $connexion = new PDO('pgsql:host=db;port=5432;dbname=yyh', 'yyh', 'haha1sbccy');
+    $connexion = new PDO('pgsql:host=tuxa.sme.utc;port=5432;dbname=dbna18a027', 'na18a027', 'FCCSel7x');
   }
 
   return $connexion;
@@ -14,7 +14,7 @@ function mConn() {
 
 //select function
 function mQuery($sql){
-  
+
   $connexion = mConn();
   $resultset = $connexion->prepare($sql);
   $resultset->execute();
@@ -45,19 +45,19 @@ function mExec($sql){
 
 
 
-// sql new version 
-// add bindParam dans une array 
+// sql new version
+// add bindParam dans une array
 function mNewQuery($sql,$model= 1,$array=array()){
-  
+
   $connexion = mConn();
   $resultset = $connexion->prepare($sql);
-  
+
   if($model == 1){
     foreach ($array as $key => $value) {
       $resultset->bindParam($key,$value);
     }
     $resultset->execute();
-    
+
   }else{
     $resultset->execute($array);
   }
@@ -83,7 +83,7 @@ function mNewExec($sql,$model=1, $array = array()){
   if($model == 1){
     foreach ($array as $key => $value) {
       $resultset->bindParam($key,$value);
-    }  
+    }
     if ($resultset->execute() == true) {
      return "true";
     }
@@ -99,6 +99,5 @@ function mNewExec($sql,$model=1, $array = array()){
       return "false";
     }
   }
-  
-}
 
+}
