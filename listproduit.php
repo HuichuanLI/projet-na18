@@ -28,7 +28,7 @@ if($_SESSION['vendeur'] == "false"){
 	$vendeur = "true";
 }
 $sql = "SELECT * FROM produit";
-$row = mQuery($sql);
+$row = mNewQuery($sql);
 
 if(empty($_POST)) {
 	require(ROOT . '/view/admin/listproduit.html');

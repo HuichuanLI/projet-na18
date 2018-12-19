@@ -36,17 +36,17 @@ if($_SESSION['vendeur'] == false){
 
 
 
-$sql = "SELECT * FROM annonce where login_vendeur = '".$_SESSION['login']."';";
-$row = mQuery($sql);
+$sql = "SELECT * FROM annonce where login_vendeur = ?;";
+$row = mNewQuery($sql,$model=2,array($_SESSION['login']));
 
 
 if(isset($_POST['delete'])){
 	
 
-	$sql = "DELETE FROM public.utilisateur_consulte_annonce WHERE ref_annonce = '".$_POST['ref_annonce']."';";
-	$row = mExec($sql);
-	$sql = "DELETE FROM public.annonce WHERE ref_annonce = '".$_POST['ref_annonce']."';";
-	$row = mExec($sql);
+	$sql = "DELETE FROM public.utilisateur_consulte_annonce WHERE ref_annonce = ?;";
+	$row =	mNewExec($sql, $model = 2,array($_POST['ref_annonce']));
+	$sql = "DELETE FROM public.annonce WHERE ref_annonce = ?;";
+	$row = 	mNewExec($sql, $model = 2,array($_POST['ref_annonce']));
 	header('Location: listannonce.php');
 	
 }

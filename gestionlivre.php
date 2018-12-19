@@ -15,13 +15,13 @@
     }
 
 
-    $sql = "SELECT * FROM public.produit_commande, public.commande, public.annonce WHERE commande.num_commande = produit_commande.num_commande and commande.statut_commande = 'payée' and annonce.ref_produit = produit_commande.ref_produit and annonce.login_vendeur = '".$_SESSION['login'] ."';";
+    $sql = "SELECT * FROM public.produit_commande, public.commande, public.annonce WHERE commande.num_commande = produit_commande.num_commande and commande.statut_commande = 'payée' and annonce.ref_produit = produit_commande.ref_produit and annonce.login_vendeur = ?;";
 
-    $row = mQuery($sql);
+    $row = mNewQuery($sql,$model=2,array($_SESSION['login']));
 
     if(isset($_POST['num_commande'])){
-    	$livresql = "UPDATE public.commande SET statut_commande='expédiée' WHERE num_commande=".$_POST['num_commande'].";";
-    	$result = mExec($livresql);
+    	$livresql = "UPDATE public.commande SET statut_commande='expédiée' WHERE num_commande=?;";
+    	$result = mNewExec($livresql,$model=2,array($_POST['num_commande']));
     	 header('Location: gestionlivre.php');
     }
 
@@ -32,8 +32,8 @@
     }
 
 
-    $sql = "SELECT * FROM public.vendeur WHERE login = '".$_SESSION['login']."';";
-    $vendeur = mQuery($sql);
+    $sql = "SELECT * FROM public.vendeur WHERE login = ?;";
+    $vendeur = mNewQuery($sql,$model = 2, array($_SESSION['login']));
     if($vendeur == NULL){
         $vendeur = "false";
     }else{

@@ -23,8 +23,8 @@ if(isset($_POST['promotion'])){
 	// update the promotion
 
 	if(isset($_POST['debut'])){
-		$sql = "UPDATE public.promotion SET  debut='".$_POST['debut']."', fin='".$_POST['fin']."', rabais='".$_POST['rabais']."' WHERE promotion.nom_promo= '".$_POST['promotion']."';";
-		$row = mExec($sql);
+		$sql = "UPDATE public.promotion SET  debut= ?, fin='".$_POST['fin']."', rabais='".$_POST['rabais']."' WHERE promotion.nom_promo= '".$_POST['promotion']."';";
+		$row = mNewQuery($sql,$model = 2,array($_POST['debut']));
 		if($row == "true"){
 			header('Location: listpromotion.php?result=avec success');
 		}

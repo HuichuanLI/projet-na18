@@ -28,8 +28,10 @@ if(empty($_POST)) {
 	if(empty($user['password'])) {
 		header('Location: log.php');
 	}
-	$vSql = "SELECT login, mdp,est_admin FROM public.utilisateur WHERE login = '".$user['login']."' and mdp = '".$user['password']."'" ;
-	$row = mQuery($vSql);
+	$vSql = "SELECT login, mdp,est_admin FROM public.utilisateur WHERE login = ? and mdp = ?" ;
+	
+	$row = mNewQuery($vSql,$model = 2, array($user['login'],$user['password']));
+
 
 	if(!$row) {
     	header('Location: log.php');

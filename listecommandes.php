@@ -15,8 +15,8 @@
     }
 
 
-    $sql = "SELECT * FROM public.commande WHERE commande.login = '".$_SESSION['login']."';";
-    $row = mQuery($sql);
+    $sql = "SELECT * FROM public.commande WHERE commande.login = ?;";
+    $row = mNewQuery($sql,$model = 2, array($_SESSION['login']));
 
 
     if($_SESSION['admin'] == false){
@@ -26,8 +26,8 @@
     }
 
 
-    $sql = "SELECT * FROM public.vendeur WHERE login = '".$_SESSION['login']."';";
-    $vendeur = mQuery($sql);
+    $sql = "SELECT * FROM public.vendeur WHERE login =?;";
+    $vendeur = mNewQuery($sql,$model = 2, array($_SESSION['login']));
     if($vendeur == NULL){
         $vendeur = "false";
     }else{

@@ -34,8 +34,10 @@ if($_SESSION['vendeur'] == "false"){
 
 
 
-$sql = "SELECT ref_annonce, utilisateur_achete_produit.ref_produit, date_mise_en_ligne, COALESCE(sum(quantite),0) as sum FROM annonce,utilisateur_achete_produit where annonce.ref_produit = utilisateur_achete_produit.ref_produit and annonce.login_vendeur = '".$_SESSION['login']."' GROUP BY(ref_annonce,utilisateur_achete_produit.ref_produit);";
-$row = mQuery($sql);
+$sql = "SELECT ref_annonce, utilisateur_achete_produit.ref_produit, date_mise_en_ligne, COALESCE(sum(quantite),0) as sum FROM annonce,utilisateur_achete_produit where annonce.ref_produit = utilisateur_achete_produit.ref_produit and annonce.login_vendeur = ? GROUP BY(ref_annonce,utilisateur_achete_produit.ref_produit);";
+
+
+$row = mNewQuery($sql,$model = 2, array($_SESSION['login']));
 
 
 require(ROOT . '/view/admin/listsoldes.html');

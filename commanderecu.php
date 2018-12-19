@@ -22,6 +22,7 @@
     if(isset($_POST['num_commande'])){
       $livresql = "UPDATE public.commande SET statut_commande='expédiée' WHERE num_commande= ?;";
       $result = mNewExec($livresql,$model=2,array($_POST['num_commande']));
+
       header('Location: gestionlivre.php');
     }
 
@@ -32,8 +33,9 @@
     }
 
 
-    $sql = "SELECT * FROM public.vendeur WHERE login = '".$_SESSION['login']."';";
-    $vendeur = mQuery($sql);
+    $sql = "SELECT * FROM public.vendeur WHERE login = ?;";
+    
+    $vendeur = mNewQuery($sql,$model=2,array($_SESSION['login']));
     
     if($vendeur == NULL){
         $vendeur = "false";
