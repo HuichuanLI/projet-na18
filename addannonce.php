@@ -19,7 +19,7 @@ if(empty($_SESSION['login'])){
 if(empty($_POST)) {
 
 	$sql = "SELECT ref_produit,nom_produit FROM public.produit";
-	$result  = mQuery($sql);
+	$result  = mNewQuery($sql);
 	require(ROOT . '/view/admin/addannonce.html');
 } else {
 
@@ -39,9 +39,9 @@ if(empty($_POST)) {
 
 
   $sql="INSERT INTO produit (ref_produit, nom_produit, description, etat_produit, marque, prix, categorie_produit, url_photo)
-  VALUES ('$ref','$nomp','$description','$etat','$marque','$prix','$cat','$url')";
-  $result = mExec($sql);
-
+  VALUES (?,?,?,?,?,?,?,?)";
+  $result = mNewExec($sql,$model=2,array($ref,$nomp,$description,$etat,$marque,$prix,$cat,$url));
+  
 
 
   if($result == "true"){
@@ -51,8 +51,8 @@ if(empty($_POST)) {
   }
 
 
-	$sql2 ="INSERT INTO public.annonce(ref_annonce, date_mise_en_ligne, ref_produit, login_vendeur)VALUES ('".$_POST['Ref_annonce']."','".$_POST['debut']."','$ref' ,'".$_SESSION['login']."');";
-	$result2 = mExec($sql2);
+	$sql2 ="INSERT INTO public.annonce(ref_annonce, date_mise_en_ligne, ref_produit, login_vendeur)VALUES (?,?,?,?);";
+	$result2 = mNewExec($sql2,$model=2,array($_POST['Ref_annonce'],$_POST['debut'],$ref,$_SESSION['login']));
 
 
 

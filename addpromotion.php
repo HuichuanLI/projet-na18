@@ -17,8 +17,11 @@ if(empty($_POST)) {
 	if(empty($_POST['promotion']) || empty($_POST['debut']) || empty($_POST['fin']) || empty($_POST['rabais']) ){
 		  header('Location: sign.php?addpromotion=empty');
 	}else{
-		$sql ="INSERT INTO public.promotion(nom_promo, debut, fin, rabais) VALUES ('".$_POST['promotion']."', '".$_POST['debut']."', '".$_POST['fin']."', '".$_POST['rabais']."');";
-		$result = mExec($sql);
+		$sql ="INSERT INTO public.promotion(nom_promo, debut, fin, rabais) VALUES (?, ?, ?, ?);";
+		
+		$result = mNewExec($sql,$model=2,array($_POST['promotion'],$_POST['debut'],$_POST['fin'],$_POST['rabais']));
+		
+
 		if($result == "true"){
 			header('Location: listpromotion.php?result=avec success');
 		}else{
