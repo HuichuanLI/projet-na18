@@ -18,8 +18,8 @@ if(empty($_SESSION['login'])){
   header('Location: log.php');
 }
 
+
 if(isset($_POST['promotion'])){
-	
 	// update the promotion
 
 	if(isset($_POST['debut'])){
@@ -30,7 +30,7 @@ if(isset($_POST['promotion'])){
 		}
 	}
 	$vSql = "SELECT * FROM public.promotion  WHERE promotion.nom_promo = '".$_POST['promotion']."'";
-	$row = mQuery($vSql);
+	$row = mNewQuery($vSql,$,);
 	$value = $row[0];
 }
 

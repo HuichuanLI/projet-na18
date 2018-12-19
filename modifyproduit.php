@@ -14,25 +14,25 @@ date_default_timezone_set("Europe/Paris");
 
 
 
-$sql = "SELECT * FROM public.produit where ref_produit = '".$_POST['ref_produit']."';";
-$row = mQuery($sql);
+$sql = "SELECT * FROM public.produit where ref_produit = ?;";
+$row = mNewQuery($sql,$model=2,array($_POST['ref_produit']));
 $value = $row[0];
 
 
 $sql = "SELECT * FROM promotion";
 $promotion = mQuery($sql);
 
-
 if(isset($_POST['Prix'])){
 	if(empty($_POST['nom_promo1'])){
 	$nom_promo = "NULL";
-		$sql = "UPDATE public.produit SET  nom_produit='".$_POST['nom_produit']."', description='".$_POST['description']."', etat_produit='".$_POST['etat_produit']."', marque='".$_POST['marque']."', prix=".$_POST['Prix'].", categorie_produit='".$_POST['Categorie_produit']."', nom_promo=".$nom_promo.", url_photo='".$_POST['url_photo']."' WHERE ref_produit='".$_POST['ref_produit']."';";
+		$sql = "UPDATE public.produit SET  nom_produit= ?, description= ?, etat_produit= ?, marque= ?, prix= ?, categorie_produit=?, nom_promo=?, url_photo=? WHERE ref_produit=?;";
 		}else{
 			$nom_promo = $_POST['nom_promo1'];
-			$sql = "UPDATE public.produit SET  nom_produit='".$_POST['nom_produit']."', description='".$_POST['description']."', etat_produit='".$_POST['etat_produit']."', marque='".$_POST['marque']."', prix=".$_POST['Prix'].", categorie_produit='".$_POST['Categorie_produit']."', nom_promo='".$nom_promo."', url_photo='".$_POST['url_photo']."' WHERE ref_produit='".$_POST['ref_produit']."';";
+			$sql = "UPDATE public.produit SET  nom_produit=?, description=?, etat_produit=?, marque=?, prix=?, categorie_produit=?, nom_promo=？, url_photo=? WHERE ref_produit=?;";
 		}
 
-	$result = mExec($sql);	
+	$result = mNewExec($sql,$model = 2,array($_POST['nom_produit'],$_POST['description'],$_POST['etat_produit'],$_POST['marque'],$_POST['Prix'],$_POST['Categorie_produit'],$nom_promo,$_POST['url_photo'],$_POST['ref_produit']));	
+
 	if($result == "true"){
 			header('Location: listproduit.php?result=avec succes');
 	}

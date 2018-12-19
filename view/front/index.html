@@ -33,8 +33,7 @@
         </nav>
         <div id="main">
           <div class="row " id="lside">
-              <?php
-              foreach($row as $value) {?>
+              <?php foreach($row as $value) {?>
                   <div class="card col-5 pull-right" id="cb" >
                     <img class="card-img-top" src="<?php echo $value['url_photo']; ?>"  alt="Card image"/>
                     <div class="card-body">
@@ -52,12 +51,37 @@
                   </div>
 
               <?php }?>
-
-
-
-
             </div>
             <div id="rside">
+              
+               <aside>
+                <form method ="get" action ="index.php"/>
+                  <fieldset>
+                    <legend> Trier par vendeur : </legend>
+                    <ul>
+                    <?php
+                      foreach($vendeurs as $value) {?>
+                    <a href="index.php?vendeur=<?php echo $value['login_vendeur'];?>">
+                      <li><?php echo $value['login_vendeur'];?></li></a>
+
+                    <?php }?>
+                  </ul>
+
+                  </fieldset>
+                  </form>
+
+                  <form method ="post" action="index.php">
+
+                  <select name ="prix" class="form-control" >
+                    <option> Prix croissant
+                    <option> Prix décroissant
+                    </select><br><br>
+                    <input type= "submit" value ="Filtrer"/>
+                  </form>
+              </aside>
+
+
+
               <aside>
                 <form method = post action = "index.php">
                   <fieldset>
@@ -73,7 +97,6 @@
                 <input type="number" name="qt" size="1" min=1> <br><br>
                   <input type="submit" value="Panier" >
                 </fieldset>
-
                 </form>
                 </aside>
                 <aside>
@@ -86,6 +109,39 @@
 
                     <?php }?>
                     </ul>
+                </aside>
+
+
+                 <aside>
+                  <h4> Filtre </h4>
+
+                    <fieldset>
+                      <legend> Trier par état :  </legend>
+
+                          <ul>
+
+                            <?php
+                              foreach($etats as $value) {?>
+                            <a href="index.php?etat=<?php echo $value['etat_produit'];?>">
+                              <li><?php echo $value['etat_produit'];?></li></a>
+
+                            <?php }?>
+                            </ul>
+                    </fieldset>
+
+                    <form method ="get" action ="index.php">
+                    <fieldset>
+                      <legend> Trier par prix :</legend>
+
+                    Prix minimum :
+                    <input type="number" min = 1 name="prix_min"/>
+                    Prix maximum :
+                    <input type="number" min = 0 name="prix_max"/>
+                    <br><br>
+                    </fieldset><br>
+                    <input type="submit" value="Filtrer" size = "1"/>
+                  </form>
+
                 </aside>
                 </div>
               </div>

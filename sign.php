@@ -33,21 +33,21 @@ if(empty($_POST)) {
 		$is_admin = 'false';
 	}
 	$sql = "INSERT INTO public.utilisateur(
-	 login, mdp, nom, prénom, mail, date_creation_compte, est_admin, est_paye) VALUES ('$login','$password','$nom','$prenom','$mail','$date_crea',$is_admin,'$panier_paye')";
+	 login, mdp, nom, prénom, mail, date_creation_compte, est_admin, est_paye) VALUES (?,?,?,?,?,?,?,?)";
 
-	$result = mConn()->prepare($sql);
-	$row = $result->execute();
-
+	$result = mNewExec($sql,$model = 2,array($login,$password,$nom,$prenom,$mail,$date_crea,$is_admin,$panier_paye));
+	
 	# when the user is vendeur
 	if($typeuser == "vendeur"){
 		$description = $_POST["description"];
 		$siret = $_POST["siret"];
 		$nom_magasin = $_POST["magasin"];
-		$sql = "INSERT INTO public.vendeur(login, description, siret, nom_magasin) VALUES ('$login', '$description', '$siret', '$nom_magasin');";
-		$result = mConn()->prepare($sql);
-		$row = $result->execute();
+		$sql = "INSERT INTO public.vendeur(login, description, siret, nom_magasin) VALUES (?, ?, ?, ?);";
+		$result = mNewExec($sql,$model =2,array($login,$description,$siret,$nom_magasin));
 	}
-	if ($row) {
+	
+
+	if ($result == "true") {
 	  	header('Location: log.php');
 	}
 	else {
